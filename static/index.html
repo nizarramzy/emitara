@@ -3,474 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emitara: Warta Saham & Aksi Korporasi IHSG</title>
+  <title>Emitara: Media Flow Warta Saham &amp; Pasar Modal IHSG</title>
 
-  <!-- Typography: Playfair Display (Vogue Didone Serif) + Plus Jakarta Sans + JetBrains Mono -->
+  <!-- Typography: Playfair Display (Editorial Serif) + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-  <!-- Editorial Masthead Header -->
-  <header class="masthead-wrapper">
-    <div class="masthead-container">
-      <div class="masthead-topbar">
-        <div class="topbar-date-group">
-          <span>Sabtu, 24 Oktober 2026</span>
-          <span class="desktop-only-dot">&bull;</span>
-          <span class="desktop-only-text">Edisi Pasar Modal &amp; Investasi</span>
-        </div>
-        <!-- Desktop Actions (Visible >= 768px) -->
-        <div class="desktop-topbar-actions">
-          <button type="button" class="btn-editorial-action" id="btnWatchlistTab" title="Lihat berita emiten yang Anda pantau">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-            <span>Watchlist</span>
-            <span class="nav-tab-badge" id="watchlistCount">0</span>
-          </button>
-          <button type="button" class="btn-editorial-action" id="btnBookmarksTab" title="Lihat daftar artikel tersimpan">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span>Tersimpan</span>
-            <span class="nav-tab-badge" id="bookmarkCount">0</span>
-          </button>
-          <button type="button" class="btn-editorial-action" id="btnAudio" title="Aktifkan nada dering berita baru">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-            </svg>
-            <span>Audio</span>
-          </button>
-          <button type="button" class="btn-editorial-action" id="btnRefresh" title="Ambil warta terbaru sekarang">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="23 4 23 10 17 10"></polyline>
-              <polyline points="1 20 1 14 7 14"></polyline>
-              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-            </svg>
-            <span>Sinkronkan</span>
-          </button>
-        </div>
-
-        <!-- Mobile Hamburger Button (< 768px) -->
-        <button type="button" class="btn-mobile-menu" id="btnMobileMenuToggle" onclick="window.openMobileDrawer && window.openMobileDrawer()" aria-label="Buka menu navigasi" aria-expanded="false">
-          <span class="burger-bar"></span>
-          <span class="burger-bar"></span>
-          <span class="burger-bar"></span>
-        </button>
+  <!-- Master Top Navigation Bar -->
+  <header class="master-header">
+    <div class="master-header-container">
+      <div class="header-brand-side">
+        <a href="/" class="brand-text" aria-label="Emitara Beranda">EMITARA</a>
+        <span class="header-edition-tag">PASAR BEI</span>
       </div>
 
-      <div class="masthead-brand">
-        <a href="/" class="brand-title" aria-label="Emitara Beranda">EMITARA</a>
-        <div class="brand-subtitle">Portal Warta Saham &amp; Aksi Korporasi Bursa Efek Indonesia</div>
+      <!-- Segmented Mode Switcher (Media Flow Component) -->
+      <nav class="segmented-mode-switcher" role="tablist" aria-label="Pilihan Format Media">
+        <button type="button" class="btn-mode-pill active" id="btnModeNews" role="tab" aria-selected="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="7" y1="16" x2="13" y2="16"></line></svg>
+          <span>Warta Teks</span>
+        </button>
+        <button type="button" class="btn-mode-pill" id="btnModeAudio" role="tab" aria-selected="false">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          <span>Audio Feed</span>
+        </button>
+      </nav>
+
+      <!-- Desktop Header Actions -->
+      <div class="header-action-group">
+        <button type="button" class="btn-header-clean" id="btnWatchlistTab" title="Lihat emiten pantauan">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Watchlist</span>
+          <span class="counter-badge-clean" id="watchlistCount">0</span>
+        </button>
+
+        <button type="button" class="btn-header-clean" id="btnBookmarksTab" title="Lihat artikel tersimpan">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          <span>Tersimpan</span>
+          <span class="counter-badge-clean" id="bookmarkCount">0</span>
+        </button>
+
+        <button type="button" class="btn-header-clean" id="btnAudio" title="Aktifkan nada dering berita">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          <span>Alert</span>
+        </button>
+
+        <button type="button" class="btn-header-clean" id="btnRefresh" title="Cek warta terbaru">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          <span>Sinkron</span>
+        </button>
       </div>
     </div>
   </header>
 
-    <!-- Running Ticker Ribbon (Live Market Quotes) -->
-  <div class="ticker-ribbon" aria-label="Pita Saham Berjalan">
-    <div class="ticker-wrap">
-      <div class="ticker-move" id="tickerMove">
-        <!-- Live quotes injected via JavaScript -->
+  <!-- Live Market Ticker Strip (Clean Minimal) -->
+  <div class="ticker-strip" aria-label="Pita Harga Saham Live">
+    <div class="ticker-strip-wrap">
+      <div class="ticker-strip-move" id="tickerMove">
+        <!-- Injected via JavaScript from /api/market/ticker -->
       </div>
     </div>
   </div>
 
-  <!-- Category Filter Bar (Newzia Style) -->
-  <nav class="category-bar-wrapper" aria-label="Navigasi Rubrik">
-    <div class="category-bar">
-      <div class="category-tabs" role="tablist">
-        <button type="button" class="btn-editorial-action" id="btnToggleMarketsMenu" aria-expanded="false" aria-controls="megaMenuMarkets" style="font-weight: 700; background-color: var(--color-surface-alt); border-color: var(--color-border); height: 34px; padding: 0 14px; gap: 6px;">
-          <span>Pasar BEI</span>
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </button>
-        <button type="button" class="category-pill active" data-category="ALL" role="tab" aria-selected="true">Semua</button>
-        <button type="button" class="category-pill" data-category="Finansial" role="tab" aria-selected="false">Finansial &amp; Bank</button>
-        <button type="button" class="category-pill" data-category="Energi" role="tab" aria-selected="false">Energi &amp; Tambang</button>
-        <button type="button" class="category-pill" data-category="Konsumer" role="tab" aria-selected="false">Konsumer &amp; Ritel</button>
-        <button type="button" class="category-pill" data-category="Teknologi" role="tab" aria-selected="false">Teknologi &amp; Telekom</button>
-        <button type="button" class="category-pill" data-category="Makro" role="tab" aria-selected="false">Makro &amp; Fiskal</button>
+  <!-- Category & Search Strip -->
+  <div class="category-filter-strip">
+    <div class="category-filter-container">
+      <div class="category-pill-list" role="tablist">
+        <button type="button" class="cat-pill active" data-category="ALL" role="tab" aria-selected="true">Semua Warta</button>
+        <button type="button" class="cat-pill" data-category="Finansial" role="tab" aria-selected="false">Finansial &amp; Bank</button>
+        <button type="button" class="cat-pill" data-category="Energi" role="tab" aria-selected="false">Energi &amp; Komoditas</button>
+        <button type="button" class="cat-pill" data-category="Konsumer" role="tab" aria-selected="false">Konsumer &amp; Ritel</button>
+        <button type="button" class="cat-pill" data-category="Teknologi" role="tab" aria-selected="false">Teknologi &amp; Telco</button>
+        <button type="button" class="cat-pill" data-category="Makro" role="tab" aria-selected="false">Makro &amp; Fiskal</button>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-        <div class="sentiment-toggle-group" role="group" aria-label="Filter Sentimen Pasar">
-          <button type="button" class="sentiment-toggle-btn active" data-sentiment="ALL">Semua</button>
-          <button type="button" class="sentiment-toggle-btn" data-sentiment="BULLISH">Bullish</button>
-          <button type="button" class="sentiment-toggle-btn" data-sentiment="BEARISH">Bearish</button>
+      <div class="search-filter-wrap">
+        <div class="sentiment-segmented" role="group" aria-label="Filter Sentimen">
+          <button type="button" class="sentiment-btn-clean active" data-sentiment="ALL">Semua</button>
+          <button type="button" class="sentiment-btn-clean" data-sentiment="BULLISH">Bullish</button>
+          <button type="button" class="sentiment-btn-clean" data-sentiment="BEARISH">Bearish</button>
         </div>
 
-        <div class="search-box-editorial">
-          <svg class="search-icon-editorial" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="text" id="searchInput" class="search-input-editorial" placeholder="Cari emiten (BBCA, BMRI) atau topik..." aria-label="Pencarian berita">
+        <div class="search-field-clean">
+          <svg class="search-field-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="searchInput" class="search-field-input" placeholder="Cari emiten atau kata kunci..." aria-label="Pencarian berita">
         </div>
-      </div>
-    </div>
-    <!-- Bloomberg-Style Markets Mega Menu Panel -->
-  <div id="megaMenuMarkets" class="mega-menu-panel" role="region" aria-label="Menu Pasar Bloomberg Style">
-    <div class="mega-menu-inner">
-      <!-- Col 1: Warta Emiten -->
-      <div>
-        <div class="mega-col-title">Warta Emiten</div>
-        <div class="mega-nav-list">
-          <button type="button" class="mega-nav-link" data-search="dividen">Dividen &amp; RUPS</button>
-          <button type="button" class="mega-nav-link" data-search="akuisisi">Aksi Korporasi</button>
-          <button type="button" class="mega-nav-link" data-search="ipo">IPO &amp; Right Issue</button>
-          <button type="button" class="mega-nav-link" data-search="laba">Laba &amp; Kinerja</button>
-          <button type="button" class="mega-nav-link" data-search="obligasi">Obligasi &amp; Sukuk</button>
-          <button type="button" class="mega-nav-link" data-search="suspensi">Suspensi Bursa</button>
-        </div>
-      </div>
-
-      <!-- Col 2: Sektor BEI -->
-      <div class="mega-col-sectors">
-        <div class="mega-col-title">Sektor BEI</div>
-        <div class="mega-nav-list">
-          <button type="button" class="mega-nav-link" data-category="Finansial">Perbankan &amp; Finansial</button>
-          <button type="button" class="mega-nav-link" data-category="Energi">Energi &amp; Batubara</button>
-          <button type="button" class="mega-nav-link" data-search="emas">Mineral &amp; Tambang</button>
-          <button type="button" class="mega-nav-link" data-category="Konsumer">Konsumer &amp; Ritel</button>
-          <button type="button" class="mega-nav-link" data-category="Teknologi">Teknologi &amp; Telco</button>
-          <button type="button" class="mega-nav-link" data-category="Makro">Makro &amp; Fiskal</button>
-        </div>
-      </div>
-
-      <!-- Col 3: Sekuritas Teraktif (Top Securities) -->
-      <div>
-        <div class="mega-col-title">Sekuritas Teraktif (Top Securities)</div>
-        <div id="megaSecuritiesGrid" class="mega-securities-grid">
-          <!-- Rendered live via JavaScript from /api/market/ticker -->
-        </div>
-      </div>
-
-      <!-- Col 4: Watchlist CTA -->
-      <div class="mega-cta-card">
-        <div>
-          <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;">
-            Pantau Portofolio Saham Anda
-          </div>
-          <p class="mega-cta-desc">
-            Dapatkan warta kurasi khusus emiten yang Anda miliki secara realtime di Emitara.
-          </p>
-        </div>
-        <button type="button" class="btn-mega-cta" id="btnOpenWatchlistFromMega">
-          <span>+ Buka Watchlist</span>
-        </button>
       </div>
     </div>
   </div>
-  </nav>
 
   <!-- Main Editorial Layout -->
-  <main class="portal-layout">
-    
-    <!-- Feed Column -->
-    <section class="portal-stream" aria-label="Berita Pasar Terkini">
-      
-      <!-- Hero Featured Story Container (Top Story) -->
-      <div id="heroContainer"></div>
+  <main class="main-editorial-layout">
 
-      <!-- Feed Section Headline -->
-      <div class="section-headline">
-        <span>Arus Warta Terkini</span>
-        <span id="feedCounter" style="font-family: var(--font-mono); font-size: 11px; font-weight: 500; color: var(--color-text-muted);">Memuat warta...</span>
+    <!-- Primary Feed Column -->
+    <section class="editorial-feed" aria-label="Aliran Berita Terkini">
+
+      <!-- Highlights Carousel (Media Flow Screen 1) -->
+      <div class="highlights-section" id="highlightsSection">
+        <div class="section-editorial-header">
+          <h2 class="section-editorial-title">Sorotan Utama (Highlights)</h2>
+          <span style="font-size: 11px; color: var(--color-text-muted); font-family: var(--font-mono);">Kurasi Redaksi</span>
+        </div>
+        <div class="highlights-carousel" id="highlightsCarousel">
+          <!-- Injected via JavaScript (3 Top Featured Stories) -->
+        </div>
       </div>
 
-      <!-- News List Rows (Newzia / Grand News Style) -->
-      <div id="newsList" role="feed"></div>
+      <!-- Feed Section Header -->
+      <div class="section-editorial-header" style="margin-top: 20px;">
+        <h2 class="section-editorial-title" id="feedSectionTitle">Aliran Warta Pasar</h2>
+        <span id="feedCounter" style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; color: var(--color-text-muted);">Memuat warta...</span>
+      </div>
+
+      <!-- 2-Column Article List (Left Thumbnail, Right Metadata) -->
+      <div class="article-list-container" id="newsList" role="feed"></div>
 
       <!-- Load More Button -->
-      <div id="loadMoreContainer" style="text-align: center; margin: 24px 0 16px;">
-        <button type="button" class="btn-editorial-action" id="btnLoadMore" style="height: 38px; padding: 0 24px; font-size: 13px;">
-          Muat Lebih Banyak Warta
+      <div id="loadMoreContainer" style="text-align: center; margin: 32px 0 16px;">
+        <button type="button" class="btn-header-clean" id="btnLoadMore" style="height: 40px; padding: 0 24px; font-size: 13px; font-weight: 700;">
+          Muat Lebih Banyak Warta &darr;
         </button>
       </div>
 
     </section>
 
     <!-- Sidebar Column -->
-    <aside class="portal-sidebar" aria-label="Informasi Tambahan Pasar">
-      
-      <!-- 1. Watchlist Saham Saya Widget -->
-      <div class="sidebar-box">
-        <h3 class="sidebar-title">
-          <span>Watchlist Saham Saya</span>
-          <button type="button" class="btn-editorial-action" id="btnFilterWatchlist" style="font-size:10px; height:24px; padding:0 8px;">Filter Feed</button>
+    <aside class="editorial-sidebar" aria-label="Radar Pasar dan Analitik">
+
+      <!-- 1. Watchlist Saham Saya -->
+      <div class="sidebar-clean-box">
+        <h3 class="sidebar-clean-title">
+          <span>Watchlist Saya</span>
+          <button type="button" class="btn-header-clean" id="btnFilterWatchlist" style="font-size: 10px; height: 26px; padding: 0 8px;">Filter Feed</button>
         </h3>
-        <div class="watchlist-input-row">
-          <input type="text" id="watchlistInput" class="watchlist-input" placeholder="Kode emiten (misal BBCA)" maxlength="5" aria-label="Tambah kode emiten ke watchlist">
-          <button type="button" id="btnAddWatchlist" class="btn-watchlist-add">+ Tambah</button>
+        <div style="display: flex; gap: 6px; margin-bottom: 12px;">
+          <input type="text" id="watchlistInput" class="search-field-input" placeholder="Kode emiten (misal BBCA)" maxlength="5" style="border-radius: var(--radius-sm); height: 34px; padding: 0 10px; font-family: var(--font-mono); text-transform: uppercase;">
+          <button type="button" id="btnAddWatchlist" class="btn-header-clean" style="border-radius: var(--radius-sm); height: 34px; background-color: var(--color-black); color: #FFFFFF;">+ Tambah</button>
         </div>
-        <div id="watchlistChips" class="watchlist-chips"></div>
-        <div class="quick-suggest-row">
-          <span>Saran pantau:</span>
+        <div id="watchlistChips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;"></div>
+        <div style="font-size: 11px; color: var(--color-text-muted); display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+          <span>Saran:</span>
           <button type="button" class="btn-suggest-ticker" data-ticker="BBCA">+ BBCA</button>
           <button type="button" class="btn-suggest-ticker" data-ticker="BBRI">+ BBRI</button>
           <button type="button" class="btn-suggest-ticker" data-ticker="BMRI">+ BMRI</button>
-          <button type="button" class="btn-suggest-ticker" data-ticker="ASII">+ ASII</button>
           <button type="button" class="btn-suggest-ticker" data-ticker="TLKM">+ TLKM</button>
         </div>
       </div>
 
       <!-- 2. Barometer Sentimen Warta Hari Ini -->
-      <div class="sidebar-box">
-        <h3 class="sidebar-title">
-          <span>Barometer Sentimen Warta</span>
-          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-chestnut);">HARI INI</span>
+      <div class="sidebar-clean-box">
+        <h3 class="sidebar-clean-title">
+          <span>Sentimen Pasar Hari Ini</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-blue);">LIVE BARO</span>
         </h3>
-        <div class="sentiment-barometer">
-          <div class="baro-segment baro-bullish" id="baroBullish" style="width: 35%;"></div>
-          <div class="baro-segment baro-neutral" id="baroNeutral" style="width: 45%;"></div>
-          <div class="baro-segment baro-bearish" id="baroBearish" style="width: 20%;"></div>
+        <div style="display: flex; height: 8px; border-radius: var(--radius-pill); overflow: hidden; background-color: var(--color-surface-hover); margin-bottom: 12px;">
+          <div id="baroBullish" style="background-color: var(--color-bullish-text); width: 35%; transition: width 0.3s ease;"></div>
+          <div id="baroNeutral" style="background-color: #9CA3AF; width: 45%; transition: width 0.3s ease;"></div>
+          <div id="baroBearish" style="background-color: var(--color-bearish-text); width: 20%; transition: width 0.3s ease;"></div>
         </div>
-        <div class="sentiment-legend-row">
-          <div class="legend-item" id="legendBullish" title="Klik untuk filter berita Bullish">
-            <span class="legend-dot" style="background-color: #1E5128;"></span>
-            <span>Bullish: <strong id="pctBullish">35%</strong></span>
-          </div>
-          <div class="legend-item" id="legendNeutral" title="Klik untuk filter berita Netral">
-            <span class="legend-dot" style="background-color: #A78D78;"></span>
-            <span>Netral: <strong id="pctNeutral">45%</strong></span>
-          </div>
-          <div class="legend-item" id="legendBearish" title="Klik untuk filter berita Bearish">
-            <span class="legend-dot" style="background-color: #8B2500;"></span>
-            <span>Bearish: <strong id="pctBearish">20%</strong></span>
-          </div>
+        <div style="display: flex; justify-content: space-between; font-size: 11px; font-family: var(--font-mono);">
+          <span id="legendBullish" style="cursor: pointer;">Bullish: <strong id="pctBullish">35%</strong></span>
+          <span id="legendNeutral" style="cursor: pointer;">Netral: <strong id="pctNeutral">45%</strong></span>
+          <span id="legendBearish" style="cursor: pointer;">Bearish: <strong id="pctBearish">20%</strong></span>
         </div>
       </div>
 
-      <!-- 3. Top Mention Emiten -->
-      <div class="sidebar-box">
-        <h3 class="sidebar-title">
-          <span>Top Mention Saham</span>
-          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-chestnut);">24 JAM</span>
+      <!-- 3. Top Mention Saham 24 Jam -->
+      <div class="sidebar-clean-box">
+        <h3 class="sidebar-clean-title">
+          <span>Top Mention Emiten</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-text-muted);">24 JAM</span>
         </h3>
         <div id="trendingList">
           <span style="font-size: 12px; color: var(--color-text-muted);">Memuat data mention...</span>
         </div>
       </div>
 
-      <!-- STICKY RADAR CONTAINER: Stays in view as user scrolls down! -->
-      <div class="sticky-sidebar-block">
-        
-        <!-- 4. Kalender Aksi Korporasi & Dividen -->
-        <div class="sidebar-box" style="margin-bottom: 0;">
-          <h3 class="sidebar-title">
-            <span>Aksi Korporasi Mendatang</span>
-            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-chestnut);">BEI AGENDA</span>
-          </h3>
-          <div class="calendar-list">
-            <div class="calendar-event-item" data-ticker="DMAS" data-search="dividen" role="button" tabindex="0">
-              <div class="event-date-box">
-                <div class="event-day">28</div>
-                <div class="event-month">Okt</div>
-              </div>
-              <div class="event-details">
-                <div class="event-ticker-tag">DMAS &bull; Dividen Interim</div>
-                <div class="event-desc">Pembagian dividen interim tunai Rp 1,4 Triliun</div>
-              </div>
-            </div>
-
-            <div class="calendar-event-item" data-ticker="PTBA" data-search="buyback" role="button" tabindex="0">
-              <div class="event-date-box">
-                <div class="event-day">30</div>
-                <div class="event-month">Okt</div>
-              </div>
-              <div class="event-details">
-                <div class="event-ticker-tag">PTBA &bull; Rencana Buyback</div>
-                <div class="event-desc">Kajian pembelian kembali saham di tengah volatilitas pasar</div>
-              </div>
-            </div>
-
-            <div class="calendar-event-item" data-ticker="CENT" data-search="rups" role="button" tabindex="0">
-              <div class="event-date-box">
-                <div class="event-day">04</div>
-                <div class="event-month">Nov</div>
-              </div>
-              <div class="event-details">
-                <div class="event-ticker-tag">CENT &bull; RUPS Luar Biasa</div>
-                <div class="event-desc">Pemanggilan RUPS Luar Biasa perseroan</div>
-              </div>
-            </div>
+      <!-- 4. Aksi Korporasi & Dividen -->
+      <div class="sidebar-clean-box">
+        <h3 class="sidebar-clean-title">
+          <span>Agenda Aksi Korporasi</span>
+          <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-text-muted);">BEI</span>
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div class="calendar-event-item" data-ticker="DMAS" style="padding: 8px 10px; background-color: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--color-blue);">DMAS &bull; 28 OKT</div>
+            <div style="font-size: 12px; font-weight: 600; color: var(--color-text-primary);">Dividen Interim Tunai Rp 1,4 Triliun</div>
+          </div>
+          <div class="calendar-event-item" data-ticker="PTBA" style="padding: 8px 10px; background-color: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); cursor: pointer;">
+            <div style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--color-blue);">PTBA &bull; 30 OKT</div>
+            <div style="font-size: 12px; font-weight: 600; color: var(--color-text-primary);">Kajian Rencana Buyback Saham</div>
           </div>
         </div>
-
-        <!-- 5. Kinerja Indeks Sektoral BEI -->
-        <div class="sidebar-box" style="margin-bottom: 0;">
-          <h3 class="sidebar-title">
-            <span>Indeks Sektoral BEI</span>
-            <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-chestnut);">SEKTOR</span>
-          </h3>
-          <div class="sector-table">
-            <div class="sector-row" data-category="Energi" role="button" tabindex="0">
-              <span class="sector-name">Energi &amp; Komoditas</span>
-              <span class="sector-delta" style="color: #1E5128;">+2.48% &uarr;</span>
-            </div>
-            <div class="sector-row" data-category="Finansial" role="button" tabindex="0">
-              <span class="sector-name">Keuangan &amp; Bank</span>
-              <span class="sector-delta" style="color: #1E5128;">+0.14% &uarr;</span>
-            </div>
-            <div class="sector-row" data-category="Konsumer" role="button" tabindex="0">
-              <span class="sector-name">Konsumer &amp; Ritel</span>
-              <span class="sector-delta" style="color: #1E5128;">+0.98% &uarr;</span>
-            </div>
-            <div class="sector-row" data-category="Teknologi" role="button" tabindex="0">
-              <span class="sector-name">Teknologi &amp; Telco</span>
-              <span class="sector-delta" style="color: #1E5128;">+0.46% &uarr;</span>
-            </div>
-            <div class="sector-row" data-search="infrastruktur" role="button" tabindex="0">
-              <span class="sector-name">Infrastruktur</span>
-              <span class="sector-delta" style="color: #1E5128;">+1.91% &uarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Kanal Berita Terhubung -->
-        <div class="sidebar-box" style="margin-bottom: 0;">
-          <h3 class="sidebar-title">
-            <span>Kanal Berita Terhubung</span>
-          </h3>
-          <div style="display: flex; flex-direction: column; gap: 7px; font-size: 11.5px; color: var(--color-text-muted);">
-            <div style="display: flex; justify-content: space-between;">
-              <span style="font-weight: 600; color: var(--color-primary);">CNBC Indonesia</span>
-              <span style="color: var(--color-chestnut); font-family: var(--font-mono);">Market Feed</span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="font-weight: 600; color: var(--color-primary);">Detik Finance</span>
-              <span style="color: var(--color-chestnut); font-family: var(--font-mono);">Bursa Efek</span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="font-weight: 600; color: var(--color-primary);">Katadata Finansial</span>
-              <span style="color: var(--color-chestnut); font-family: var(--font-mono);">Riset Emiten</span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-              <span style="font-weight: 600; color: var(--color-primary);">Investor Daily</span>
-              <span style="color: var(--color-chestnut); font-family: var(--font-mono);">Pasar Modal</span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </aside>
 
   </main>
 
-  <!-- IN-APP ARTICLE READER MODAL (Grand News / Newzia Style) -->
+  <!-- In-App Article Reader Modal (Clean Minimalist Sheet) -->
   <div id="readerOverlay" class="reader-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
     <article class="reader-sheet">
-      
-      <div class="reader-nav-bar">
-        <button type="button" class="btn-back-feed" id="btnCloseReader">
-          &larr; <span>Kembali ke Warta</span>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--color-border);">
+        <button type="button" class="btn-header-clean" id="btnCloseReader">
+          &larr; <span>Kembali</span>
+        </button>
+        <button type="button" class="btn-header-clean" id="btnReaderAudioPlay" style="background-color: var(--color-black); color: #FFFFFF;">
+          <span>▶ Dengarkan Artikel</span>
         </button>
       </div>
 
-      <div class="reader-header-meta" id="readerMeta"></div>
-
+      <div id="readerMeta" style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;"></div>
       <h1 class="reader-title" id="readerTitle">Judul Naskah Berita</h1>
-
-      <div class="author-bar" id="readerAuthor"></div>
-
-      <div id="readerMedia"></div>
-
+      <div id="readerAuthor" style="margin-bottom: 20px;"></div>
+      <div id="readerMedia" style="margin-bottom: 24px; border-radius: var(--radius-md); overflow: hidden; background-color: var(--color-surface-subtle);"></div>
       <div class="reader-body-copy" id="readerBody"></div>
-
-      <div class="reader-tickers-footer" id="readerTickers"></div>
-
+      <div id="readerTickers" style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--color-border);"></div>
       <div id="readerRelated"></div>
-
     </article>
   </div>
 
+  <!-- Audio Player Sheet (Media Flow Screen 5) -->
+  <div id="audioPlayerModal" class="audio-player-modal" role="dialog" aria-modal="true" aria-label="Pemutar Audio Berita">
+    <div class="audio-sheet-content">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+        <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-text-muted);">EMITARA AUDIO SUARA</span>
+        <button type="button" class="btn-header-clean" id="btnCloseAudioSheet" style="border-radius: 50%; width: 32px; height: 32px; padding: 0;">&times;</button>
+      </div>
+
+      <h3 id="audioPlayerTitle" style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; line-height: 1.35; margin-bottom: 8px;">
+        Memutar Warta Suara...
+      </h3>
+      <div id="audioPlayerSource" style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 16px;">
+        Redaksi Emitara
+      </div>
+
+      <!-- Sound Wave Visualizer Graphic -->
+      <div class="audio-waveform-visual" id="audioWaveform">
+        <span class="waveform-bar" style="animation-delay: 0.1s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.3s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.5s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.2s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.6s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.4s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.7s;"></span>
+        <span class="waveform-bar" style="animation-delay: 0.25s;"></span>
+      </div>
+
+      <!-- Player Progress & Controls -->
+      <div style="display: flex; align-items: center; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted); margin-bottom: 16px;">
+        <span id="audioCurrentTime">00:00</span>
+        <span id="audioTotalDuration">02:30</span>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 18px;">
+        <button type="button" class="btn-header-clean" id="btnAudioSkipBack" style="width: 40px; height: 40px; border-radius: 50%; padding: 0;" title="Mundur 15 detik">
+          &laquo;
+        </button>
+        <button type="button" id="btnAudioTogglePlay" style="width: 52px; height: 52px; border-radius: 50%; background-color: var(--color-black); color: #FFFFFF; border: none; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Putar atau Jeda">
+          <span id="audioPlayIcon">❚❚</span>
+        </button>
+        <button type="button" class="btn-header-clean" id="btnAudioSkipFwd" style="width: 40px; height: 40px; border-radius: 50%; padding: 0;" title="Maju 15 detik">
+          &raquo;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persistent Floating Bottom Dock (Media Flow Mobile Dock) -->
+  <nav class="floating-bottom-dock" aria-label="Navigasi Bawah Ponsel">
+    <button type="button" class="dock-item-btn active" id="dockBtnHome">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Warta</span>
+    </button>
+    <button type="button" class="dock-item-btn" id="dockBtnAudio">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+      <span>Audio</span>
+    </button>
+    <button type="button" class="dock-item-btn" id="dockBtnWatchlist">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      <span>Pantau</span>
+    </button>
+    <button type="button" class="dock-item-btn" id="dockBtnSaved">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+      <span>Simpan</span>
+    </button>
+  </nav>
+
   <!-- Modular Scripts -->
-  <!-- Mobile Slide-out Drawer Menu -->
-  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
-  <aside id="mobileDrawer" class="mobile-drawer" aria-label="Menu Mobile Emitara">
-    <div class="drawer-header">
-      <span class="drawer-brand">EMITARA</span>
-      <button type="button" class="btn-close-drawer" id="btnCloseDrawer" aria-label="Tutup menu">&times;</button>
-    </div>
-    
-    <div class="drawer-body">
-      <!-- Section 1: Pintasan Utama -->
-      <div>
-        <div class="drawer-section-title">Pintasan Fitur</div>
-        <div class="drawer-action-list">
-          <button type="button" class="btn-drawer-item" id="btnMobileWatchlist">
-            <div class="drawer-item-left">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-              <span>Watchlist Saham</span>
-            </div>
-            <span class="nav-tab-badge" id="mobileWatchlistCount">0</span>
-          </button>
-
-          <button type="button" class="btn-drawer-item" id="btnMobileBookmarks">
-            <div class="drawer-item-left">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              <span>Warta Tersimpan</span>
-            </div>
-            <span class="nav-tab-badge" id="mobileBookmarkCount">0</span>
-          </button>
-
-          <button type="button" class="btn-drawer-item" id="btnMobileAudio">
-            <div class="drawer-item-left">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-              <span>Audio Alert Berita</span>
-            </div>
-            <span style="font-size: 11px; font-weight: 700; color: var(--color-chestnut);" id="mobileAudioStatus">Mati</span>
-          </button>
-
-          <button type="button" class="btn-drawer-item" id="btnMobileRefresh">
-            <div class="drawer-item-left">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-              <span>Sinkronisasi Instan</span>
-            </div>
-            <span style="font-size: 11px; color: var(--color-text-muted);">&rarr;</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Section 2: Rubrik Berita -->
-      <div>
-        <div class="drawer-section-title">Rubrik Sektor Pasar</div>
-        <div class="drawer-action-list">
-          <button type="button" class="btn-drawer-item mobile-category-btn active" data-category="ALL">
-            <span>Semua Warta</span>
-          </button>
-          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Finansial">
-            <span>Perbankan &amp; Finansial</span>
-          </button>
-          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Energi">
-            <span>Energi &amp; Komoditas</span>
-          </button>
-          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Konsumer">
-            <span>Konsumer &amp; Ritel</span>
-          </button>
-          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Teknologi">
-            <span>Teknologi &amp; Telekom</span>
-          </button>
-          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Makro">
-            <span>Makro &amp; Fiskal</span>
-          </button>
-        </div>
-      </div>
-
-      <div style="font-size: 11px; color: var(--color-text-muted); line-height: 1.5; border-top: 1px solid var(--color-border); padding-top: 14px;">
-        Emitara &bull; Portal Warta Pasar Modal Indonesia (IHSG). Data pasar diperbarui realtime.
-      </div>
-    </div>
-  </aside>
-
   <script src="/static/js/audioAlert.js"></script>
   <script src="/static/js/app.js"></script>
-
-  
 </body>
 </html>

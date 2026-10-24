@@ -1,48 +1,48 @@
 ---
 version: alpha
-name: Emitara Editorial Luxury
-description: Editorial market news portal and in-app reader for IDX equities, crafted with warm espresso palette and Didone luxury typography.
+name: Emitara Media Flow
+description: Contemporary editorial media and market news system for IDX equities, blending high-contrast monochrome minimalism with tactile typography.
 colors:
-  primary: "#291C0E"
-  secondary: "#BEB5A9"
-  tertiary: "#6E473B"
-  tertiary-hover: "#8C5B4C"
-  neutral: "#A78D78"
-  canvas: "#E1D4C2"
-  canvas-card: "#FBF8F4"
-  border: "#D8CEBF"
-  border-subtle: "#E6DEC2"
-  text-primary: "#291C0E"
-  text-secondary: "#6E473B"
-  text-muted: "#6A5849"
-  bullish: "#1E5128"
-  bullish-bg: "#D8E8D4"
-  bearish: "#8B2500"
-  bearish-bg: "#FCDDD2"
-  neutral-tag: "#3D2B1F"
-  neutral-bg: "#E8DFD3"
+  primary: "#000000"
+  secondary: "#111111"
+  tertiary: "#1E293B"
+  neutral: "#6B7280"
+  canvas: "#FFFFFF"
+  canvas-card: "#FFFFFF"
+  canvas-subtle: "#F5F5F7"
+  border: "#E5E7EB"
+  border-subtle: "#F3F4F6"
+  text-primary: "#111111"
+  text-secondary: "#4B5563"
+  text-muted: "#4B5563"
+  bullish: "#15803D"
+  bullish-bg: "#DCFCE7"
+  bearish: "#B91C1C"
+  bearish-bg: "#FEE2E2"
+  accent-blue: "#075985"
+  accent-blue-bg: "#E0F2FE"
 typography:
   display-h1:
-    fontFamily: "Playfair Display, Bodoni Moda, serif"
+    fontFamily: "Playfair Display, Georgia, serif"
     fontSize: 2.25rem
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.02em"
   h2:
-    fontFamily: "Playfair Display, serif"
-    fontSize: 1.375rem
-    fontWeight: 600
+    fontFamily: "Playfair Display, Georgia, serif"
+    fontSize: 1.35rem
+    fontWeight: 700
     lineHeight: 1.3
   body-md:
     fontFamily: "Plus Jakarta Sans, Inter, sans-serif"
     fontSize: 0.9375rem
     fontWeight: 400
-    lineHeight: 1.6
+    lineHeight: 1.55
   body-article:
-    fontFamily: "Plus Jakarta Sans, sans-serif"
+    fontFamily: "Plus Jakarta Sans, Inter, sans-serif"
     fontSize: 1.0625rem
     fontWeight: 400
-    lineHeight: 1.7
+    lineHeight: 1.75
   ticker-badge:
     fontFamily: "JetBrains Mono, monospace"
     fontSize: 0.75rem
@@ -53,10 +53,10 @@ typography:
     fontSize: 0.6875rem
     fontWeight: 500
 rounded:
-  sm: 4px
-  md: 8px
-  lg: 14px
-  xl: 18px
+  sm: 6px
+  md: 10px
+  lg: 16px
+  xl: 20px
   pill: 9999px
 spacing:
   xs: 4px
@@ -70,34 +70,44 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 24px
-  card-hero:
-    backgroundColor: "{colors.canvas-card}"
+  card-highlight:
+    backgroundColor: "{colors.canvas-subtle}"
     textColor: "{colors.text-primary}"
     rounded: "{rounded.lg}"
-    padding: 24px
+    padding: 16px
   card-news-row:
     backgroundColor: "{colors.canvas-card}"
-    textColor: "{colors.text-secondary}"
-    rounded: "{rounded.xl}"
-    padding: 16px
-  panel-mega-menu:
-    backgroundColor: "{colors.primary}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.sm}"
-    padding: 24px
-  sheet-reader:
-    backgroundColor: "{colors.canvas-card}"
     textColor: "{colors.text-primary}"
-    rounded: "{rounded.lg}"
+    rounded: "{rounded.md}"
+    padding: 16px
+  sheet-reader:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.xl}"
     padding: 36px
-  badge-category:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.neutral-tag}"
+  badge-verified:
+    backgroundColor: "{colors.accent-blue-bg}"
+    textColor: "{colors.accent-blue}"
     rounded: "{rounded.pill}"
     padding: 4px
+  card-media-subtle:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-muted}"
+    rounded: "{rounded.sm}"
+    padding: 8px
+  border-neutral:
+    backgroundColor: "{colors.neutral}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.sm}"
+    padding: 2px
+  badge-category:
+    backgroundColor: "{colors.canvas-subtle}"
+    textColor: "{colors.text-secondary}"
+    rounded: "{rounded.pill}"
+    padding: 6px
   badge-ticker:
-    backgroundColor: "{colors.neutral-bg}"
-    textColor: "{colors.tertiary}"
+    backgroundColor: "{colors.canvas-subtle}"
+    textColor: "{colors.secondary}"
     rounded: "{rounded.sm}"
     padding: 4px
   badge-bullish:
@@ -111,101 +121,94 @@ components:
     rounded: "{rounded.pill}"
     padding: 4px
   button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.pill}"
+    padding: 12px
+  button-primary-hover:
     backgroundColor: "{colors.tertiary}"
     textColor: "#FFFFFF"
     rounded: "{rounded.pill}"
-    padding: 10px
-  button-primary-hover:
-    backgroundColor: "{colors.tertiary-hover}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.pill}"
-    padding: 10px
+    padding: 12px
   border-separator:
     backgroundColor: "{colors.border}"
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 2px
-  meta-byline:
+  player-modal:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.xl}"
+    padding: 28px
+  dock-bottom:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-secondary}"
+    rounded: "{rounded.pill}"
+    padding: 12px
+  subtle-line:
     backgroundColor: "{colors.border-subtle}"
-    textColor: "{colors.text-muted}"
+    textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
-    padding: 4px
-  panel-taupe:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.primary}"
-    rounded: "{rounded.md}"
-    padding: 16px
+    padding: 1px
 ---
 
 ## Overview
 
-Emitara adalah portal berita pasar modal Indonesia (IHSG) dan pembaca in-app berstandar editorial prestisius. Visual mengambil inspirasi langsung dari tipografi editorial majalah mode dunia (Vogue) serta palet warna hangat earthy luxury (Warm Espresso, Chestnut, Taupe, Oatmeal, Almond Milk Cream). Antarmuka mengutamakan kenyamanan membaca naskah panjang tanpa keletihan mata, dipadukan dengan aliran data bursa realtime.
+Emitara Media Flow mengadopsi estetika penerbitan digital kontemporer (Apple News meets Financial Times). Menekankan kanvas putih bersih, kontras hitam pekat, batas hairline 1px halus, dan tipografi dual-font berwibawa: serif untuk tajuk editorial dan sans-serif untuk fungsi navigasi.
 
-Dial pengarah desain: ENERGY 2 / RHYTHM 2 / MOTION 2.
+Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 
 ## Colors
 
-- Primary (`#291C0E`): Deep Espresso pekat untuk masthead, judul berita utama, dan batas ketegasan layout.
-- Canvas (`#E1D4C2`): Warm Almond Cream sebagai latar belakang dasar. Menggantikan putih steril dengan kehangatan kertas cetak edisi terbatas.
-- Canvas Card (`#FBF8F4`): Pure Creamy White untuk kontainer kartu berita dan lembar baca artikel (reader sheet).
-- Tertiary (`#6E473B`): Warm Chestnut untuk aksen interaktif, tombol aksi primer, dan penanda kategori aktif.
-- Neutral (`#A78D78`): Muted Taupe untuk byline reporter dan garis pemisah halus.
-- Secondary (`#BEB5A9`): Pale Oatmeal untuk latar kontainer sekunder.
-- Bullish (`#1E5128` teks pada `#D8E8D4` latar): Muted Forest Olive untuk sinyal pasar positif yang tenang.
-- Bearish (`#8B2500` teks pada `#FCDDD2` latar): Warm Terracotta Red untuk sinyal koreksi atau risiko emiten.
-- Border (`#D8CEBF`): Garis pembatas hangat yang memisahkan modul konten dengan elegan.
+- Primary (`#000000`): Pitch black untuk tombol aktif, indikator pill, dan penegasan visual.
+- Secondary (`#111111`): Warna utama teks tajuk editorial.
+- Canvas (`#FFFFFF`): Putih murni untuk latar belakang dan kartu warta.
+- Canvas Subtle (`#F5F5F7`): Abu netral lembut untuk kontainer input, chip kategori, dan media carousel.
+- Neutral & Text Muted (`#6B7280`): Abu-abu dingin untuk teks sekunder, waktu rilis, dan byline.
+- Border (`#E5E7EB`): Garis pembatas rambut 1px yang bersih.
+- Bullish (`#15803D` pada `#DCFCE7`): Hijau zamrud lembut untuk indikasi pasar positif.
+- Bearish (`#B91C1C` pada `#FEE2E2`): Merah tua lembut untuk indikasi koreksi pasar.
 
 ## Typography
 
-- Display H1 & H2 (Playfair Display / Bodoni Didone): Huruf serif kontras tinggi untuk Masthead koran, tajuk artikel sorotan, dan headline pembaca. Menghadirkan wibawa jurnalisme berkelas tinggi.
-- Body MD & Article (Plus Jakarta Sans / Inter): Huruf proporsional modern dengan spasi baris 1.6 hingga 1.7 untuk kenikmatan membaca artikel utuh ratusan kata.
-- Ticker Badge & Timestamp (JetBrains Mono): Tipografi angka dan kode emiten 4 huruf (BBCA, BBRI, BMRI) untuk presisi data bursa.
+- Display H1 & H2 (Playfair Display / Georgia): Serif Didone modern dengan kontras goresan tajam untuk tajuk utama editorial.
+- Body MD & Article (Plus Jakarta Sans / Inter): Tipografi proporsional dengan keterbacaan tinggi pada layar sentuh maupun desktop.
+- Ticker Badge & Timestamp (JetBrains Mono): Tipografi angka dan kode emiten presisi.
 
 ## Layout
 
-- Top Bar Masthead: Logo EMITARA beraksen Didone serif di tengah, indikator status bursa IDX live, dan akses pencarian.
-- Running Ticker Bar: Baris mendatar di bawah header memuat indeks bursa dan saham aktif.
-- Feed Portal View:
-  - Hero Featured Card: Satu berita headline terbesar dengan foto beresolusi tinggi, kategori tag, estimasi waktu baca, dan judul besar.
-  - Category Pills Bar: Tab horizontal (Terkini, Finansial, Energi & Tambang, Konsumer, Teknologi, Makro).
-  - News List Column: Kartu horizontal modular memadukan thumbnail squircle 90px dengan judul tebal dua baris, metadata media, dan label sentimen.
-  - Market Radar Sidebar: Top mention emiten 24 jam dan pergerakan tren bursa.
-- In-App Article Reader View:
-  - Lembar artikel mandiri muncul saat kartu diklik tanpa meninggalkan web aplikasi.
-  - Header navigasi kembali ke feed (Kembali ke Berita).
-  - Foto utama editorial berskala penuh dengan atribusi jurnalis dan sumber media.
-  - Paragraf isi berita lengkap tersusun rapi bebas dari iklan eksternal.
-  - Ticker terkait dan rekomendasi bacaan di bagian penutup artikel.
+- Top Bar: Header ringkas dengan logo EMITARA serif dan tombol aksi.
+- Segmented Switcher: Tab beralih antara Semua Warta dan Audio/Podcast.
+- Search & Category Pills: Input pencarian kapsul dan filter rubrik geser mendatar.
+- Highlights Carousel: Deretan kartu sorotan rasio 4:5 geser horizontal untuk berita utama.
+- News List Stream: Kartu 2-kolom dengan thumbnail 88x88px sudut 12px di sisi kiri dan naskah tajuk di sisi kanan.
+- In-App Reader & Audio Player: Lembar baca artikel utuh dilengkapi pemutar audio naskah berita.
+- Floating Bottom Dock (Mobile): Bar navigasi 5-ikon di bagian bawah layar ponsel.
 
 ## Elevation & Depth
 
-- Zero Excessive Shadows: Menghilangkan shadow blur berlebihan yang membuat elemen melayang tanpa arah (anti-slop R-12).
-- Tactile Layering: Kedalaman visual dibentuk oleh tumpukan warna lembut: kanvas `#E1D4C2` membungkus kartu `#FBF8F4` dengan garis tepi halus `#D8CEBF`.
-- Reader Sheet Inset: Lembar baca artikel hadir sebagai fokus utama dengan margin bernafas yang lega.
+- Zero Heavy Shadows: Kedalaman visual dibangun melalui kontras permukaan `#FFFFFF` dan `#F5F5F7` serta garis pembatas 1px `#E5E7EB`.
+- Floating Bottom Bar: Menggunakan bayangan ambient lembut `0 4px 20px rgba(0, 0, 0, 0.08)`.
 
 ## Shapes
 
-- Radius Bertingkat: Hero Card `{rounded.lg}` (14px), News Row Card `{rounded.md}` (8px), dan Badge Status `{rounded.pill}` (9999px). Variasi radius mencerminkan hierarki fungsi (anti-slop R-11).
+- Radius Kontemporer: Sudut kartu list `{rounded.md}` (10px), kartu sorotan `{rounded.lg}` (16px), tombol dan pill `{rounded.pill}` (9999px).
 
 ## Components
 
-- card-hero: Kartu berita sorotan utama dengan gambar lanskap beresolusi tinggi, tag kategori, estimasi menit baca, dan bookmark.
-- panel-mega-menu: Panel navigasi flyout berstandar Bloomberg Terminal. Memuat menu sub-kategori aksi korporasi, sektor pasar modal BEI, kisi live kartu saham teraktif (Top Securities), dan kartu pintasan Watchlist.
-- card-news-row: Komponen kartu warta baris horizontal dengan estetika soft glassmorphic/neumorphic. Sisi kiri memuat teks judul (70%), penerbit, dan ticker; sisi kanan memuat squircle thumbnail 80x80px sudut 14px (30%). Menggunakan bayangan lembut berdifusi tinggi dan hairline highlight putih kaca.
-- sheet-reader: Wadah artikel utuh yang memuat seluruh teks paragraf, nama jurnalis, tanggal terbit, dan badge ticker emiten.
-- badge-ticker: Label kode saham monospace dengan sudut terukur `{rounded.sm}`.
-- badge-bullish & badge-bearish: Label sentimen pasar teruji standar rasio kontras WCAG AA.
-- button-primary: Tombol aksi utama berbentuk kapsul dengan warna chestnut hangat.
+- card-highlight: Kartu sorotan utama dalam format carousel horizontal.
+- card-news-row: Kartu warta baris 2-kolom (thumbnail kiri, naskah kanan).
+- sheet-reader: Lembar baca naskah artikel utuh dan kontrol pemutar audio.
+- dock-bottom: Bar navigasi mengambang untuk navigasi jempol di ponsel.
 
 ## Do's and Don'ts
 
 ### Do's
-- Gunakan font Didone Serif khusus untuk Masthead dan judul berita utama agar menghadirkan kesan majalah prestisius.
-- Berikan jarak baris (line-height 1.65+) dan spasi antar-paragraf yang lega pada isi artikel agar nyaman dibaca.
-- Cantumkan nama media asal dan jurnalis resmi pada setiap artikel hasil kloning.
+- Gunakan spasi putih lapang (whitespace) untuk memisahkan kelompok informasi.
+- Gunakan font serif untuk tajuk warta utama dan sans-serif untuk label fungsi.
+- Pertahankan sudut membulat kontinu 12px-16px pada wadah gambar.
 
 ### Don'ts
-- Dilarang memakai warna hitam pekat `#000000` di atas putih murni `#FFFFFF` yang menyebabkan silau tajam; gunakan deep espresso `#291C0E` di atas warm cream `#FBF8F4`.
-- Dilarang membuat semua tombol dan kartu menjadi seragam tanpa hierarki visual (anti-slop R-05, R-11).
-- Dilarang menggunakan karakter em dash pada seluruh teks judul, kutipan, maupun antarmuka (anti-slop R-02).
-- Dilarang menambahkan teks gimik seperti AI Powered atau Revolutionary (anti-slop R-16).
+- Dilarang memakai bayangan tebal kotor atau gradien neon (anti-slop R-01, R-12).
+- Dilarang membuat tombol atau tautan yang tidak berfungsi (anti-slop R-26).
+- Dilarang memakai karakter em dash pada seluruh teks (anti-slop R-02).
