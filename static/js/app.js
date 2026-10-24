@@ -522,15 +522,15 @@
                   <h2 class="breakout-title">${escapeHtml(darkMain.title)}</h2>
                   <p class="breakout-desc">${escapeHtml(darkMain.summary)}</p>
                 </div>
-                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #9CA3AF;">
+                <div class="breakout-footer-row">
                   <span>${estimateReadTime(darkMain.summary)}</span>
-                  <span style="color: #6EE7B7; font-weight: 700;">Pelajari Riset &rarr;</span>
+                  <span class="breakout-cta">Pelajari Riset &rarr;</span>
                 </div>
               </div>
               <div class="breakout-side-stack">
                 ${darkSides.map(ds => `
                   <div class="breakout-mini-item" data-id="${ds.id}">
-                    <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 4px; text-transform: uppercase;">${escapeHtml(ds.source)} &bull; ${formatRelativeTime(ds.published_at)}</div>
+                    <div class="breakout-mini-meta">${escapeHtml(ds.source)} &bull; ${formatRelativeTime(ds.published_at)}</div>
                     <h4 class="breakout-mini-title">${escapeHtml(ds.title)}</h4>
                   </div>
                 `).join('')}

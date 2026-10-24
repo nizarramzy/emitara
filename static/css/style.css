@@ -1269,26 +1269,32 @@ a:focus-visible {
   overflow: hidden;
 }
 
-/* 4. Dark Intelligence Breakout Strip */
+/* 4. Institutional Dark Intelligence Breakout Strip (Bloomberg / CNBC Pro Style) */
 .dark-breakout-module {
-  background-color: #111111;
-  color: #FFFFFF;
-  border-radius: var(--radius-lg);
-  padding: 24px 22px;
+  background-color: #12161F;
+  color: #F8FAFC;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 26px 24px;
   margin: 28px 0;
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 24px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  grid-template-columns: 1.35fr 1fr;
+  gap: 26px;
+  box-shadow: 0 12px 30px rgba(10, 15, 25, 0.25);
 }
 
 .breakout-featured {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-right: 20px;
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding-right: 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
+  transition: opacity var(--transition-smooth);
+}
+
+.breakout-featured:hover {
+  opacity: 0.95;
 }
 
 .breakout-kicker {
@@ -1296,58 +1302,108 @@ a:focus-visible {
   font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6EE7B7;
-  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  color: #E2BA73;
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.breakout-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #E2BA73;
+  border-radius: 50%;
 }
 
 .breakout-title {
   font-family: var(--font-serif);
   font-size: 1.45rem;
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
   color: #FFFFFF;
   margin-bottom: 10px;
 }
 
 .breakout-desc {
+  font-family: var(--font-sans);
   font-size: 13px;
-  line-height: 1.55;
-  color: #D1D5DB;
+  line-height: 1.6;
+  color: #94A3B8;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.breakout-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748B;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
+
+.breakout-cta {
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #F8FAFC;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.breakout-featured:hover .breakout-cta {
+  color: #E2BA73;
+  transform: translateX(4px);
 }
 
 .breakout-side-stack {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  justify-content: center;
 }
 
 .breakout-mini-item {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 14px 16px;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: background var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth);
 }
 
 .breakout-mini-item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(226, 186, 115, 0.35);
   transform: translateX(3px);
+}
+
+.breakout-mini-meta {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: #94A3B8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .breakout-mini-title {
   font-family: var(--font-sans);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.4;
-  color: #FFFFFF;
+  color: #F1F5F9;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -21,6 +21,8 @@ colors:
   bearish-bg: "#FEE2E2"
   accent-blue: "#075985"
   accent-blue-bg: "#E0F2FE"
+  accent-gold: "#E2BA73"
+  dark-surface: "#12161F"
 typography:
   display-h1:
     fontFamily: "Playfair Display, Georgia, serif"
@@ -90,6 +92,11 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.md}"
     padding: 16px
+  card-breakout-dark:
+    backgroundColor: "{colors.dark-surface}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.md}"
+    padding: 24px
   sheet-reader:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.text-primary}"
@@ -98,6 +105,11 @@ components:
   badge-kicker:
     backgroundColor: "{colors.canvas-subtle}"
     textColor: "{colors.text-secondary}"
+    rounded: "{rounded.sm}"
+    padding: 4px
+  badge-kicker-gold:
+    backgroundColor: "{colors.dark-surface}"
+    textColor: "{colors.accent-gold}"
     rounded: "{rounded.sm}"
     padding: 4px
   badge-ticker:
@@ -159,13 +171,15 @@ components:
 
 ## Overview
 
-Emitara Bloomberg Asia Editorial mengadopsi arsitektur visual berstandar Bloomberg Terminal dan edisi regional Bloomberg Asia. Menghilangkan pola aliran kartu yang seragam dan monoton melalui hierarki modular asimetris: Lead Story Package berukuran besar, matriks 3-kolom kartu kicker tematik, baris warta teks analitik tanpa gambar, serta modul breakout gelap di tengah aliran warta.
+Emitara Bloomberg Asia Editorial mengadopsi arsitektur visual berstandar Bloomberg Terminal, Bloomberg Asia, dan CNBC Pro. Menghilangkan nuansa neon kasual atau day-trading retail, menggantikannya dengan palet institusional: Lead Story Package, matriks 3-kolom kicker tematik, baris warta teks analitik tanpa gambar, serta modul riset gelap institusional beraksen champagne gold.
 
 Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 
 ## Colors
 
-- Primary (`#000000`): Pitch black untuk tombol aksi, aksen garis tebal, dan kartu breakout.
+- Primary (`#000000`): Pitch black untuk tombol aksi dan garis pembatas utama.
+- Dark Surface (`#12161F`): Deep charcoal navy-slate untuk kontainer riset pasar institusional.
+- Accent Gold (`#E2BA73`): Champagne gold ala Bloomberg Terminal untuk kicker Market Intelligence dan aksen riset premium.
 - Secondary (`#111111`): Warna tajuk warta utama dengan kontras tinggi.
 - Canvas (`#FFFFFF`): Putih murni untuk latar belakang halaman editorial.
 - Canvas Subtle (`#F5F5F7`): Abu-abu netral lembut untuk kontainer kicker dan widget samping.
@@ -187,7 +201,7 @@ Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 - Hero Lead Package (Asymmetric Split): Tajuk utama berhuruf besar di sisi kiri dengan kutipan pembuka dan byline reporter, dipadukan dengan foto lanskap beresolusi tinggi di sisi kanan.
 - 3-Up Kicker Matrix: Tiga kolom kartu berita di bawah tajuk utama dengan foto lanskap 16:9, label kicker kapital tebal (THE BIG TAKE, ANALISIS, RISET), dan tajuk tebal.
 - Text Dispatch Row: Tiga kolom kartu teks murni berdensitas tinggi untuk warta kilat dan opini pasar.
-- Dark Intelligence Breakout Strip: Blok modul gelap kontras tinggi yang memecah aliran gulir untuk menyajikan aksi korporasi dan dividen.
+- Dark Intelligence Breakout Strip: Blok modul gelap bergaya Bloomberg/CNBC Pro `#12161F` dengan kicker champagne gold `#E2BA73` dan tautan riset elegan.
 - Right Sidebar Rail: Aliran warta terkini 24 jam, watchlist saham personal, barometer sentimen live, dan kalender aksi korporasi yang terkunci mengikuti gulir halaman (sticky).
 
 ## Elevation & Depth
@@ -205,16 +219,17 @@ Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 - card-3up-matrix: Kartu warta 3-kolom bergaya Bloomberg Asia dengan label kicker tematik.
 - card-dispatch: Kartu warta teks berdensitas tinggi tanpa gambar.
 - card-news-row: Kartu warta baris horizontal dengan thumbnail presisi di sisi kiri.
+- card-breakout-dark: Modul riset pasar gelap institusional Bloomberg/CNBC Pro.
 - sheet-reader: Lembar baca naskah artikel utuh di dalam aplikasi.
 
 ## Do's and Don'ts
 
 ### Do's
+- Gunakan warna champagne gold (`#E2BA73`) atau slate gray (`#94A3B8`) pada kicker dan aksen modul gelap untuk menghadirkan aura riset institusional Bloomberg.
 - Gunakan label kicker kapital tebal (THE BIG TAKE, DISPATCH, ANALISIS) untuk menciptakan panduan mata vertikal sebelum judul berita.
-- Sisipkan variasi komposisi layout secara berkala (Lead Split -> 3-Up Matrix -> Text Dispatches -> Breakout -> Wire List) agar halaman terasa hidup dan dinamis.
 - Pertahankan garis pemisah hairline 1px halus di antara artikel untuk menjaga kerapian grid editorial.
 
 ### Don'ts
+- Dilarang memakai warna hijau neon lime atau mint cyber pada teks kicker dan tombol aksi statis (anti-slop R-08); warna hijau khusus untuk persentase kenaikan harga saham.
 - Dilarang mengulang satu bentuk kartu yang sama secara terus-menerus tanpa variasi (anti-slop R-05, R-14).
-- Dilarang memakai warna hitam `#000000` di atas putih yang menyilaukan tanpa hierarki ukuran huruf yang jelas.
 - Dilarang menggunakan karakter em dash pada seluruh teks judul maupun kutipan (anti-slop R-02).
