@@ -1,0 +1,100 @@
+{
+  "theme": {
+    "extend": {
+      "colors": {
+        "primary": "#291c0e",
+        "secondary": "#beb5a9",
+        "tertiary": "#6e473b",
+        "tertiary-hover": "#8c5b4c",
+        "neutral": "#a78d78",
+        "canvas": "#e1d4c2",
+        "canvas-card": "#fbf8f4",
+        "border": "#d8cebf",
+        "border-subtle": "#e6dec2",
+        "text-primary": "#291c0e",
+        "text-secondary": "#6e473b",
+        "text-muted": "#6a5849",
+        "bullish": "#1e5128",
+        "bullish-bg": "#d8e8d4",
+        "bearish": "#8b2500",
+        "bearish-bg": "#fcddd2",
+        "neutral-tag": "#3d2b1f",
+        "neutral-bg": "#e8dfd3"
+      },
+      "fontFamily": {
+        "display-h1": [
+          "Playfair Display, Bodoni Moda, serif"
+        ],
+        "h2": [
+          "Playfair Display, serif"
+        ],
+        "body-md": [
+          "Plus Jakarta Sans, Inter, sans-serif"
+        ],
+        "body-article": [
+          "Plus Jakarta Sans, sans-serif"
+        ],
+        "ticker-badge": [
+          "JetBrains Mono, monospace"
+        ],
+        "mono-timestamp": [
+          "JetBrains Mono, monospace"
+        ]
+      },
+      "fontSize": {
+        "display-h1": [
+          "2.25rem",
+          {
+            "letterSpacing": "-0.02em",
+            "fontWeight": "700"
+          }
+        ],
+        "h2": [
+          "1.375rem",
+          {
+            "fontWeight": "600"
+          }
+        ],
+        "body-md": [
+          "0.9375rem",
+          {
+            "fontWeight": "400"
+          }
+        ],
+        "body-article": [
+          "1.0625rem",
+          {
+            "fontWeight": "400"
+          }
+        ],
+        "ticker-badge": [
+          "0.75rem",
+          {
+            "letterSpacing": "0.04em",
+            "fontWeight": "700"
+          }
+        ],
+        "mono-timestamp": [
+          "0.6875rem",
+          {
+            "fontWeight": "500"
+          }
+        ]
+      },
+      "borderRadius": {
+        "sm": "4px",
+        "md": "8px",
+        "lg": "14px",
+        "xl": "18px",
+        "pill": "9999px"
+      },
+      "spacing": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "16px",
+        "lg": "24px",
+        "xl": "36px"
+      }
+    }
+  }
+}

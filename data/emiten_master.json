@@ -1,0 +1,5791 @@
+[
+  {
+    "ticker": "AALI",
+    "name": "Astra Agro Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ABBA",
+    "name": "Mahaka Media Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ABDA",
+    "name": "Asuransi Bina Dana Arta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ABMM",
+    "name": "ABM Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ACES",
+    "name": "Aspirasi Hidup Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Ace Hardware",
+      "Aspirasi Hidup Indonesia"
+    ]
+  },
+  {
+    "ticker": "ACST",
+    "name": "Acset Indonusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADES",
+    "name": "Akasha Wira International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADHI",
+    "name": "Adhi Karya (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADMF",
+    "name": "Adira Dinamika Multi Finance T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADMG",
+    "name": "Polychem Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADRO",
+    "name": "Alamtri Resources Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": [
+      "Adaro Energy",
+      "Adaro"
+    ]
+  },
+  {
+    "ticker": "AGII",
+    "name": "Samator Indo Gas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AGRO",
+    "name": "Bank Raya Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AGRS",
+    "name": "Bank IBK Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AHAP",
+    "name": "Asuransi Harta Aman Pratama Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AIMS",
+    "name": "Artha Mahiya Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AISA",
+    "name": "FKS Food Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AKKU",
+    "name": "Anugerah Kagum Karya Utama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AKPI",
+    "name": "Argha Karya Prima Industry Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AKRA",
+    "name": "AKR Corporindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AKSI",
+    "name": "Mineral Sumberdaya Mandiri Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ALDO",
+    "name": "Alkindo Naratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ALKA",
+    "name": "Alakasa Industrindo Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ALMI",
+    "name": "Alumindo Light Metal Industry",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ALTO",
+    "name": "Tri Banyan Tirta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMAG",
+    "name": "Asuransi Multi Artha Guna Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMFG",
+    "name": "Asahimas Flat Glass Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMIN",
+    "name": "Ateliers Mecaniques D Indonesi",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMRT",
+    "name": "Sumber Alfaria Trijaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ANJT",
+    "name": "Austindo Nusantara Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ANTM",
+    "name": "Aneka Tambang Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Antam",
+      "Aneka Tambang"
+    ]
+  },
+  {
+    "ticker": "APEX",
+    "name": "Apexindo Pratama Duta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "APIC",
+    "name": "Pacific Strategic Financial Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "APII",
+    "name": "Arita Prima Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "APLI",
+    "name": "Asiaplast Industries Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "APLN",
+    "name": "Agung Podomoro Land Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARGO",
+    "name": "Argo Pantes Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARII",
+    "name": "Atlas Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARNA",
+    "name": "Arwana Citramulia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARTA",
+    "name": "Arthavest Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARTI",
+    "name": "Ratu Prabu Energi Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARTO",
+    "name": "Bank Jago Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASBI",
+    "name": "Asuransi Bintang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASDM",
+    "name": "Asuransi Dayin Mitra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASGR",
+    "name": "Astra Graphia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASII",
+    "name": "Astra International Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Astra",
+      "Astra International"
+    ]
+  },
+  {
+    "ticker": "ASJT",
+    "name": "Asuransi Jasa Tania Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASMI",
+    "name": "Asuransi Maximus Graha Persada",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASRI",
+    "name": "Alam Sutera Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASRM",
+    "name": "Asuransi Ramayana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASSA",
+    "name": "Adi Sarana Armada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ATIC",
+    "name": "Anabatic Technologies Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AUTO",
+    "name": "Astra Otoparts Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BABP",
+    "name": "Bank MNC Internasional Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BACA",
+    "name": "Bank Capital Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAJA",
+    "name": "Saranacentral Bajatama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BALI",
+    "name": "Bali Towerindo Sentra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAPA",
+    "name": "Bekasi Asri Pemula Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BATA",
+    "name": "Sepatu Bata Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAYU",
+    "name": "Bayu Buana Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBCA",
+    "name": "Bank Central Asia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "BCA",
+      "Bank BCA",
+      "Bank Central Asia"
+    ]
+  },
+  {
+    "ticker": "BBHI",
+    "name": "Allo Bank Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBKP",
+    "name": "Bank KB Bukopin Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBLD",
+    "name": "Buana Finance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBMD",
+    "name": "Bank Mestika Dharma Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBNI",
+    "name": "Bank Negara Indonesia (Persero",
+    "is_ambiguous": false,
+    "aliases": [
+      "BNI",
+      "Bank BNI",
+      "Bank Negara Indonesia"
+    ]
+  },
+  {
+    "ticker": "BBRI",
+    "name": "Bank Rakyat Indonesia (Persero",
+    "is_ambiguous": false,
+    "aliases": [
+      "BRI",
+      "Bank BRI",
+      "Bank Rakyat Indonesia"
+    ]
+  },
+  {
+    "ticker": "BBRM",
+    "name": "Pelayaran Nasional Bina Buana",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBTN",
+    "name": "Bank Tabungan Negara (Persero)",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBYB",
+    "name": "Bank Neo Commerce Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BCAP",
+    "name": "MNC Kapital Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BCIC",
+    "name": "Bank JTrust Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BCIP",
+    "name": "Bumi Citra Permai Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BDMN",
+    "name": "Bank Danamon Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BEKS",
+    "name": "Bank Pembangunan Daerah Banten",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BEST",
+    "name": "Bekasi Fajar Industrial Estate",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BFIN",
+    "name": "BFI Finance  Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BGTG",
+    "name": "Bank Ganesha Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BHIT",
+    "name": "MNC Asia Holding Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BIKA",
+    "name": "Binakarya Jaya Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BIMA",
+    "name": "Primarindo Asia Infrastructure",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BINA",
+    "name": "Bank Ina Perdana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BIPI",
+    "name": "Astrindo Nusantara Infrastrukt",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BIPP",
+    "name": "Bhuwanatala Indah Permai Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BIRD",
+    "name": "Blue Bird Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BISI",
+    "name": "BISI International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BJBR",
+    "name": "Bank Pembangunan Daerah Jawa B",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BJTM",
+    "name": "Bank Pembangunan Daerah Jawa T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BKDP",
+    "name": "Bukit Darmo Property Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BKSL",
+    "name": "Sentul City Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BKSW",
+    "name": "Bank QNB Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BLTA",
+    "name": "Berlian Laju Tanker Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BLTZ",
+    "name": "Graha Layar Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BMAS",
+    "name": "Bank Maspion Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BMRI",
+    "name": "Bank Mandiri (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Bank Mandiri",
+      "Mandiri"
+    ]
+  },
+  {
+    "ticker": "BMSR",
+    "name": "Bintang Mitra Semestaraya Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BMTR",
+    "name": "Global Mediacom Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BNBA",
+    "name": "Bank Bumi Arta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BNBR",
+    "name": "Bakrie & Brothers Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BNGA",
+    "name": "Bank CIMB Niaga Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BNII",
+    "name": "Bank Maybank Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BNLI",
+    "name": "Bank Permata Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOLT",
+    "name": "Garuda Metalindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BPFI",
+    "name": "Woori Finance Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BPII",
+    "name": "Batavia Prosperindo Internasio",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRAM",
+    "name": "Indo Kordsa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRMS",
+    "name": "Bumi Resources Minerals Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRNA",
+    "name": "Berlina Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRPT",
+    "name": "Barito Pacific Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Barito Pacific"
+    ]
+  },
+  {
+    "ticker": "BSDE",
+    "name": "Bumi Serpong Damai Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BSIM",
+    "name": "Bank Sinarmas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BSSR",
+    "name": "Baramulti Suksessarana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BSWD",
+    "name": "Bank Of India Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BTEK",
+    "name": "Bumi Teknokultura Unggul Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BTEL",
+    "name": "Bakrie Telecom Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BTON",
+    "name": "Betonjaya Manunggal Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BTPN",
+    "name": "Bank SMBC Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BUDI",
+    "name": "Budi Starch & Sweetener Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BUKK",
+    "name": "Bukaka Teknik Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BULL",
+    "name": "Buana Lintas Lautan Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BUMI",
+    "name": "Bumi Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BUVA",
+    "name": "Bukit Uluwatu Villa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BVIC",
+    "name": "Bank Victoria International Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BWPT",
+    "name": "Eagle High Plantations Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BYAN",
+    "name": "Bayan Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CANI",
+    "name": "Capitol Nusantara Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CASS",
+    "name": "Cardig Aero Services Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CEKA",
+    "name": "Wilmar Cahaya Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CENT",
+    "name": "Centratama Telekomunikasi Indo",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CFIN",
+    "name": "Clipan Finance Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CINT",
+    "name": "Chitose Internasional Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CITA",
+    "name": "Cita Mineral Investindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CLPI",
+    "name": "Colorpak Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CMNP",
+    "name": "Citra Marga Nusaphala Persada",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CMPP",
+    "name": "AirAsia Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CNKO",
+    "name": "Exploitasi Energi Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CNTX",
+    "name": "Century Textile Industry Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "COWL",
+    "name": "Cowell Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CPIN",
+    "name": "Charoen Pokphand Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": [
+      "Charoen Pokphand"
+    ]
+  },
+  {
+    "ticker": "CPRO",
+    "name": "Central Proteina Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CSAP",
+    "name": "Catur Sentosa Adiprana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CTBN",
+    "name": "Citra Tubindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CTRA",
+    "name": "Ciputra Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CTTH",
+    "name": "Citatah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DART",
+    "name": "Duta Anggada Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DEFI",
+    "name": "Danasupra Erapacific Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DEWA",
+    "name": "Darma Henwa Tbk",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "DGIK",
+    "name": "Nusa Konstruksi Enjiniring Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DILD",
+    "name": "Intiland Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DKFT",
+    "name": "Central Omega Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DLTA",
+    "name": "Delta Djakarta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DMAS",
+    "name": "Puradelta Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DNAR",
+    "name": "Bank Oke Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DNET",
+    "name": "Indoritel Makmur Internasional",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DOID",
+    "name": "Delta Dunia Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DPNS",
+    "name": "Duta Pertiwi Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DSFI",
+    "name": "Dharma Samudera Fishing Indust",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DSNG",
+    "name": "Dharma Satya Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DSSA",
+    "name": "Dian Swastatika Sentosa Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DUTI",
+    "name": "Duta Pertiwi Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DVLA",
+    "name": "Darya-Varia Laboratoria Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DYAN",
+    "name": "Dyandra Media International Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ECII",
+    "name": "Electronic City Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EKAD",
+    "name": "Ekadharma International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ELSA",
+    "name": "Elnusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ELTY",
+    "name": "Bakrieland Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EMDE",
+    "name": "Megapolitan Developments Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EMTK",
+    "name": "Elang Mahkota Teknologi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ENRG",
+    "name": "Energi Mega Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EPMT",
+    "name": "Enseval Putera Megatrading Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ERAA",
+    "name": "Erajaya Swasembada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ERTX",
+    "name": "Eratex Djaja Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ESSA",
+    "name": "ESSA Industries Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ESTI",
+    "name": "Ever Shine Tex Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ETWA",
+    "name": "Eterindo Wahanatama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EXCL",
+    "name": "XL Axiata Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FAST",
+    "name": "Fast Food Indonesia Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "FASW",
+    "name": "Fajar Surya Wisesa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FISH",
+    "name": "FKS Multi Agro Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "FMII",
+    "name": "Fortune Mate Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FORU",
+    "name": "Fortune Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FPNI",
+    "name": "Lotte Chemical Titan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FREN",
+    "name": "Smartfren Telecom Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GAMA",
+    "name": "Aksara Global Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GDST",
+    "name": "Gunawan Dianjaya Steel Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GDYR",
+    "name": "Goodyear Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GEMA",
+    "name": "Gema Grahasarana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GEMS",
+    "name": "Golden Energy Mines Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GGRM",
+    "name": "Gudang Garam Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GIAA",
+    "name": "Garuda Indonesia (Persero) Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GJTL",
+    "name": "Gajah Tunggal Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GLOB",
+    "name": "Globe Kita Terang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GMTD",
+    "name": "Gowa Makassar Tourism Developm",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GOLD",
+    "name": "Visi Telekomunikasi Infrastruk",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "GOLL",
+    "name": "Golden Plantation Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GPRA",
+    "name": "Perdana Gapuraprima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GSMF",
+    "name": "Equity Development Investment",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GTBO",
+    "name": "Garda Tujuh Buana Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GWSA",
+    "name": "Greenwood Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GZCO",
+    "name": "Gozco Plantations Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HADE",
+    "name": "Himalaya Energi Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HDFA",
+    "name": "Radana Bhaskara Finance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HDTX",
+    "name": "Panasia Indo Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HERO",
+    "name": "DFI Retail Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HEXA",
+    "name": "Hexindo Adiperkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HITS",
+    "name": "Humpuss Intermoda Transportasi",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HMSP",
+    "name": "H.M. Sampoerna Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HOME",
+    "name": "Hotel Mandarine Regency Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "HOTL",
+    "name": "Saraswati Griya Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HRUM",
+    "name": "Harum Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IATA",
+    "name": "MNC Energy Investments Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IBFN",
+    "name": "Intan Baru Prana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IBST",
+    "name": "Inti Bangun Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ICBP",
+    "name": "Indofood CBP Sukses Makmur Tbk",
+    "is_ambiguous": false,
+    "aliases": [
+      "Indofood CBP",
+      "Indofood CBP Sukses Makmur"
+    ]
+  },
+  {
+    "ticker": "ICON",
+    "name": "Island Concepts Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IGAR",
+    "name": "Champion Pacific Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IIKP",
+    "name": "Inti Agri Resources Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IKAI",
+    "name": "Intikeramik Alamasri Industri",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IKBI",
+    "name": "Sumi Indo Kabel Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IMAS",
+    "name": "Indomobil Sukses Internasional",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IMJS",
+    "name": "Indomobil Multi Jasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IMPC",
+    "name": "Impack Pratama Industri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INAF",
+    "name": "Indofarma Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INAI",
+    "name": "Indal Aluminium Industry Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INCI",
+    "name": "Intanwijaya Internasional Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INCO",
+    "name": "Vale Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Vale Indonesia"
+    ]
+  },
+  {
+    "ticker": "INDF",
+    "name": "Indofood Sukses Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Indofood",
+      "Indofood Sukses Makmur"
+    ]
+  },
+  {
+    "ticker": "INDR",
+    "name": "Indo-Rama Synthetics Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INDS",
+    "name": "Indospring Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INDX",
+    "name": "Tanah Laut Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INDY",
+    "name": "Indika Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INKP",
+    "name": "Indah Kiat Pulp & Paper Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INPC",
+    "name": "Bank Artha Graha Internasional",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INPP",
+    "name": "Indonesian Paradise Property T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INRU",
+    "name": "Toba Pulp Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INTA",
+    "name": "Intraco Penta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INTD",
+    "name": "Inter Delta Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INTP",
+    "name": "Indocement Tunggal Prakarsa Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPOL",
+    "name": "Indopoly Swakarsa Industry Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ISAT",
+    "name": "Indosat Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ISSP",
+    "name": "Steel Pipe Industry of Indones",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ITMA",
+    "name": "Sumber Energi Andalan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ITMG",
+    "name": "Indo Tambangraya Megah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JAWA",
+    "name": "Jaya Agra Wattie Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JECC",
+    "name": "Jembo Cable Company Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JIHD",
+    "name": "Jakarta International Hotels &",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JKON",
+    "name": "Jaya Konstruksi Manggala Prata",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JKSW",
+    "name": "Jakarta Kyoei Steel Works Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JPFA",
+    "name": "Japfa Comfeed Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JRPT",
+    "name": "Jaya Real Property Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JSMR",
+    "name": "Jasa Marga (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JSPT",
+    "name": "Jakarta Setiabudi Internasiona",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JTPE",
+    "name": "Jasuindo Tiga Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KAEF",
+    "name": "Kimia Farma Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KARW",
+    "name": "Meratus Jasa Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KBLI",
+    "name": "KMI Wire & Cable Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KBLM",
+    "name": "Kabelindo Murni Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KBLV",
+    "name": "First Media Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KBRI",
+    "name": "Kertas Basuki Rachmat Indonesi",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KDSI",
+    "name": "Kedawung Setia Industrial Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KIAS",
+    "name": "Keramika Indonesia Assosiasi T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KICI",
+    "name": "Kedaung Indah Can Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KIJA",
+    "name": "Kawasan Industri Jababeka Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KKGI",
+    "name": "Resource Alam Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KLBF",
+    "name": "Kalbe Farma Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Kalbe Farma",
+      "Kalbe"
+    ]
+  },
+  {
+    "ticker": "KOBX",
+    "name": "Kobexindo Tractors Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KOIN",
+    "name": "Kokoh Inti Arebama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KONI",
+    "name": "Perdana Bangun Pusaka Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KOPI",
+    "name": "Mitra Energi Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KPIG",
+    "name": "MNC Land Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KRAH",
+    "name": "Grand Kartech Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KRAS",
+    "name": "Krakatau Steel (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KREN",
+    "name": "Quantum Clovera Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LAPD",
+    "name": "Leyand International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LCGP",
+    "name": "Eureka Prima Jakarta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LEAD",
+    "name": "Logindo Samudramakmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LINK",
+    "name": "Link Net Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LION",
+    "name": "Lion Metal Works Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "LMAS",
+    "name": "Limas Indonesia Makmur Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LMPI",
+    "name": "Langgeng Makmur Industri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LMSH",
+    "name": "Lionmesh Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPCK",
+    "name": "Lippo Cikarang Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPGI",
+    "name": "Lippo General Insurance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPIN",
+    "name": "Multi Prima Sejahtera Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPKR",
+    "name": "Lippo Karawaci Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPLI",
+    "name": "Star Pacific Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPPF",
+    "name": "Matahari Department Store Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LPPS",
+    "name": "Lenox Pasifik Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LRNA",
+    "name": "Eka Sari Lorena Transport Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LSIP",
+    "name": "PP London Sumatra Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LTLS",
+    "name": "Lautan Luas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAGP",
+    "name": "Multi Agro Gemilang Plantation",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAIN",
+    "name": "Malindo Feedmill Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAMI",
+    "name": "Mas Murni Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAPI",
+    "name": "Mitra Adiperkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MASA",
+    "name": "Multistrada Arah Sarana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAYA",
+    "name": "Bank Mayapada Internasional Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MBAP",
+    "name": "Mitrabara Adiperdana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MBSS",
+    "name": "Mitrabahtera Segara Sejati Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MBTO",
+    "name": "Martina Berto Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MCOR",
+    "name": "Bank China Construction Bank I",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MDIA",
+    "name": "Intermedia Capital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MDKA",
+    "name": "Merdeka Copper Gold Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Merdeka Copper Gold"
+    ]
+  },
+  {
+    "ticker": "MDLN",
+    "name": "Modernland Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MDRN",
+    "name": "Modern Internasional Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MEDC",
+    "name": "Medco Energi Internasional Tbk",
+    "is_ambiguous": false,
+    "aliases": [
+      "Medco Energi",
+      "Medco"
+    ]
+  },
+  {
+    "ticker": "MEGA",
+    "name": "Bank Mega Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "MERK",
+    "name": "Merck Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "META",
+    "name": "Nusantara Infrastructure Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MFIN",
+    "name": "Mandala Multifinance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MFMI",
+    "name": "Multifiling Mitra Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MGNA",
+    "name": "Magna Investama Mandiri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MICE",
+    "name": "Multi Indocitra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MIDI",
+    "name": "Midi Utama Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MIKA",
+    "name": "Mitra Keluarga Karyasehat Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MIRA",
+    "name": "Mitra International Resources",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MITI",
+    "name": "Mitra Investindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MKPI",
+    "name": "Metropolitan Kentjana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MLBI",
+    "name": "Multi Bintang Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MLIA",
+    "name": "Mulia Industrindo Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MLPL",
+    "name": "Multipolar Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MLPT",
+    "name": "Multipolar Technology Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MMLP",
+    "name": "Mega Manunggal Property Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MNCN",
+    "name": "Media Nusantara Citra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPMX",
+    "name": "Mitra Pinasthika Mustika Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPPA",
+    "name": "Matahari Putra Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MRAT",
+    "name": "Mustika Ratu Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MREI",
+    "name": "Maskapai Reasuransi Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MSKY",
+    "name": "MNC Sky Vision Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTDL",
+    "name": "Metrodata Electronics Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTFN",
+    "name": "Capitalinc Investment Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTLA",
+    "name": "Metropolitan Land Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTSM",
+    "name": "Metro Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MYOH",
+    "name": "Samindo Resources Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MYOR",
+    "name": "Mayora Indah Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Mayora Indah",
+      "Mayora"
+    ]
+  },
+  {
+    "ticker": "MYRX",
+    "name": "Hanson International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MYTX",
+    "name": "Asia Pacific Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NELY",
+    "name": "Pelayaran Nelly Dwi Putri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NIKL",
+    "name": "Pelat Timah Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NIPS",
+    "name": "Nipress Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NIRO",
+    "name": "City Retail Developments Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NISP",
+    "name": "Bank OCBC NISP Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NOBU",
+    "name": "Bank Nationalnobu Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "NRCA",
+    "name": "Nusa Raya Cipta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OCAP",
+    "name": "Onix Capital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OKAS",
+    "name": "Ancora Indonesia Resources Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OMRE",
+    "name": "Indonesia Prima Property Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PADI",
+    "name": "Minna Padi Investama Sekuritas",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PALM",
+    "name": "Provident Investasi Bersama Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PANR",
+    "name": "Panorama Sentrawisata Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PANS",
+    "name": "Panin Sekuritas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PBRX",
+    "name": "Pan Brothers Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PDES",
+    "name": "Destinasi Tirta Nusantara Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PEGE",
+    "name": "Panca Global Kapital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PGAS",
+    "name": "Perusahaan Gas Negara Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "PGN",
+      "Perusahaan Gas Negara"
+    ]
+  },
+  {
+    "ticker": "PGLI",
+    "name": "Pembangunan Graha Lestari Inda",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PICO",
+    "name": "Pelangi Indah Canindo Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PJAA",
+    "name": "Pembangunan Jaya Ancol Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PKPK",
+    "name": "Perdana Karya Perkasa Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PLAS",
+    "name": "Polaris Investama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PLIN",
+    "name": "Plaza Indonesia Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNBN",
+    "name": "Bank Pan Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNBS",
+    "name": "Bank Panin Dubai Syariah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNIN",
+    "name": "Paninvest Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNLF",
+    "name": "Panin Financial Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNSE",
+    "name": "Pudjiadi & Sons Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POLY",
+    "name": "Asia Pacific Fibers Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POOL",
+    "name": "Pool Advista Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PPRO",
+    "name": "PP Properti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PRAS",
+    "name": "Prima Alloy Steel Universal Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PSAB",
+    "name": "J Resources Asia Pasifik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PSDN",
+    "name": "Prasidha Aneka Niaga Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PSKT",
+    "name": "Red Planet Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTBA",
+    "name": "Bukit Asam Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Bukit Asam"
+    ]
+  },
+  {
+    "ticker": "PTIS",
+    "name": "Indo Straits Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTPP",
+    "name": "PP (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTRO",
+    "name": "Petrosea Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTSN",
+    "name": "Sat Nusapersada Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTSP",
+    "name": "Pioneerindo Gourmet Internatio",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PUDP",
+    "name": "Pudjiadi Prestige Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PWON",
+    "name": "Pakuwon Jati Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PYFA",
+    "name": "Pyridam Farma Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RAJA",
+    "name": "Rukun Raharja Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RALS",
+    "name": "Ramayana Lestari Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RANC",
+    "name": "Supra Boga Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RBMS",
+    "name": "Ristia Bintang Mahkotasejati T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RDTX",
+    "name": "Roda Vivatex Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RELI",
+    "name": "Reliance Sekuritas Indonesia T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RICY",
+    "name": "Ricky Putra Globalindo Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RIGS",
+    "name": "Rig Tenders Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RIMO",
+    "name": "Rimo International Lestari Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RODA",
+    "name": "Pikko Land Development Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ROTI",
+    "name": "Nippon Indosari Corpindo Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "RUIS",
+    "name": "Radiant Utama Interinsco Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SAFE",
+    "name": "Steady Safe Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SAME",
+    "name": "Sarana Meditama Metropolitan T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SCCO",
+    "name": "Supreme Cable Manufacturing &",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SCMA",
+    "name": "Surya Citra Media Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SCPI",
+    "name": "Organon Pharma Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SDMU",
+    "name": "Sidomulyo Selaras Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SDPC",
+    "name": "Millennium Pharmacon Internati",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SDRA",
+    "name": "Bank Woori Saudara Indonesia 1",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SGRO",
+    "name": "Sampoerna Agro Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SHID",
+    "name": "Hotel Sahid Jaya International",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SIDO",
+    "name": "Industri Jamu dan Farmasi Sido",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SILO",
+    "name": "Siloam International Hospitals",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SIMA",
+    "name": "Siwani Makmur Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SIMP",
+    "name": "Salim Ivomas Pratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SIPD",
+    "name": "Sreeya Sewu Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SKBM",
+    "name": "Sekar Bumi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SKLT",
+    "name": "Sekar Laut Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SKYB",
+    "name": "Northcliff Citranusa Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMAR",
+    "name": "Smart Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMBR",
+    "name": "Semen Baturaja Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMCB",
+    "name": "Solusi Bangun Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMDM",
+    "name": "Suryamas Dutamakmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMDR",
+    "name": "Samudera Indonesia  Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMGR",
+    "name": "Semen Indonesia (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Semen Indonesia"
+    ]
+  },
+  {
+    "ticker": "SMMA",
+    "name": "Sinarmas Multiartha Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMMT",
+    "name": "Golden Eagle Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMRA",
+    "name": "Summarecon Agung Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMRU",
+    "name": "SMR Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMSM",
+    "name": "Selamat Sempurna Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOCI",
+    "name": "Soechi Lines Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SONA",
+    "name": "Sona Topas Tourism Industry Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SPMA",
+    "name": "Suparma Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SQMI",
+    "name": "Wilton Makmur Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SRAJ",
+    "name": "Sejahteraraya Anugrahjaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SRIL",
+    "name": "Sri Rejeki Isman Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SRSN",
+    "name": "Indo Acidatama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SRTG",
+    "name": "Saratoga Investama Sedaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SSIA",
+    "name": "Surya Semesta Internusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SSMS",
+    "name": "Sawit Sumbermas Sarana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SSTM",
+    "name": "Sunson Textile Manufacture Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "STAR",
+    "name": "Buana Artha Anugerah Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "STTP",
+    "name": "Siantar Top Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SUGI",
+    "name": "Sugih Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SULI",
+    "name": "SLJ Global Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SUPR",
+    "name": "Solusi Tunas Pratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TALF",
+    "name": "Tunas Alfin Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TARA",
+    "name": "Agung Semesta Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TAXI",
+    "name": "Express Transindo Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TBIG",
+    "name": "Tower Bersama Infrastructure T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TBLA",
+    "name": "Tunas Baru Lampung Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TBMS",
+    "name": "Tembaga Mulia Semanan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TCID",
+    "name": "Mandom Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TELE",
+    "name": "Omni Inovasi Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TFCO",
+    "name": "Tifico Fiber Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TGKA",
+    "name": "Tigaraksa Satria Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TIFA",
+    "name": "KDB Tifa Finance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TINS",
+    "name": "Timah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TIRA",
+    "name": "Tira Austenite Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TIRT",
+    "name": "Tirta Mahakam Resources Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TKIM",
+    "name": "Pabrik Kertas Tjiwi Kimia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TLKM",
+    "name": "Telkom Indonesia (Persero) Tbk",
+    "is_ambiguous": false,
+    "aliases": [
+      "Telkom",
+      "PT Telkom",
+      "Telkom Indonesia"
+    ]
+  },
+  {
+    "ticker": "TMAS",
+    "name": "Temas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TMPO",
+    "name": "Tempo Intimedia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOBA",
+    "name": "TBS Energi Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOTL",
+    "name": "Total Bangun Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOTO",
+    "name": "Surya Toto Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOWR",
+    "name": "Sarana Menara Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TPIA",
+    "name": "Chandra Asri Pacific Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Chandra Asri"
+    ]
+  },
+  {
+    "ticker": "TPMA",
+    "name": "Trans Power Marine Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRAM",
+    "name": "Trada Alam Minera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRIL",
+    "name": "Triwira Insanlestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRIM",
+    "name": "Trimegah Sekuritas Indonesia T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRIO",
+    "name": "Trikomsel Oke Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRIS",
+    "name": "Trisula International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRST",
+    "name": "Trias Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRUS",
+    "name": "Trust Finance Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TSPC",
+    "name": "Tempo Scan Pacific Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ULTJ",
+    "name": "Ultrajaya Milk Industry & Trad",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNIC",
+    "name": "Unggul Indah Cahaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNIT",
+    "name": "Nusantara Inti Corpora Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNSP",
+    "name": "Bakrie Sumatera Plantations Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNTR",
+    "name": "United Tractors Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNVR",
+    "name": "Unilever Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Unilever",
+      "Unilever Indonesia"
+    ]
+  },
+  {
+    "ticker": "VICO",
+    "name": "Victoria Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VINS",
+    "name": "Victoria Insurance Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VIVA",
+    "name": "Visi Media Asia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VOKS",
+    "name": "Voksel Electric Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VRNA",
+    "name": "Mizuho Leasing Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WAPO",
+    "name": "Wahana Pronatural Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WEHA",
+    "name": "WEHA Transportasi Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WICO",
+    "name": "Wicaksana Overseas Internation",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WIIM",
+    "name": "Wismilak Inti Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WIKA",
+    "name": "Wijaya Karya (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WINS",
+    "name": "Wintermar Offshore Marine Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WOMF",
+    "name": "Wahana Ottomitra Multiartha Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WSKT",
+    "name": "Waskita Karya (Persero) Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WTON",
+    "name": "Wijaya Karya Beton Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "YPAS",
+    "name": "Yanaprima Hastapersada Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "YULE",
+    "name": "Yulie Sekuritas Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ZBRA",
+    "name": "Dosni Roha Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SHIP",
+    "name": "Sillo Maritime Perdana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CASA",
+    "name": "Capital Financial Indonesia Tb",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "DAYA",
+    "name": "Duta Intidaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DPUM",
+    "name": "Dua Putra Utama Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IDPR",
+    "name": "Indonesia Pondasi Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JGLE",
+    "name": "Graha Andrasentra Propertindo",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KINO",
+    "name": "Kino Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MARI",
+    "name": "Mahaka Radio Integra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MKNT",
+    "name": "Mitra Komunikasi Nusantara Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTRA",
+    "name": "Mitra Pemuda Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OASA",
+    "name": "Maharaksa Biru Energi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POWR",
+    "name": "Cikarang Listrindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INCF",
+    "name": "Indo Komoditi Korpora Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WSBP",
+    "name": "Waskita Beton Precast Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PBSA",
+    "name": "Paramita Bangun Sarana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PRDA",
+    "name": "Prodia Widyahusada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOGA",
+    "name": "Bintang Oto Global Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRIS",
+    "name": "Bank Syariah Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "BSI",
+      "Bank Syariah Indonesia"
+    ]
+  },
+  {
+    "ticker": "PORT",
+    "name": "Nusantara Pelabuhan Handal Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CARS",
+    "name": "Industri dan Perdagangan Bintr",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MINA",
+    "name": "Sanurhasta Mitra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FORZ",
+    "name": "Forza Land Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CLEO",
+    "name": "Sariguna Primatirta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TAMU",
+    "name": "Pelayaran Tamarin Samudra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CSIS",
+    "name": "Cahayasakti Investindo Sukses",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TGRA",
+    "name": "Terregra Asia Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FIRE",
+    "name": "Alfa Energi Investama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOPS",
+    "name": "Totalindo Eka Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KMTR",
+    "name": "Kirana Megatara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARMY",
+    "name": "Armidian Karyatama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAPB",
+    "name": "MAP Boga Adiperkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WOOD",
+    "name": "Integra Indocabinet Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "HRTA",
+    "name": "Hartadinata Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MABA",
+    "name": "Marga Abhinaya Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HOKI",
+    "name": "Buyung Poetra Sembada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPOW",
+    "name": "Megapower Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MARK",
+    "name": "Mark Dynamics Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NASA",
+    "name": "Andalan Perkasa Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MDKI",
+    "name": "Emdeki Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BELL",
+    "name": "Trisula Textile Industries Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KIOS",
+    "name": "Kioson Komersial Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GMFI",
+    "name": "Garuda Maintenance Facility Ae",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTWI",
+    "name": "Malacca Trust Wuwungan Insuran",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ZINC",
+    "name": "Kapuas Prima Coal Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MCAS",
+    "name": "M Cash Integrasi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PPRE",
+    "name": "PP Presisi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WEGE",
+    "name": "Wijaya Karya Bangunan Gedung T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PSSI",
+    "name": "IMC Pelita Logistik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MORA",
+    "name": "Mora Telematika Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DWGL",
+    "name": "Dwi Guna Laksana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PBID",
+    "name": "Panca Budi Idaman Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JMAS",
+    "name": "Asuransi Jiwa Syariah Jasa Mit",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CAMP",
+    "name": "Campina Ice Cream Industry Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPCM",
+    "name": "Jasa Armada Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PCAR",
+    "name": "Prima Cakrawala Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LCKM",
+    "name": "LCK Global Kedaton Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOSS",
+    "name": "Borneo Olah Sarana Sukses Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HELI",
+    "name": "Jaya Trishindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JSKY",
+    "name": "Sky Energy Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INPS",
+    "name": "Indah Prakasa Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GHON",
+    "name": "Gihon Telekomunikasi Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TDPM",
+    "name": "Tianrong Chemicals Industry Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DFAM",
+    "name": "Dafam Property Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NICK",
+    "name": "Charnic Capital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BTPS",
+    "name": "Bank BTPN Syariah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SPTO",
+    "name": "Surya Pertiwi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PRIM",
+    "name": "Royal Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HEAL",
+    "name": "Medikaloka Hermina Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "TRUK",
+    "name": "Guna Timur Raya Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "PZZA",
+    "name": "Sarimelati Kencana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TUGU",
+    "name": "Asuransi Tugu Pratama Indonesi",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MSIN",
+    "name": "MNC Digital Entertainment Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SWAT",
+    "name": "Sriwahana Adityakarta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KPAL",
+    "name": "Steadfast Marine Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TNCA",
+    "name": "Trimuda Nuansa Citra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAPA",
+    "name": "Map Aktif Adiperkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TCPI",
+    "name": "Transcoal Pacific Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPCC",
+    "name": "Indonesia Kendaraan Terminal T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RISE",
+    "name": "Jaya Sukses Makmur Sentosa Tbk",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BPTR",
+    "name": "Batavia Prosperindo Trans Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POLL",
+    "name": "Pollux Properties Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NFCX",
+    "name": "NFC Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MGRO",
+    "name": "Mahkota Group Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NUSA",
+    "name": "Sinergi Megah Internusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FILM",
+    "name": "MD Entertainment Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "ANDI",
+    "name": "Andira Agro Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LAND",
+    "name": "Trimitra Propertindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MOLI",
+    "name": "Madusari Murni Indah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PANI",
+    "name": "Pantai Indah Kapuk Dua Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "DIGI",
+    "name": "Arkadia Digital Media Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CITY",
+    "name": "Natura City Developments Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SAPX",
+    "name": "Satria Antaran Prima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KPAS",
+    "name": "Cottonindo Ariesta Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SURE",
+    "name": "Super Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HKMU",
+    "name": "HK Metals Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPRO",
+    "name": "Maha Properti Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DUCK",
+    "name": "Jaya Bersama Indo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GOOD",
+    "name": "Garudafood Putra Putri Jaya Tb",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "SKRN",
+    "name": "Superkrane Mitra Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "YELO",
+    "name": "Yelooo Integra Datanet Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CAKK",
+    "name": "Cahayaputra Asa Keramik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SATU",
+    "name": "Kota Satu Properti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ZONE",
+    "name": "Mega Perintis Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "PEHA",
+    "name": "Phapros Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FOOD",
+    "name": "Sentra Food Indonesia Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BEEF",
+    "name": "Estika Tata Tiara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POLI",
+    "name": "Pollux Hotels Group Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CLAY",
+    "name": "Citra Putra Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NATO",
+    "name": "Surya Permata Andalan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JAYA",
+    "name": "Armada Berjaya Trans Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "COCO",
+    "name": "Wahana Interfood Nusantara Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTPS",
+    "name": "Meta Epsi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CPRI",
+    "name": "Capri Nusa Satu Properti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HRME",
+    "name": "Menteng Heritage Realty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POSA",
+    "name": "Bliss Properti Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JAST",
+    "name": "Jasnita Telekomindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FITT",
+    "name": "Hotel Fitra International Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOLA",
+    "name": "Bali Bintang Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CCSI",
+    "name": "Communication Cable Systems In",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SFAN",
+    "name": "Surya Fajar Capital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "POLU",
+    "name": "Golden Flower Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KJEN",
+    "name": "Krida Jaringan Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KAYU",
+    "name": "Darmi Bersaudara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ITIC",
+    "name": "Indonesian Tobacco Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PAMG",
+    "name": "Bima Sakti Pertiwi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPTV",
+    "name": "MNC Vision Networks Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BLUE",
+    "name": "Berkah Prima Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ENVY",
+    "name": "Envy Technologies Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EAST",
+    "name": "Eastparc Hotel Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LIFE",
+    "name": "MSIG Life Insurance Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FUJI",
+    "name": "Fuji Finance Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KOTA",
+    "name": "DMS Propertindo Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "INOV",
+    "name": "Inocycle Technology Group Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARKA",
+    "name": "Arkha Jayanti Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMKL",
+    "name": "Satyamitra Kemas Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HDIT",
+    "name": "Hensel Davest Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KEEN",
+    "name": "Kencana Energi Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAPI",
+    "name": "Bhakti Agung Propertindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TFAS",
+    "name": "Telefast Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GGRP",
+    "name": "Gunung Raja Paksi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OPMS",
+    "name": "Optima Prima Metal Sinergi Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NZIA",
+    "name": "Nusantara Almazia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SLIS",
+    "name": "Gaya Abadi Sempurna Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PURE",
+    "name": "Trinitan Metals and Minerals T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IRRA",
+    "name": "Itama Ranoraya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DMMX",
+    "name": "Digital Mediatama Maxima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SINI",
+    "name": "Singaraja Putra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WOWS",
+    "name": "Ginting Jaya Energi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ESIP",
+    "name": "Sinergi Inti Plastindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TEBE",
+    "name": "Dana Brata Luhur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KEJU",
+    "name": "Mulia Boga Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PSGO",
+    "name": "Palma Serasih Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AGAR",
+    "name": "Asia Sejahtera Mina Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IFSH",
+    "name": "Ifishdeco Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "REAL",
+    "name": "Repower Asia Indonesia Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "IFII",
+    "name": "Indonesia Fibreboard Industry",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PMJS",
+    "name": "Putra Mandiri Jembar Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UCID",
+    "name": "Uni-Charm Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GLVA",
+    "name": "Galva Technologies Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PGJO",
+    "name": "Tourindo Guide Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMAR",
+    "name": "Bank Amar Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CSRA",
+    "name": "Cisadane Sawit Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INDO",
+    "name": "Royalindo Investa Wijaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMOR",
+    "name": "Ashmore Asset Management Indon",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRIN",
+    "name": "Perintis Triniti Properti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DMND",
+    "name": "Diamond Food Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PURA",
+    "name": "Putra Rajawali Kencana Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "PTPW",
+    "name": "Pratama Widya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TAMA",
+    "name": "Lancartama Sejati Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IKAN",
+    "name": "Era Mandiri Cemerlang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AYLS",
+    "name": "Agro Yasa Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DADA",
+    "name": "Diamond Citra Propertindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASPI",
+    "name": "Andalan Sakti Primaindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ESTA",
+    "name": "Esta Multi Usaha Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BESS",
+    "name": "Batulicin Nusantara Maritim Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CSMI",
+    "name": "Cipta Selera Murni Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBSS",
+    "name": "Bumi Benowo Sukses Sejahtera T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BHAT",
+    "name": "Bhakti Multi Artha Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CASH",
+    "name": "Cashlez Worldwide Indonesia Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TECH",
+    "name": "Indosterling Technomedia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EPAC",
+    "name": "Megalestari Epack Sentosaraya",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UANG",
+    "name": "Pakuan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PGUN",
+    "name": "Pradiksi Gunatama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOFA",
+    "name": "Boston Furniture Industries Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PPGL",
+    "name": "Prima Globalindo Logistik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOYS",
+    "name": "Sunindo Adipersada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SGER",
+    "name": "Sumber Global Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRJA",
+    "name": "Transkon Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PNGO",
+    "name": "Pinago Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SCNP",
+    "name": "Selaras Citra Nusantara Perkas",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BBSI",
+    "name": "Krom Bank Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KMDS",
+    "name": "Kurniamitra Duta Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PURI",
+    "name": "Puri Global Sukses Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOHO",
+    "name": "Soho Global Health Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "HOMI",
+    "name": "Grand House Mulia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ROCK",
+    "name": "Rockfields Properti Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ENZO",
+    "name": "Morenzo Abadi Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PLAN",
+    "name": "Planet Properindo Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTDU",
+    "name": "Djasa Ubersakti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ATAP",
+    "name": "Trimitra Prawara Goldland Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VICI",
+    "name": "Victoria Care Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PMMP",
+    "name": "Panca Mitra Multiperdana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WIFI",
+    "name": "Solusi Sinergi Digital Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "FAPA",
+    "name": "FAP Agri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DCII",
+    "name": "DCI Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KETR",
+    "name": "Ketrosden Triasmitra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DGNS",
+    "name": "Diagnos Laboratorium Utama Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UFOE",
+    "name": "Damai Sejahtera Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BANK",
+    "name": "Bank Aladin Syariah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WMUU",
+    "name": "Widodo Makmur Unggas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EDGE",
+    "name": "Indointernet Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNIQ",
+    "name": "Ulima Nitra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BEBS",
+    "name": "Berkah Beton Sadaya Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "SNLK",
+    "name": "Sunter Lakeside Hotel Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ZYRX",
+    "name": "Zyrexindo Mandiri Buana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LFLO",
+    "name": "Imago Mulia Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FIMP",
+    "name": "Fimperkasa Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TAPG",
+    "name": "Triputra Agro Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NPGF",
+    "name": "Nusa Palapa Gemilang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LUCY",
+    "name": "Lima Dua Lima Tiga Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADCP",
+    "name": "Adhi Commuter Properti Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HOPE",
+    "name": "Harapan Duta Pertiwi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MGLV",
+    "name": "Panca Anugrah Wisesa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRUE",
+    "name": "Triniti Dinamik Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "LABA",
+    "name": "Green Power Group Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARCI",
+    "name": "Archi Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPAC",
+    "name": "Era Graharealty Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MASB",
+    "name": "Bank Multiarta Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BMHS",
+    "name": "Bundamedik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FLMC",
+    "name": "Falmaco Nonwoven Industri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NICL",
+    "name": "PAM Mineral Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UVCR",
+    "name": "Trimegah Karya Pratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BUKA",
+    "name": "Bukalapak.com Tbk.",
+    "is_ambiguous": true,
+    "aliases": [
+      "Bukalapak",
+      "Bukalapak.com"
+    ]
+  },
+  {
+    "ticker": "HAIS",
+    "name": "Hasnur Internasional Shipping",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OILS",
+    "name": "Indo Oil Perkasa Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "GPSO",
+    "name": "Geoprima Solusi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MCOL",
+    "name": "Prima Andalan Mandiri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RSGK",
+    "name": "Kedoya Adyaraya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RUNS",
+    "name": "Global Sukses Solusi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SBMA",
+    "name": "Surya Biru Murni Acetylene Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CMNT",
+    "name": "Cemindo Gemilang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GTSI",
+    "name": "GTS Internasional Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IDEA",
+    "name": "Idea Indonesia Akademi Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "KUAS",
+    "name": "Ace Oldfields Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOBA",
+    "name": "Formosa Ingredient Factory Tbk",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "MTEL",
+    "name": "Dayamitra Telekomunikasi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DEPO",
+    "name": "Caturkarda Depo Bangunan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BINO",
+    "name": "Perma Plasindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CMRY",
+    "name": "Cisarua Mountain Dairy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WGSH",
+    "name": "Wira Global Solusi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TAYS",
+    "name": "Jaya Swarasa Agung Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WMPP",
+    "name": "Widodo Makmur Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RMKE",
+    "name": "RMK Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OBMD",
+    "name": "OBM Drilchem Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AVIA",
+    "name": "Avia Avian Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IPPE",
+    "name": "Indo Pureco Pratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NASI",
+    "name": "Wahana Inti Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BSML",
+    "name": "Bintang Samudera Mandiri Lines",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DRMA",
+    "name": "Dharma Polimetal Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ADMR",
+    "name": "Adaro Minerals Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SEMA",
+    "name": "Semacom Integrated Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASLC",
+    "name": "Autopedia Sukses Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NETV",
+    "name": "MDTV Media Technologies Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAUT",
+    "name": "Mitra Angkasa Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ENAK",
+    "name": "Champ Resto Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NTBK",
+    "name": "Nusatama Berkah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMKM",
+    "name": "Sumber Mas Konstruksi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "STAA",
+    "name": "Sumber Tani Agung Resources Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NANO",
+    "name": "Nanotech Indonesia Global Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BIKE",
+    "name": "Sepeda Bersama Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WIRG",
+    "name": "WIR ASIA Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SICO",
+    "name": "Sigma Energy Compressindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GOTO",
+    "name": "GoTo Gojek Tokopedia Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "GoTo",
+      "Gojek Tokopedia"
+    ]
+  },
+  {
+    "ticker": "TLDN",
+    "name": "Teladan Prima Agro Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MTMH",
+    "name": "Murni Sadar Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WINR",
+    "name": "Winner Nusantara Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IBOS",
+    "name": "Indo Boga Sukses Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OLIV",
+    "name": "Oscar Mitra Sukses Sejahtera T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASHA",
+    "name": "Cilacap Samudera Fishing Indus",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SWID",
+    "name": "Saraswanti Indoland Developmen",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRGU",
+    "name": "Cerestar Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ARKO",
+    "name": "Arkora Hydro Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CHEM",
+    "name": "Chemstar Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DEWI",
+    "name": "Dewi Shri Farmindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AXIO",
+    "name": "Tera Data Indonusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KRYA",
+    "name": "Bangun Karya Perkasa Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HATM",
+    "name": "Habco Trans Maritima Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RCCC",
+    "name": "Utama Radar Cahaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GULA",
+    "name": "Aman Agrindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JARR",
+    "name": "Jhonlin Agro Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMMS",
+    "name": "Agung Menjangan Mas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RAFI",
+    "name": "Sari Kreasi Boga Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "KKES",
+    "name": "Kusuma Kemindo Sentosa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ELPI",
+    "name": "Pelayaran Nasional Ekalya Purn",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "EURO",
+    "name": "Estee Gold Feet Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KLIN",
+    "name": "Klinko Karya Imaji Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOOL",
+    "name": "Rohartindo Nusantara Luas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BUAH",
+    "name": "Segar Kumala Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CRAB",
+    "name": "Toba Surimi Industries Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MEDS",
+    "name": "Hetzer Medical Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "COAL",
+    "name": "Black Diamond Resources Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "PRAY",
+    "name": "Famon Awal Bros Sedaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CBUT",
+    "name": "Citra Borneo Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BELI",
+    "name": "Global Digital Niaga Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MKTR",
+    "name": "Menthobi Karyatama Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OMED",
+    "name": "Jayamas Medica Industri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BSBK",
+    "name": "Wulandari Bangun Laksana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PDPP",
+    "name": "Primadaya Plastisindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KDTN",
+    "name": "Puri Sentul Permai Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ZATA",
+    "name": "Bersama Zatta Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NINE",
+    "name": "Techno9 Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MMIX",
+    "name": "Multi Medika Internasional Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PADA",
+    "name": "Personel Alih Daya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ISAP",
+    "name": "Isra Presisi Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VTNY",
+    "name": "Venteny Fortuna International",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOUL",
+    "name": "Mitra Tirta Buwana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ELIT",
+    "name": "Data Sinergitama Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BEER",
+    "name": "Jobubu Jarum Minahasa Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "CBPE",
+    "name": "Citra Buana Prasida Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SUNI",
+    "name": "Sunindo Pratama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CBRE",
+    "name": "Cakra Buana Resources Energi T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WINE",
+    "name": "Hatten Bali Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "BMBL",
+    "name": "Lavender Bina Cendikia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PEVE",
+    "name": "Penta Valent Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LAJU",
+    "name": "Jasa Berdikari Logistics Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FWCT",
+    "name": "Wijaya Cahaya Timber Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NAYZ",
+    "name": "Hassana Boga Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IRSX",
+    "name": "Aviana Sinar Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PACK",
+    "name": "Abadi Nusantara Hijau Investam",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VAST",
+    "name": "Vastland Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CHIP",
+    "name": "Pelita Teknologi Global Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HALO",
+    "name": "Haloni Jane Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KING",
+    "name": "Hoffmen Cleanindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PGEO",
+    "name": "Pertamina Geothermal Energy Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FUTR",
+    "name": "Lini Imaji Kreasi Ekosistem Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HILL",
+    "name": "Hillcon Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BDKR",
+    "name": "Berdikari Pondasi Perkasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTMP",
+    "name": "Mitra Pack Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SAGE",
+    "name": "Saptausaha Gemilangindah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TRON",
+    "name": "Teknologi Karya Digital Nusa T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CUAN",
+    "name": "Petrindo Jaya Kreasi Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Petrindo Jaya Kreasi"
+    ]
+  },
+  {
+    "ticker": "NSSS",
+    "name": "Nusantara Sawit Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GTRA",
+    "name": "Grahaprima Suksesmandiri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HAJJ",
+    "name": "Arsy Buana Travelindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PIPA",
+    "name": "Multi Makmur Lemindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NCKL",
+    "name": "Trimegah Bangun Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MENN",
+    "name": "Menn Teknologi Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AWAN",
+    "name": "Era Digital Media Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MBMA",
+    "name": "Merdeka Battery Materials Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RAAM",
+    "name": "Tripar Multivision Plus Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DOOH",
+    "name": "Era Media Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "JATI",
+    "name": "Informasi Teknologi Indonesia",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TYRE",
+    "name": "King Tire Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPXL",
+    "name": "MPX Logistics International Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMIL",
+    "name": "Sarana Mitra Luas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KLAS",
+    "name": "Pelayaran Kurnia Lautan Semest",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAXI",
+    "name": "Maxindo Karya Anugerah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VKTR",
+    "name": "VKTR Teknologi Mobilitas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RELF",
+    "name": "Graha Mitra Asia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMMN",
+    "name": "Amman Mineral Internasional Tb",
+    "is_ambiguous": false,
+    "aliases": [
+      "Amman",
+      "Amman Mineral"
+    ]
+  },
+  {
+    "ticker": "CRSN",
+    "name": "Carsurin Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GRPM",
+    "name": "Graha Prima Mentari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "WIDI",
+    "name": "Widiant Jaya Krenindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TGUK",
+    "name": "Platinum Wahab Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "INET",
+    "name": "Sinergi Inti Andalan Prima Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MAHA",
+    "name": "Mandiri Herindo Adiperkasa Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RMKO",
+    "name": "Royaltama Mulia Kontraktorindo",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CNMA",
+    "name": "Nusantara Sejahtera Raya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "FOLK",
+    "name": "Multi Garam Utama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HBAT",
+    "name": "Minahasa Membangun Hebat Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GRIA",
+    "name": "Ingria Pratama Capitalindo Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PPRI",
+    "name": "Paperocks Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ERAL",
+    "name": "Sinar Eka Selaras Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CYBR",
+    "name": "ITSEC Asia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MUTU",
+    "name": "Mutuagung Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LMAX",
+    "name": "Lupromax Pelumas Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HUMI",
+    "name": "Humpuss Maritim Internasional",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MSIE",
+    "name": "Multisarana Intan Eduka Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RSCH",
+    "name": "Charlie Hospital Semarang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BABY",
+    "name": "Multitrend Indo Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "AEGS",
+    "name": "Anugerah Spareparts Sejahtera",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IOTF",
+    "name": "Sumber Sinergi Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KOCI",
+    "name": "Kokoh Exa Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTPS",
+    "name": "Pulau Subur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BREN",
+    "name": "Barito Renewables Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": [
+      "Barito Renewables",
+      "Barito Renewables Energy"
+    ]
+  },
+  {
+    "ticker": "STRK",
+    "name": "Lovina Beach Brewery Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KOKA",
+    "name": "Koka Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LOPI",
+    "name": "Logisticsplus International Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UDNG",
+    "name": "Agro Bahari Nusantara Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RGAS",
+    "name": "Kian Santang Muliatama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MSTI",
+    "name": "Mastersystem Infotama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "IKPM",
+    "name": "Ikapharmindo Putramas Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AYAM",
+    "name": "Janu Putra Sejahtera Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SURI",
+    "name": "Maja Agung Latexindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ASLI",
+    "name": "Asri Karya Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CGAS",
+    "name": "Citra Nusantara Gemilang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NICE",
+    "name": "Adhi Kartiko Pratama Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "MSJA",
+    "name": "Multi Spunindo Jaya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMLE",
+    "name": "Sinergi Multi Lestarindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ACRO",
+    "name": "Samcro Hyosung Adilestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MANG",
+    "name": "Manggung Polahraya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GRPH",
+    "name": "Griptha Putra Persada Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SMGA",
+    "name": "Sumber Mineral Global Abadi Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "UNTD",
+    "name": "Terang Dunia Internusa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "TOSK",
+    "name": "Topindo Solusi Komunika Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MPIX",
+    "name": "Mitra Pedagang Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ALII",
+    "name": "Ancara Logistics Indonesia Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MKAP",
+    "name": "Multikarya Asia Pasifik Raya T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MEJA",
+    "name": "Harta Djaya Karya Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LIVE",
+    "name": "Homeco Victoria Makmur Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HYGN",
+    "name": "Ecocare Indo Pasifik Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BAIK",
+    "name": "Bersama Mencapai Puncak Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VISI",
+    "name": "Satu Visi Putra Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AREA",
+    "name": "Dunia Virtual Online Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MHKI",
+    "name": "Multi Hanna Kreasindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ATLA",
+    "name": "Atlantis Subsea Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DATA",
+    "name": "Remala Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOLA",
+    "name": "Xolare RCR Energy Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BATR",
+    "name": "Benteng Api Technic Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SPRE",
+    "name": "Soraya Berjaya Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PART",
+    "name": "Cipta Perdana Lancar Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GOLF",
+    "name": "Intra Golflink Resorts Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "ISEA",
+    "name": "Indo American Seafoods Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BLES",
+    "name": "Superior Prima Sukses Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "GUNA",
+    "name": "Gunanusa Eramandiri Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LABS",
+    "name": "UBC Medical Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DOSS",
+    "name": "Global Sukses Digital Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NEST",
+    "name": "Esta Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "PTMR",
+    "name": "Master Print Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "VERN",
+    "name": "Verona Indah Pictures Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DAAZ",
+    "name": "Daaz Bara Lestari Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BOAT",
+    "name": "Newport Marine Services Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "NAIK",
+    "name": "Adiwarna Anugerah Abadi Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AADI",
+    "name": "Adaro Andalan Indonesia Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "MDIY",
+    "name": "Daya Intiguna Yasa Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KSIX",
+    "name": "Kentanix Supra International T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RATU",
+    "name": "Raharja Energi Cepu Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "YOII",
+    "name": "Asuransi Digital Bersama Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "HGII",
+    "name": "Hero Global Investment Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "BRRC",
+    "name": "Raja Roti Cemerlang Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DGWG",
+    "name": "Delta Giri Wacana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CBDK",
+    "name": "Bangun Kosambi Sukses Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "OBAT",
+    "name": "Brigit Biofarmaka Teknologi Tb",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOSS",
+    "name": "Shield On Service Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "DEAL",
+    "name": "Dewata Freightinternational Tb",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "POLA",
+    "name": "Pool Advista Finance Tbk.",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "DIVA",
+    "name": "Distribusi Voucher Nusantara T",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "LUCK",
+    "name": "Sentral Mitra Informatika Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "URBN",
+    "name": "Urban Jakarta Propertindo Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SOTS",
+    "name": "Satria Mega Kencana Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "AMAN",
+    "name": "Makmur Berkah Amanda Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CARE",
+    "name": "Metro Healthcare Indonesia Tbk",
+    "is_ambiguous": true,
+    "aliases": []
+  },
+  {
+    "ticker": "SAMF",
+    "name": "Saraswanti Anugerah Makmur Tbk",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "SBAT",
+    "name": "Sejahtera Bintang Abadi Textil",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "KBAG",
+    "name": "Karya Bersama Anugerah Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "CBMF",
+    "name": "Cahaya Bintang Medan Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  },
+  {
+    "ticker": "RONY",
+    "name": "Aesler Grup Internasional Tbk.",
+    "is_ambiguous": false,
+    "aliases": []
+  }
+]
