@@ -196,7 +196,45 @@ async def universal_dispatcher(request: Request, full_path: str):
     if "refresh" in p or "cron" in p or "poll" in p:
         return await cron_poll()
 
-    if "health" in p:
+    # If path is api/index.py (due to Vercel rewrite), read real intended path from headers or query!
+    matched_path = request.headers.get("x-matched-path", "") or request.headers.get("x-now-route-matches", "")
+    full_url = str(request.url).lower()
+    check_str = f"{p} {matched_path.lower()} {full_url}"
+
+    if "ticker" in check_str:
+        return await get_market_ticker()
+
+    if "trending" in check_str:
+        limit = int(request.query_params.get("limit", 8))
+        return await get_trending(limit=limit)
+
+    m = re.search(r'news/(\d+)', check_str)
+    if m:
+        article_id = int(m.group(1))
+        return await get_single_news(article_id)
+
+    if "stream" in check_str:
+        return await news_stream(request)
+
+    if "news" in check_str:
+        limit = int(request.query_params.get("limit", 50))
+        offset = int(request.query_params.get("offset", 0))
+        ticker = request.query_params.get("ticker")
+        sentiment = request.query_params.get("sentiment")
+        category = request.query_params.get("category")
+        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
+
+    if "refresh" in check_str or "cron" in check_str or "poll" in check_str:
+        return await cron_poll()
+
+    if "health" in check_str:
         return await health_check()
 
-    return {"status": "ok", "message": "Emitara Universal Dispatcher Live", "path": full_path}
+    return {
+        "status": "ok",
+        "message": "Emitara Dispatcher Live",
+        "path": full_path,
+        "matched_path": matched_path,
+        "url": str(request.url),
+        "headers": dict(request.headers)
+    }
