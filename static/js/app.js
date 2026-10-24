@@ -31,20 +31,19 @@
   const btnLoadMore = document.getElementById('btnLoadMore');
   const loadMoreContainer = document.getElementById('loadMoreContainer');
   
-  // Header and Switchers
-  const btnModeNews = document.getElementById('btnModeNews');
-  const btnModeAudio = document.getElementById('btnModeAudio');
+  // Header and Action Controls
   const btnWatchlistTab = document.getElementById('btnWatchlistTab');
   const btnBookmarksTab = document.getElementById('btnBookmarksTab');
   const btnAudio = document.getElementById('btnAudio');
   const btnRefresh = document.getElementById('btnRefresh');
   const watchlistCountEl = document.getElementById('watchlistCount');
   const bookmarkCountEl = document.getElementById('bookmarkCount');
+  const activeFilterPillContainer = document.getElementById('activeFilterPillContainer');
+  const btnFilterWatchlist = document.getElementById('btnFilterWatchlist');
 
-  // Reader Modal
+  // Reader Modal Controls
   const readerOverlay = document.getElementById('readerOverlay');
   const btnCloseReader = document.getElementById('btnCloseReader');
-  const btnReaderAudioPlay = document.getElementById('btnReaderAudioPlay');
   const readerTitle = document.getElementById('readerTitle');
   const readerMeta = document.getElementById('readerMeta');
   const readerAuthor = document.getElementById('readerAuthor');
@@ -53,20 +52,9 @@
   const readerTickers = document.getElementById('readerTickers');
   const readerRelated = document.getElementById('readerRelated');
 
-  // Audio Player Sheet
-  const audioPlayerModal = document.getElementById('audioPlayerModal');
-  const btnCloseAudioSheet = document.getElementById('btnCloseAudioSheet');
-  const audioPlayerTitle = document.getElementById('audioPlayerTitle');
-  const audioPlayerSource = document.getElementById('audioPlayerSource');
-  const audioWaveform = document.getElementById('audioWaveform');
-  const btnAudioTogglePlay = document.getElementById('btnAudioTogglePlay');
-  const audioPlayIcon = document.getElementById('audioPlayIcon');
-  const audioCurrentTime = document.getElementById('audioCurrentTime');
-  const audioTotalDuration = document.getElementById('audioTotalDuration');
-
   // Mobile Dock Buttons
   const dockBtnHome = document.getElementById('dockBtnHome');
-  const dockBtnAudio = document.getElementById('dockBtnAudio');
+  const dockBtnMarkets = document.getElementById('dockBtnMarkets');
   const dockBtnWatchlist = document.getElementById('dockBtnWatchlist');
   const dockBtnSaved = document.getElementById('dockBtnSaved');
 
@@ -201,6 +189,52 @@
     const filtered = state.articles.filter(passesFilter);
     feedCounter.textContent = `${filtered.length} Warta`;
 
+    // Update Active Filter Badges Container
+    if (activeFilterPillContainer) {
+      let badgesHtml = '';
+      if (state.activeTicker) {
+        badgesHtml += `
+          <span class="active-filter-badge">
+            <span>Emiten: ${escapeHtml(state.activeTicker)}</span>
+            <button type="button" class="btn-clear-active-badge" id="btnClearTickerPill" aria-label="Hapus filter emiten">&times;</button>
+          </span>
+        `;
+      }
+      if (state.viewMode === 'WATCHLIST') {
+        badgesHtml += `
+          <span class="active-filter-badge">
+            <span>Watchlist</span>
+            <button type="button" class="btn-clear-active-badge" id="btnClearModePill" aria-label="Kembali ke semua warta">&times;</button>
+          </span>
+        `;
+      } else if (state.viewMode === 'BOOKMARKS') {
+        badgesHtml += `
+          <span class="active-filter-badge">
+            <span>Tersimpan</span>
+            <button type="button" class="btn-clear-active-badge" id="btnClearModePill" aria-label="Kembali ke semua warta">&times;</button>
+          </span>
+        `;
+      }
+      activeFilterPillContainer.innerHTML = badgesHtml;
+
+      const btnClearTicker = document.getElementById('btnClearTickerPill');
+      if (btnClearTicker) {
+        btnClearTicker.addEventListener('click', () => {
+          state.activeTicker = null;
+          renderPortal(true);
+        });
+      }
+
+      const btnClearMode = document.getElementById('btnClearModePill');
+      if (btnClearMode) {
+        btnClearMode.addEventListener('click', () => {
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          renderPortal(true);
+        });
+      }
+    }
+
     if (feedSectionTitle) {
       if (state.viewMode === 'AUDIO') feedSectionTitle.textContent = 'Audio Podcasts & Ringkasan Suara';
       else if (state.viewMode === 'WATCHLIST') feedSectionTitle.textContent = 'Warta Watchlist Saham Anda';
@@ -323,12 +357,6 @@
         </div>
       `;
 
-      if (btnReaderAudioPlay) {
-        btnReaderAudioPlay.onclick = () => {
-          startAudioPlayback(article);
-        };
-      }
-
       if (article.image_url) {
         readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;">`;
       }
@@ -432,7 +460,7 @@
       const itemsHtml = quotes.map(q => {
         let deltaClass = q.is_up ? 'up' : q.is_down ? 'down' : '';
         return `
-          <span class="ticker-strip-item">
+          <span class="ticker-strip-item ticker-tape-click" data-ticker="${escapeHtml(q.symbol)}" role="button" tabindex="0" title="Klik untuk filter warta ${escapeHtml(q.symbol)}">
             <span class="sym">${escapeHtml(q.symbol)}</span>
             <span class="price">${escapeHtml(q.price)}</span>
             <span class="${deltaClass}">${escapeHtml(q.change_pct)}</span>
@@ -444,6 +472,16 @@
         <div class="ticker-strip-group">${itemsHtml}</div>
         <div class="ticker-strip-group" aria-hidden="true">${itemsHtml}</div>
       `;
+
+      tickerMove.querySelectorAll('.ticker-tape-click').forEach(tapeItem => {
+        tapeItem.addEventListener('click', () => {
+          const t = tapeItem.dataset.ticker;
+          state.activeTicker = (t === 'IHSG' ? null : t);
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          renderPortal(true);
+        });
+      });
 
       // Populate Bloomberg Mega Menu Top Securities grid
       const megaGrid = document.getElementById('megaSecuritiesGrid');
@@ -636,13 +674,11 @@
   }
 
   function updateModeButtons() {
-    if (btnModeNews) btnModeNews.classList.toggle('active', state.viewMode === 'ALL');
-    if (btnModeAudio) btnModeAudio.classList.toggle('active', state.viewMode === 'AUDIO');
     if (btnWatchlistTab) btnWatchlistTab.classList.toggle('active', state.viewMode === 'WATCHLIST');
     if (btnBookmarksTab) btnBookmarksTab.classList.toggle('active', state.viewMode === 'BOOKMARKS');
+    if (btnFilterWatchlist) btnFilterWatchlist.classList.toggle('active', state.viewMode === 'WATCHLIST');
 
     if (dockBtnHome) dockBtnHome.classList.toggle('active', state.viewMode === 'ALL');
-    if (dockBtnAudio) dockBtnAudio.classList.toggle('active', state.viewMode === 'AUDIO');
     if (dockBtnWatchlist) dockBtnWatchlist.classList.toggle('active', state.viewMode === 'WATCHLIST');
     if (dockBtnSaved) dockBtnSaved.classList.toggle('active', state.viewMode === 'BOOKMARKS');
   }
@@ -698,21 +734,6 @@
   }
 
   // Listeners
-  if (btnModeNews) {
-    btnModeNews.addEventListener('click', () => {
-      state.viewMode = 'ALL';
-      updateModeButtons();
-      renderPortal(true);
-    });
-  }
-
-  if (btnModeAudio) {
-    btnModeAudio.addEventListener('click', () => {
-      state.viewMode = 'AUDIO';
-      updateModeButtons();
-      renderPortal(true);
-    });
-  }
 
   if (btnWatchlistTab) {
     btnWatchlistTab.addEventListener('click', () => {
@@ -734,7 +755,7 @@
 
   // Mobile Dock Controls
   if (dockBtnHome) dockBtnHome.addEventListener('click', () => { state.viewMode = 'ALL'; updateModeButtons(); renderPortal(true); });
-  if (dockBtnAudio) dockBtnAudio.addEventListener('click', () => { state.viewMode = 'AUDIO'; updateModeButtons(); renderPortal(true); });
+  
   if (dockBtnWatchlist) dockBtnWatchlist.addEventListener('click', () => { state.viewMode = 'WATCHLIST'; updateModeButtons(); renderPortal(true); });
   if (dockBtnSaved) dockBtnSaved.addEventListener('click', () => { state.viewMode = 'BOOKMARKS'; updateModeButtons(); renderPortal(true); });
 
@@ -744,6 +765,13 @@
       catPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       state.activeCategory = pill.dataset.category;
+      state.viewMode = 'ALL';
+      state.activeTicker = null;
+      if (pill.dataset.category === 'ALL') {
+        state.searchQuery = '';
+        if (searchInput) searchInput.value = '';
+      }
+      updateModeButtons();
       renderPortal(true);
     });
   });
@@ -834,6 +862,77 @@
         btnRefresh.textContent = 'Sinkron';
         btnRefresh.disabled = false;
       }
+    });
+  }
+
+  
+  // Filter Watchlist button inside sidebar card
+  if (btnFilterWatchlist) {
+    btnFilterWatchlist.addEventListener('click', () => {
+      state.viewMode = state.viewMode === 'WATCHLIST' ? 'ALL' : 'WATCHLIST';
+      state.activeTicker = null;
+      updateModeButtons();
+      renderPortal(true);
+    });
+  }
+
+  // Sentiment Barometer Legend Click Filters
+  const legBull = document.getElementById('legendBullish');
+  const legNeut = document.getElementById('legendNeutral');
+  const legBear = document.getElementById('legendBearish');
+
+  if (legBull) {
+    legBull.addEventListener('click', () => {
+      state.activeSentiment = 'BULLISH';
+      sentimentBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.sentiment === 'BULLISH');
+        b.classList.toggle('bullish-active', b.dataset.sentiment === 'BULLISH');
+        b.classList.remove('bearish-active');
+      });
+      renderPortal(true);
+    });
+  }
+
+  if (legNeut) {
+    legNeut.addEventListener('click', () => {
+      state.activeSentiment = 'NEUTRAL';
+      sentimentBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.sentiment === 'NEUTRAL');
+        b.classList.remove('bullish-active', 'bearish-active');
+      });
+      renderPortal(true);
+    });
+  }
+
+  if (legBear) {
+    legBear.addEventListener('click', () => {
+      state.activeSentiment = 'BEARISH';
+      sentimentBtns.forEach(b => {
+        b.classList.toggle('active', b.dataset.sentiment === 'BEARISH');
+        b.classList.toggle('bearish-active', b.dataset.sentiment === 'BEARISH');
+        b.classList.remove('bullish-active');
+      });
+      renderPortal(true);
+    });
+  }
+
+  // Corporate Action Calendar Clicks
+  document.querySelectorAll('.calendar-event-item').forEach(calItem => {
+    calItem.addEventListener('click', () => {
+      const t = calItem.dataset.ticker;
+      if (t) {
+        state.activeTicker = t;
+        state.viewMode = 'ALL';
+        updateModeButtons();
+        renderPortal(true);
+      }
+    });
+  });
+
+  // Mobile Dock Markets Button
+  if (dockBtnMarkets) {
+    dockBtnMarkets.addEventListener('click', () => {
+      toggleMegaMenu();
     });
   }
 

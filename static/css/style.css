@@ -989,3 +989,54 @@ a:focus-visible {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+
+/* Active Filter Pill Badge & Interactive Ticker Strip */
+.active-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background-color: var(--color-black);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  animation: badgePop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes badgePop {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.btn-clear-active-badge {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: opacity 0.15s ease;
+}
+
+.btn-clear-active-badge:hover {
+  opacity: 0.7;
+}
+
+.ticker-strip-item {
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.ticker-strip-item:hover {
+  opacity: 0.7;
+  transform: translateY(-1px);
+}
