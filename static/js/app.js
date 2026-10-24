@@ -1033,6 +1033,10 @@
   function updateBadgeCounts() {
     if (watchlistCountEl) watchlistCountEl.textContent = state.watchlist.length;
     if (bookmarkCountEl) bookmarkCountEl.textContent = state.bookmarks.length;
+    const mobW = document.getElementById('mobileWatchlistCount');
+    const mobB = document.getElementById('mobileBookmarkCount');
+    if (mobW) mobW.textContent = state.watchlist.length;
+    if (mobB) mobB.textContent = state.bookmarks.length;
   }
 
   function renderWatchlistChips() {
@@ -1357,6 +1361,125 @@
         renderPortal();
       }
     });
+  });
+
+
+  // Mobile Drawer Menu Controller
+  const btnMobileMenuToggle = document.getElementById('btnMobileMenuToggle');
+  const btnCloseDrawer = document.getElementById('btnCloseDrawer');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+  const btnMobileWatchlist = document.getElementById('btnMobileWatchlist');
+  const btnMobileBookmarks = document.getElementById('btnMobileBookmarks');
+  const btnMobileAudio = document.getElementById('btnMobileAudio');
+  const btnMobileRefresh = document.getElementById('btnMobileRefresh');
+  const mobileAudioStatus = document.getElementById('mobileAudioStatus');
+
+  function openMobileDrawer() {
+    if (!mobileDrawer || !mobileDrawerOverlay) return;
+    mobileDrawerOverlay.classList.add('open');
+    mobileDrawer.classList.add('open');
+    if (btnMobileMenuToggle) btnMobileMenuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    updateMobileDrawerUI();
+  }
+
+  function closeMobileDrawer() {
+    if (!mobileDrawer || !mobileDrawerOverlay) return;
+    mobileDrawer.classList.remove('open');
+    mobileDrawerOverlay.classList.remove('open');
+    if (btnMobileMenuToggle) btnMobileMenuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  function updateMobileDrawerUI() {
+    if (btnMobileWatchlist) btnMobileWatchlist.classList.toggle('active', state.viewMode === 'WATCHLIST');
+    if (btnMobileBookmarks) btnMobileBookmarks.classList.toggle('active', state.viewMode === 'BOOKMARKS');
+    if (mobileAudioStatus) {
+      mobileAudioStatus.textContent = window.audioAlert.enabled ? 'Aktif' : 'Mati';
+      mobileAudioStatus.style.color = window.audioAlert.enabled ? '#1E5128' : 'var(--color-text-muted)';
+    }
+    document.querySelectorAll('.mobile-category-btn').forEach(b => {
+      b.classList.toggle('active', b.dataset.category === state.activeCategory);
+    });
+  }
+
+  if (btnMobileMenuToggle) {
+    btnMobileMenuToggle.addEventListener('click', openMobileDrawer);
+  }
+
+  if (btnCloseDrawer) {
+    btnCloseDrawer.addEventListener('click', closeMobileDrawer);
+  }
+
+  if (mobileDrawerOverlay) {
+    mobileDrawerOverlay.addEventListener('click', closeMobileDrawer);
+  }
+
+  if (btnMobileWatchlist) {
+    btnMobileWatchlist.addEventListener('click', () => {
+      closeMobileDrawer();
+      state.viewMode = state.viewMode === 'WATCHLIST' ? 'ALL' : 'WATCHLIST';
+      state.activeTicker = null;
+      updateViewModeButtons();
+      renderPortal(true);
+    });
+  }
+
+  if (btnMobileBookmarks) {
+    btnMobileBookmarks.addEventListener('click', () => {
+      closeMobileDrawer();
+      state.viewMode = state.viewMode === 'BOOKMARKS' ? 'ALL' : 'BOOKMARKS';
+      state.activeTicker = null;
+      updateViewModeButtons();
+      renderPortal(true);
+    });
+  }
+
+  if (btnMobileAudio) {
+    btnMobileAudio.addEventListener('click', () => {
+      const enabled = window.audioAlert.toggle();
+      if (btnAudio) btnAudio.classList.toggle('active', enabled);
+      updateMobileDrawerUI();
+    });
+  }
+
+  if (btnMobileRefresh) {
+    btnMobileRefresh.addEventListener('click', async () => {
+      closeMobileDrawer();
+      if (btnRefresh) {
+        btnRefresh.textContent = 'Sinkronisasi...';
+        btnRefresh.disabled = true;
+      }
+      try {
+        await fetch('/api/refresh', { method: 'POST' });
+        await loadNews();
+        await loadTrending();
+      } finally {
+        if (btnRefresh) {
+          btnRefresh.textContent = 'Sinkronkan';
+          btnRefresh.disabled = false;
+        }
+      }
+    });
+  }
+
+  document.querySelectorAll('.mobile-category-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      closeMobileDrawer();
+      state.activeCategory = btn.dataset.category;
+      state.viewMode = 'ALL';
+      state.activeTicker = null;
+      updateTabStyles();
+      renderPortal(true);
+    });
+  });
+
+  // Close drawer on Escape
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer && mobileDrawer.classList.contains('open')) {
+      closeMobileDrawer();
+    }
   });
 
 })();

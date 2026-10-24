@@ -23,8 +23,8 @@
           <span>&bull;</span>
           <span>Edisi Pasar Modal &amp; Investasi</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-
+        <!-- Desktop Actions (Visible >= 768px) -->
+        <div class="desktop-topbar-actions">
           <button type="button" class="btn-editorial-action" id="btnWatchlistTab" title="Lihat berita emiten yang Anda pantau">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -55,6 +55,13 @@
             <span>Sinkronkan</span>
           </button>
         </div>
+
+        <!-- Mobile Hamburger Button (< 768px) -->
+        <button type="button" class="btn-mobile-menu" id="btnMobileMenuToggle" aria-label="Buka menu navigasi" aria-expanded="false">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+        </button>
       </div>
 
       <div class="masthead-brand">
@@ -385,5 +392,84 @@
   <!-- Modular Scripts -->
   <script src="/static/js/audioAlert.js"></script>
   <script src="/static/js/app.js"></script>
+
+  <!-- Mobile Slide-out Drawer Menu -->
+  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
+  <aside id="mobileDrawer" class="mobile-drawer" aria-label="Menu Mobile Emitara">
+    <div class="drawer-header">
+      <span class="drawer-brand">EMITARA</span>
+      <button type="button" class="btn-close-drawer" id="btnCloseDrawer" aria-label="Tutup menu">&times;</button>
+    </div>
+    
+    <div class="drawer-body">
+      <!-- Section 1: Pintasan Utama -->
+      <div>
+        <div class="drawer-section-title">Pintasan Fitur</div>
+        <div class="drawer-action-list">
+          <button type="button" class="btn-drawer-item" id="btnMobileWatchlist">
+            <div class="drawer-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span>Watchlist Saham</span>
+            </div>
+            <span class="nav-tab-badge" id="mobileWatchlistCount">0</span>
+          </button>
+
+          <button type="button" class="btn-drawer-item" id="btnMobileBookmarks">
+            <div class="drawer-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span>Warta Tersimpan</span>
+            </div>
+            <span class="nav-tab-badge" id="mobileBookmarkCount">0</span>
+          </button>
+
+          <button type="button" class="btn-drawer-item" id="btnMobileAudio">
+            <div class="drawer-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              <span>Audio Alert Berita</span>
+            </div>
+            <span style="font-size: 11px; font-weight: 700; color: var(--color-chestnut);" id="mobileAudioStatus">Mati</span>
+          </button>
+
+          <button type="button" class="btn-drawer-item" id="btnMobileRefresh">
+            <div class="drawer-item-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              <span>Sinkronisasi Instan</span>
+            </div>
+            <span style="font-size: 11px; color: var(--color-text-muted);">&rarr;</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 2: Rubrik Berita -->
+      <div>
+        <div class="drawer-section-title">Rubrik Sektor Pasar</div>
+        <div class="drawer-action-list">
+          <button type="button" class="btn-drawer-item mobile-category-btn active" data-category="ALL">
+            <span>Semua Warta</span>
+          </button>
+          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Finansial">
+            <span>Perbankan &amp; Finansial</span>
+          </button>
+          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Energi">
+            <span>Energi &amp; Komoditas</span>
+          </button>
+          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Konsumer">
+            <span>Konsumer &amp; Ritel</span>
+          </button>
+          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Teknologi">
+            <span>Teknologi &amp; Telekom</span>
+          </button>
+          <button type="button" class="btn-drawer-item mobile-category-btn" data-category="Makro">
+            <span>Makro &amp; Fiskal</span>
+          </button>
+        </div>
+      </div>
+
+      <div style="font-size: 11px; color: var(--color-text-muted); line-height: 1.5; border-top: 1px solid var(--color-border); padding-top: 14px;">
+        Emitara &bull; Portal Warta Pasar Modal Indonesia (IHSG). Data pasar diperbarui realtime.
+      </div>
+    </div>
+  </aside>
+
 </body>
 </html>
