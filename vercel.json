@@ -12,11 +12,5 @@
       "source": "/(.*)",
       "destination": "/static/index.html"
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/cron/poll",
-      "schedule": "*/10 * * * *"
-    }
   ]
 }
