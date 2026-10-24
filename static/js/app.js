@@ -612,38 +612,55 @@
 
   function renderWatchlistChips() {
     const c = document.getElementById('watchlistChips');
+    const suggestContainer = document.getElementById('suggestTickerButtons');
     if (!c) return;
+
     if (state.watchlist.length === 0) {
       c.innerHTML = '<span style="font-size: 11px; color: var(--color-text-muted);">Belum ada emiten dipantau.</span>';
-      return;
+    } else {
+      c.innerHTML = state.watchlist.map(t => `
+        <span class="watchlist-chip" data-ticker="${escapeHtml(t)}">
+          <span>${escapeHtml(t)}</span>
+          <span class="watchlist-chip-remove" data-rm="${escapeHtml(t)}" title="Hapus dari watchlist">&times;</span>
+        </span>
+      `).join('');
+
+      c.querySelectorAll('.watchlist-chip').forEach(chip => {
+        chip.addEventListener('click', (e) => {
+          if (e.target.classList.contains('watchlist-chip-remove')) return;
+          state.activeTicker = chip.dataset.ticker;
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          renderPortal(true);
+        });
+      });
+
+      c.querySelectorAll('.watchlist-chip-remove').forEach(rm => {
+        rm.addEventListener('click', (e) => {
+          e.stopPropagation();
+          state.watchlist = state.watchlist.filter(t => t !== rm.dataset.rm);
+          localStorage.setItem('emitara_watchlist', JSON.stringify(state.watchlist));
+          updateBadgeCounts();
+          renderWatchlistChips();
+          if (state.viewMode === 'WATCHLIST') renderPortal();
+        });
+      });
     }
-    c.innerHTML = state.watchlist.map(t => `
-      <span style="display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; background-color: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 11px; font-weight: 700; cursor: pointer;" data-ticker="${escapeHtml(t)}" class="w-chip">
-        <span>${escapeHtml(t)}</span>
-        <span style="color: var(--color-text-muted);" class="w-rm" data-rm="${escapeHtml(t)}">&times;</span>
-      </span>
-    `).join('');
 
-    c.querySelectorAll('.w-chip').forEach(chip => {
-      chip.addEventListener('click', (e) => {
-        if (e.target.classList.contains('w-rm')) return;
-        state.activeTicker = chip.dataset.ticker;
-        state.viewMode = 'ALL';
-        updateModeButtons();
-        renderPortal(true);
-      });
-    });
+    // Dynamic suggestions (excludes already watched stocks)
+    if (suggestContainer) {
+      const candidates = ['BBCA', 'BBRI', 'BMRI', 'TLKM', 'ASII', 'BREN', 'AMMN', 'ANTM', 'BRIS', 'ADRO'];
+      const unpicked = candidates.filter(sym => !state.watchlist.includes(sym)).slice(0, 4);
+      suggestContainer.innerHTML = unpicked.map(sym => `
+        <button type="button" class="btn-suggest-ticker" data-ticker="${escapeHtml(sym)}">+ ${escapeHtml(sym)}</button>
+      `).join('');
 
-    c.querySelectorAll('.w-rm').forEach(rm => {
-      rm.addEventListener('click', (e) => {
-        e.stopPropagation();
-        state.watchlist = state.watchlist.filter(t => t !== rm.dataset.rm);
-        localStorage.setItem('emitara_watchlist', JSON.stringify(state.watchlist));
-        updateBadgeCounts();
-        renderWatchlistChips();
-        if (state.viewMode === 'WATCHLIST') renderPortal();
+      suggestContainer.querySelectorAll('.btn-suggest-ticker').forEach(btn => {
+        btn.addEventListener('click', () => {
+          addWatchlistTicker(btn.dataset.ticker);
+        });
       });
-    });
+    }
   }
 
   function addWatchlistTicker(ticker) {
@@ -833,11 +850,7 @@
     });
   }
 
-  document.querySelectorAll('.btn-suggest-ticker').forEach(btn => {
-    btn.addEventListener('click', () => {
-      addWatchlistTicker(btn.dataset.ticker);
-    });
-  });
+
 
   // Audio Alert Toggle
   if (btnAudio) {

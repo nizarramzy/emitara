@@ -832,3 +832,64 @@ a:focus-visible {
     padding: 24px 20px;
   }
 }
+
+
+/* Watchlist Widget Enhancements */
+.watchlist-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.watchlist-chip:hover {
+  border-color: var(--color-black);
+  background-color: var(--color-surface-subtle);
+}
+
+.watchlist-chip-remove {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 2px;
+}
+
+.watchlist-chip-remove:hover {
+  color: var(--color-bearish-text);
+}
+
+.btn-suggest-ticker {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  padding: 3px 9px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.btn-suggest-ticker:hover {
+  background-color: var(--color-black);
+  color: #FFFFFF;
+  border-color: var(--color-black);
+}
+
+#btnAddWatchlist {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0 16px;
+}

@@ -146,12 +146,11 @@
           <button type="button" id="btnAddWatchlist" class="btn-header-clean" style="border-radius: var(--radius-sm); height: 34px; background-color: var(--color-black); color: #FFFFFF;">+ Tambah</button>
         </div>
         <div id="watchlistChips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;"></div>
-        <div style="font-size: 11px; color: var(--color-text-muted); display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
+        <div style="font-size: 11px; color: var(--color-text-muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
           <span>Saran:</span>
-          <button type="button" class="btn-suggest-ticker" data-ticker="BBCA">+ BBCA</button>
-          <button type="button" class="btn-suggest-ticker" data-ticker="BBRI">+ BBRI</button>
-          <button type="button" class="btn-suggest-ticker" data-ticker="BMRI">+ BMRI</button>
-          <button type="button" class="btn-suggest-ticker" data-ticker="TLKM">+ TLKM</button>
+          <div id="suggestTickerButtons" style="display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+            <!-- Dynamically populated without duplicates -->
+          </div>
         </div>
       </div>
 
