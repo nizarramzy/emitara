@@ -161,3 +161,42 @@ async def get_single_news(article_id: int):
 # Mount both with prefix /api and without prefix!
 app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
+
+
+# Universal fallback dispatcher to guarantee 100% path matching across all Vercel rewrites
+import re
+
+@app.api_route("/{full_path:path}", methods=["GET", "POST", "HEAD"])
+async def universal_dispatcher(request: Request, full_path: str):
+    p = full_path.strip("/").lower()
+
+    if "ticker" in p:
+        return await get_market_ticker()
+
+    if "trending" in p:
+        limit = int(request.query_params.get("limit", 8))
+        return await get_trending(limit=limit)
+
+    m = re.search(r'news/(\d+)', p)
+    if m:
+        article_id = int(m.group(1))
+        return await get_single_news(article_id)
+
+    if "stream" in p:
+        return await news_stream(request)
+
+    if "news" in p:
+        limit = int(request.query_params.get("limit", 50))
+        offset = int(request.query_params.get("offset", 0))
+        ticker = request.query_params.get("ticker")
+        sentiment = request.query_params.get("sentiment")
+        category = request.query_params.get("category")
+        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
+
+    if "refresh" in p or "cron" in p or "poll" in p:
+        return await cron_poll()
+
+    if "health" in p:
+        return await health_check()
+
+    return {"status": "ok", "message": "Emitara Universal Dispatcher Live", "path": full_path}
