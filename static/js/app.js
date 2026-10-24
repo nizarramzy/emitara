@@ -1376,19 +1376,25 @@
   const mobileAudioStatus = document.getElementById('mobileAudioStatus');
 
   function openMobileDrawer() {
-    if (!mobileDrawer || !mobileDrawerOverlay) return;
-    mobileDrawerOverlay.classList.add('open');
-    mobileDrawer.classList.add('open');
-    if (btnMobileMenuToggle) btnMobileMenuToggle.setAttribute('aria-expanded', 'true');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    const btn = document.getElementById('btnMobileMenuToggle');
+    if (!drawer || !overlay) return;
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     updateMobileDrawerUI();
   }
 
   function closeMobileDrawer() {
-    if (!mobileDrawer || !mobileDrawerOverlay) return;
-    mobileDrawer.classList.remove('open');
-    mobileDrawerOverlay.classList.remove('open');
-    if (btnMobileMenuToggle) btnMobileMenuToggle.setAttribute('aria-expanded', 'false');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    const btn = document.getElementById('btnMobileMenuToggle');
+    if (!drawer || !overlay) return;
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
 

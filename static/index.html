@@ -57,7 +57,7 @@
         </div>
 
         <!-- Mobile Hamburger Button (< 768px) -->
-        <button type="button" class="btn-mobile-menu" id="btnMobileMenuToggle" aria-label="Buka menu navigasi" aria-expanded="false">
+        <button type="button" class="btn-mobile-menu" id="btnMobileMenuToggle" onclick="window.openMobileDrawer && window.openMobileDrawer()" aria-label="Buka menu navigasi" aria-expanded="false">
           <span class="burger-bar"></span>
           <span class="burger-bar"></span>
           <span class="burger-bar"></span>
@@ -390,9 +390,6 @@
   </div>
 
   <!-- Modular Scripts -->
-  <script src="/static/js/audioAlert.js"></script>
-  <script src="/static/js/app.js"></script>
-
   <!-- Mobile Slide-out Drawer Menu -->
   <div id="mobileDrawerOverlay" class="mobile-drawer-overlay"></div>
   <aside id="mobileDrawer" class="mobile-drawer" aria-label="Menu Mobile Emitara">
@@ -471,5 +468,9 @@
     </div>
   </aside>
 
+  <script src="/static/js/audioAlert.js"></script>
+  <script src="/static/js/app.js"></script>
+
+  
 </body>
 </html>

@@ -2056,3 +2056,13 @@ a:focus-visible {
     line-height: 1.35 !important;
   }
 }
+
+
+.btn-mobile-menu * {
+  pointer-events: none;
+}
+
+.btn-mobile-menu {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
