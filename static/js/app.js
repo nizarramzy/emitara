@@ -20,8 +20,7 @@
   };
 
   // DOM Elements
-  const highlightsSection = document.getElementById('highlightsSection');
-  const highlightsCarousel = document.getElementById('highlightsCarousel');
+  // Bloomberg Packages Container initialized dynamically
   const newsList = document.getElementById('newsList');
   const feedCounter = document.getElementById('feedCounter');
   const feedSectionTitle = document.getElementById('feedSectionTitle');
@@ -59,6 +58,43 @@
   const dockBtnSaved = document.getElementById('dockBtnSaved');
 
   // Helpers
+    // Curated rotating financial photography for articles lacking an official image
+  const curatedStockImages = [
+    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1444653614773-995cb1ef9028?auto=format&fit=crop&w=600&q=80'
+  ];
+
+  const seenImagesInSession = new Set();
+
+    function getFallbackImage(seed = 0) {
+    return curatedStockImages[Math.abs(seed) % curatedStockImages.length];
+  }
+
+  function getArticleImage(item, idx = 0) {
+    // Check if item has a unique real news photo (not generic stock candlestick)
+    const raw = item && item.image_url ? item.image_url : '';
+    const isGeneric = !raw || 
+      raw.includes('placeholder') || 
+      raw.includes('default') || 
+      raw.includes('6c8cb0b4') || // Detik's repeated default chart
+      raw.includes('grafik') || 
+      seenImagesInSession.has(raw);
+
+    if (!isGeneric && raw.startsWith('http')) {
+      seenImagesInSession.add(raw);
+      return raw;
+    }
+
+    // Assign strictly rotating high-resolution broadsheet photo
+    return curatedStockImages[Math.abs(idx) % curatedStockImages.length];
+  }
+
   function formatRelativeTime(isoString) {
     if (!isoString) return '';
     try {
@@ -77,9 +113,25 @@
     }
   }
 
+    function cleanHeadline(title) {
+    if (!title) return '';
+    // Unescape common HTML entities
+    let t = title
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#039;/g, "'")
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>');
+
+    // Strip sensational Indonesian tabloid clickbait exclamation prefixes
+    t = t.replace(/^(?:Wow|Cek|Yuk|Simak|Waduh|Hore|Duh|Ternyata|Gokil|Heboh|Astaga)!\s*/i, '');
+    return t.trim();
+  }
+
   function escapeHtml(str) {
     if (!str) return '';
-    return str
+    let clean = cleanHeadline(str);
+    return clean
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
@@ -133,6 +185,11 @@
       }
     }
 
+    // Filter out consumer discount promos to keep institutional market tone
+    if (/transmart|full day sale|promo diskon|voucher belanja|katalog promo/i.test(item.title)) {
+      return false;
+    }
+
     if (state.searchQuery) {
       const q = state.searchQuery.toLowerCase();
       const text = `${item.title} ${item.summary || ''} ${item.source} ${(item.tickers || []).join(' ')}`.toLowerCase();
@@ -142,42 +199,100 @@
     return true;
   }
 
-  // Render Highlights Carousel (Top 3 Cards)
-  function renderHighlights(items) {
-    if (!highlightsCarousel || !highlightsSection) return;
+  // Render Bloomberg Asia Editorial Packages (Lead Story + 3-Up Matrix + Text Dispatches)
+  function renderBloombergAsiaPackages(items) {
+    const container = document.getElementById('bloombergPackagesContainer');
+    if (!container) return;
+
     if (state.viewMode !== 'ALL' || state.activeCategory !== 'ALL' || state.searchQuery || state.activeTicker || state.activeSentiment !== 'ALL') {
-      highlightsSection.style.display = 'none';
+      container.style.display = 'none';
       return;
     }
 
-    highlightsSection.style.display = 'block';
-    const topStories = items.slice(0, 3);
-    if (topStories.length === 0) {
-      highlightsSection.style.display = 'none';
+    if (items.length < 4) {
+      container.style.display = 'none';
       return;
     }
 
-    highlightsCarousel.innerHTML = topStories.map(story => {
-      const thumb = story.image_url || 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80';
-      return `
-        <article class="highlight-card" data-id="${story.id}">
-          <img src="${escapeHtml(thumb)}" alt="${escapeHtml(story.title)}" class="highlight-card-img" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80'">
-          <div class="highlight-card-overlay">
-            <div class="highlight-tag-row">
-              <span class="highlight-tag">${escapeHtml(story.source)}</span>
-              <span style="font-size: 10px; font-family: var(--font-mono);">${formatRelativeTime(story.published_at)}</span>
-            </div>
-            <h3 class="highlight-title">${escapeHtml(story.title)}</h3>
-            <div class="highlight-meta">
-              <span>${estimateReadTime(story.summary)}</span>
-              <span style="font-weight: 700;">Baca &rarr;</span>
+    container.style.display = 'block';
+
+    // 1. Lead Story Package (Item 0)
+    const lead = items[0];
+    const leadImg = getArticleImage(lead, 0);
+    const leadTickers = (lead.tickers || []).map(t => `<span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 2px 6px; background-color: var(--color-surface-subtle); border-radius: var(--radius-xs);">${escapeHtml(t)}</span>`).join('');
+
+    const leadHtml = `
+      <article class="bloomberg-lead-package" data-id="${lead.id}">
+        <div class="lead-text-side">
+          <div>
+            <div class="lead-kicker">The Big Take &bull; ${escapeHtml(lead.source)}</div>
+            <h1 class="lead-headline">${escapeHtml(lead.title)}</h1>
+            ${lead.summary ? `<p class="lead-summary">${escapeHtml(lead.summary)}</p>` : ''}
+          </div>
+          <div>
+            <div style="display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap;">${leadTickers}</div>
+            <div class="lead-byline-row">
+              <span>Oleh: <strong style="color: var(--color-text-primary);">${escapeHtml(lead.author || 'Tim Redaksi')}</strong></span>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-family: var(--font-mono);">${formatRelativeTime(lead.published_at)}</span>
+                <span style="font-weight: 700; color: var(--color-black);">Baca Naskah &rarr;</span>
+              </div>
             </div>
           </div>
-        </article>
-      `;
-    }).join('');
+        </div>
+        <div class="lead-media-side">
+          <img src="${escapeHtml(leadImg)}" alt="${escapeHtml(lead.title)}" class="lead-media-img" loading="eager" onerror="this.onerror=null; this.src='${getFallbackImage(lead.id || 1)}';">
+        </div>
+      </article>
+    `;
 
-    highlightsCarousel.querySelectorAll('.highlight-card').forEach(card => {
+    // 2. 3-Up Matrix (Items 1, 2, 3)
+    const matrixStories = items.slice(1, 4);
+    const kickers3Up = ['Analisis Pasar', 'Aksi Emiten', 'Sorotan Sektor'];
+
+    const matrixHtml = `
+      <div class="matrix-3up-grid">
+        ${matrixStories.map((story, i) => {
+          const thumb = getArticleImage(story, i + 1);
+          return `
+            <article class="matrix-card" data-id="${story.id}">
+              <div class="matrix-media">
+                <img src="${escapeHtml(thumb)}" alt="${escapeHtml(story.title)}" class="matrix-media-img" loading="lazy" onerror="this.onerror=null; this.src='${getFallbackImage(story.id || i + 3)}';">
+              </div>
+              <div class="matrix-kicker">${kickers3Up[i % kickers3Up.length]} &bull; ${escapeHtml(story.source)}</div>
+              <h3 class="matrix-headline">${escapeHtml(story.title)}</h3>
+              <div class="matrix-meta">
+                <span>${estimateReadTime(story.summary)}</span>
+                <span style="font-family: var(--font-mono);">${formatRelativeTime(story.published_at)}</span>
+              </div>
+            </article>
+          `;
+        }).join('')}
+      </div>
+    `;
+
+    // 3. Text Dispatch Row (Items 4, 5, 6)
+    const dispatchStories = items.slice(4, 7);
+    const kickersDispatch = ['Dispatch Khusus', 'Laporan Finansial', 'Opini Analis'];
+
+    const dispatchHtml = dispatchStories.length >= 2 ? `
+      <div class="dispatch-text-grid">
+        ${dispatchStories.map((dStory, i) => `
+          <div class="dispatch-col" data-id="${dStory.id}">
+            <div class="dispatch-kicker">${kickersDispatch[i % kickersDispatch.length]}</div>
+            <h4 class="dispatch-headline">${escapeHtml(dStory.title)}</h4>
+            ${dStory.summary ? `<p class="dispatch-excerpt">${escapeHtml(dStory.summary)}</p>` : ''}
+            <div style="font-size: 11px; font-family: var(--font-mono); color: var(--color-text-muted); margin-top: 6px;">
+              ${escapeHtml(dStory.source)} &bull; ${formatRelativeTime(dStory.published_at)}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    ` : '';
+
+    container.innerHTML = leadHtml + matrixHtml + dispatchHtml;
+
+    container.querySelectorAll('article, .dispatch-col').forEach(card => {
       card.addEventListener('click', () => {
         openReader(card.dataset.id);
       });
@@ -186,6 +301,7 @@
 
   // Render Primary Article Flow List (2-Column Media Flow Style)
   function renderPortal(scrollToTop = false) {
+    seenImagesInSession.clear();
     const filtered = state.articles.filter(passesFilter);
     feedCounter.textContent = `${filtered.length} Warta`;
 
@@ -255,19 +371,67 @@
       return;
     }
 
-    // Render Highlights
-    renderHighlights(filtered);
+    // Render Bloomberg Asia Packages (Lead + 3-Up Matrix + Text Dispatches)
+    renderBloombergAsiaPackages(filtered);
 
-    // Render Article List Items
     newsList.innerHTML = '';
-    const itemsToRender = (highlightsSection && highlightsSection.style.display !== 'none') ? filtered.slice(3) : filtered;
+    const packageContainer = document.getElementById('bloombergPackagesContainer');
+    const isPackageActive = packageContainer && packageContainer.style.display !== 'none';
 
-    itemsToRender.forEach(item => {
+    // Dissect items cleanly with ZERO duplication:
+    // Items 0..6 belong to Bloomberg Top Spread (Lead + 3-Up Matrix + Dispatches)
+    // Items 7..9 belong to Dark Breakout Section
+    // Items 10..N belong to Chronological Wire List
+    let wireItems = [];
+    let breakoutCandidate = null;
+    let breakoutSides = [];
+
+    if (isPackageActive && filtered.length >= 10) {
+      breakoutCandidate = filtered[7];
+      breakoutSides = [filtered[8], filtered[9]];
+      wireItems = filtered.slice(10);
+    } else if (isPackageActive) {
+      wireItems = filtered.slice(7);
+    } else {
+      wireItems = filtered;
+    }
+
+    // Render wire items, inserting Dark Breakout after 4 wire items without any duplication!
+    wireItems.forEach((item, index) => {
+      if (isPackageActive && index === 4 && breakoutCandidate && breakoutSides.length >= 2) {
+        const darkBreakout = document.createElement('section');
+        darkBreakout.className = 'dark-breakout-module';
+        darkBreakout.innerHTML = `
+          <div class="breakout-featured" data-id="${breakoutCandidate.id}">
+            <div>
+              <div class="breakout-kicker">Market Intelligence &bull; ${escapeHtml(breakoutCandidate.source)}</div>
+              <h2 class="breakout-title">${escapeHtml(breakoutCandidate.title)}</h2>
+              ${breakoutCandidate.summary ? `<p class="breakout-desc">${escapeHtml(breakoutCandidate.summary)}</p>` : ''}
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #9CA3AF;">
+              <span>${estimateReadTime(breakoutCandidate.summary)} baca</span>
+              <span style="color: #6EE7B7; font-weight: 700;">Pelajari Riset &rarr;</span>
+            </div>
+          </div>
+          <div class="breakout-side-stack">
+            ${breakoutSides.map(sc => `
+              <div class="breakout-mini-item" data-id="${sc.id}">
+                <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 4px; text-transform: uppercase;">${escapeHtml(sc.source)} &bull; ${formatRelativeTime(sc.published_at)}</div>
+                <h4 class="breakout-mini-title">${escapeHtml(sc.title)}</h4>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        darkBreakout.querySelectorAll('[data-id]').forEach(el => {
+          el.addEventListener('click', () => openReader(el.dataset.id));
+        });
+        newsList.appendChild(darkBreakout);
+      }
       const row = document.createElement('article');
       row.className = 'article-flow-item';
       row.dataset.id = item.id;
 
-      const thumb = item.image_url || 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=400&q=80';
+      const thumb = getArticleImage(item, index + 10);
       const sentimentClass = (item.sentiment || 'NEUTRAL').toLowerCase();
       const tickersHtml = (item.tickers || []).slice(0, 3).map(t => `<span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 2px 6px; background-color: var(--color-surface-subtle); border-radius: var(--radius-xs); color: var(--color-text-primary);">${escapeHtml(t)}</span>`).join('');
       const isBookmarked = state.bookmarks.some(b => b.id === item.id);
@@ -275,7 +439,7 @@
 
       row.innerHTML = `
         <div class="flow-thumb-container">
-          <img src="${escapeHtml(thumb)}" alt="${escapeHtml(item.title)}" class="flow-thumb-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=400&q=80'">
+          <img src="${escapeHtml(thumb)}" alt="${escapeHtml(item.title)}" class="flow-thumb-img" loading="lazy" onerror="this.onerror=null; this.src='${getFallbackImage(index + 3)}';">
         </div>
         <div class="flow-content-side">
           <div class="flow-top-meta">

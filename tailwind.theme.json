@@ -82,10 +82,10 @@
         ]
       },
       "borderRadius": {
-        "sm": "6px",
-        "md": "10px",
-        "lg": "16px",
-        "xl": "20px",
+        "sm": "4px",
+        "md": "8px",
+        "lg": "14px",
+        "xl": "18px",
         "pill": "9999px"
       },
       "spacing": {

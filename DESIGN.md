@@ -1,7 +1,7 @@
 ---
 version: alpha
-name: Emitara Media Flow
-description: Contemporary editorial media and market news system for IDX equities, blending high-contrast monochrome minimalism with tactile typography.
+name: Emitara Bloomberg Asia Editorial
+description: Architectural editorial layout modeled after Bloomberg Asia, featuring an asymmetric lead story package, 3-up kicker matrices, text dispatches, and live market intelligence.
 colors:
   primary: "#000000"
   secondary: "#111111"
@@ -53,10 +53,10 @@ typography:
     fontSize: 0.6875rem
     fontWeight: 500
 rounded:
-  sm: 6px
-  md: 10px
-  lg: 16px
-  xl: 20px
+  sm: 4px
+  md: 8px
+  lg: 14px
+  xl: 18px
   pill: 9999px
 spacing:
   xs: 4px
@@ -70,11 +70,21 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 24px
-  card-highlight:
-    backgroundColor: "{colors.canvas-subtle}"
+  card-hero-split:
+    backgroundColor: "{colors.canvas}"
     textColor: "{colors.text-primary}"
-    rounded: "{rounded.lg}"
+    rounded: "{rounded.md}"
+    padding: 24px
+  card-3up-matrix:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.sm}"
     padding: 16px
+  card-dispatch:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-primary}"
+    rounded: "{rounded.sm}"
+    padding: 12px
   card-news-row:
     backgroundColor: "{colors.canvas-card}"
     textColor: "{colors.text-primary}"
@@ -85,26 +95,11 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.xl}"
     padding: 36px
-  badge-verified:
-    backgroundColor: "{colors.accent-blue-bg}"
-    textColor: "{colors.accent-blue}"
-    rounded: "{rounded.pill}"
-    padding: 4px
-  card-media-subtle:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.text-muted}"
-    rounded: "{rounded.sm}"
-    padding: 8px
-  border-neutral:
-    backgroundColor: "{colors.neutral}"
-    textColor: "#FFFFFF"
-    rounded: "{rounded.sm}"
-    padding: 2px
-  badge-category:
+  badge-kicker:
     backgroundColor: "{colors.canvas-subtle}"
     textColor: "{colors.text-secondary}"
-    rounded: "{rounded.pill}"
-    padding: 6px
+    rounded: "{rounded.sm}"
+    padding: 4px
   badge-ticker:
     backgroundColor: "{colors.canvas-subtle}"
     textColor: "{colors.secondary}"
@@ -118,6 +113,11 @@ components:
   badge-bearish:
     backgroundColor: "{colors.bearish-bg}"
     textColor: "{colors.bearish}"
+    rounded: "{rounded.pill}"
+    padding: 4px
+  badge-verified:
+    backgroundColor: "{colors.accent-blue-bg}"
+    textColor: "{colors.accent-blue}"
     rounded: "{rounded.pill}"
     padding: 4px
   button-primary:
@@ -135,6 +135,11 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 2px
+  border-neutral:
+    backgroundColor: "{colors.neutral}"
+    textColor: "#FFFFFF"
+    rounded: "{rounded.sm}"
+    padding: 2px
   dock-bottom:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.text-secondary}"
@@ -145,65 +150,71 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 1px
+  card-media-subtle:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.text-muted}"
+    rounded: "{rounded.sm}"
+    padding: 8px
 ---
 
 ## Overview
 
-Emitara Media Flow mengadopsi estetika penerbitan digital kontemporer (Apple News meets Financial Times). Menekankan kanvas putih bersih, kontras hitam pekat, batas hairline 1px halus, dan tipografi dual-font berwibawa: serif untuk tajuk editorial dan sans-serif untuk fungsi navigasi.
+Emitara Bloomberg Asia Editorial mengadopsi arsitektur visual berstandar Bloomberg Terminal dan edisi regional Bloomberg Asia. Menghilangkan pola aliran kartu yang seragam dan monoton melalui hierarki modular asimetris: Lead Story Package berukuran besar, matriks 3-kolom kartu kicker tematik, baris warta teks analitik tanpa gambar, serta modul breakout gelap di tengah aliran warta.
 
 Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 
 ## Colors
 
-- Primary (`#000000`): Pitch black untuk tombol aktif, indikator pill, dan penegasan visual.
-- Secondary (`#111111`): Warna utama teks tajuk editorial.
-- Canvas (`#FFFFFF`): Putih murni untuk latar belakang dan kartu warta.
-- Canvas Subtle (`#F5F5F7`): Abu netral lembut untuk kontainer input, chip kategori, dan media carousel.
-- Neutral & Text Muted (`#6B7280`): Abu-abu dingin untuk teks sekunder, waktu rilis, dan byline.
-- Border (`#E5E7EB`): Garis pembatas rambut 1px yang bersih.
-- Bullish (`#15803D` pada `#DCFCE7`): Hijau zamrud lembut untuk indikasi pasar positif.
-- Bearish (`#B91C1C` pada `#FEE2E2`): Merah tua lembut untuk indikasi koreksi pasar.
+- Primary (`#000000`): Pitch black untuk tombol aksi, aksen garis tebal, dan kartu breakout.
+- Secondary (`#111111`): Warna tajuk warta utama dengan kontras tinggi.
+- Canvas (`#FFFFFF`): Putih murni untuk latar belakang halaman editorial.
+- Canvas Subtle (`#F5F5F7`): Abu-abu netral lembut untuk kontainer kicker dan widget samping.
+- Text Primary (`#111111`): Hitam tajam untuk kenyamanan membaca tajuk.
+- Text Secondary & Muted (`#4B5563`): Abu-abu dingin proporsional untuk byline, jam terbit, dan cuplikan naskah.
+- Border (`#E5E7EB`): Hairline rule 1px sebagai pemisah kolom ala media cetak prestisius.
+- Bullish (`#15803D` pada `#DCFCE7`) dan Bearish (`#B91C1C` pada `#FEE2E2`): Penanda sentimen pasar dengan kontras rasio WCAG AA teruji.
 
 ## Typography
 
-- Display H1 & H2 (Playfair Display / Georgia): Serif Didone modern dengan kontras goresan tajam untuk tajuk utama editorial.
-- Body MD & Article (Plus Jakarta Sans / Inter): Tipografi proporsional dengan keterbacaan tinggi pada layar sentuh maupun desktop.
+- Display H1 & H2 (Playfair Display / Georgia): Serif Didone modern untuk tajuk utama berita sorotan, menghadirkan karakter jurnalisme investigatif berkelas.
+- Body MD & Article (Plus Jakarta Sans / Inter): Tipografi proporsional untuk naskah berita lengkap dan teks UI.
 - Ticker Badge & Timestamp (JetBrains Mono): Tipografi angka dan kode emiten presisi.
 
 ## Layout
 
-- Top Bar: Header ringkas dengan logo EMITARA serif dan tombol aksi.
-- Segmented Switcher: Tab beralih antara Semua Warta dan Audio/Podcast.
-- Search & Category Pills: Input pencarian kapsul dan filter rubrik geser mendatar.
-- Highlights Carousel: Deretan kartu sorotan rasio 4:5 geser horizontal untuk berita utama.
-- News List Stream: Kartu 2-kolom dengan thumbnail 88x88px sudut 12px di sisi kiri dan naskah tajuk di sisi kanan.
-- In-App Reader & Audio Player: Lembar baca artikel utuh dilengkapi pemutar audio naskah berita.
-- Floating Bottom Dock (Mobile): Bar navigasi 5-ikon di bagian bawah layar ponsel.
+- Top Bar: Masthead EMITARA dengan akses cepat ke menu pasar Bloomberg.
+- Running Ticker Tape: Pita harga saham bursa riil yang berputar mulus 100% tanpa jeda.
+- Hero Lead Package (Asymmetric Split): Tajuk utama berhuruf besar di sisi kiri dengan kutipan pembuka dan byline reporter, dipadukan dengan foto lanskap beresolusi tinggi di sisi kanan.
+- 3-Up Kicker Matrix: Tiga kolom kartu berita di bawah tajuk utama dengan foto lanskap 16:9, label kicker kapital tebal (THE BIG TAKE, ANALISIS, RISET), dan tajuk tebal.
+- Text Dispatch Row: Tiga kolom kartu teks murni berdensitas tinggi untuk warta kilat dan opini pasar.
+- Dark Intelligence Breakout Strip: Blok modul gelap kontras tinggi yang memecah aliran gulir untuk menyajikan aksi korporasi dan dividen.
+- Right Sidebar Rail: Aliran warta terkini 24 jam, watchlist saham personal, barometer sentimen live, dan kalender aksi korporasi yang terkunci mengikuti gulir halaman (sticky).
 
 ## Elevation & Depth
 
-- Zero Heavy Shadows: Kedalaman visual dibangun melalui kontras permukaan `#FFFFFF` dan `#F5F5F7` serta garis pembatas 1px `#E5E7EB`.
-- Floating Bottom Bar: Menggunakan bayangan ambient lembut `0 4px 20px rgba(0, 0, 0, 0.08)`.
+- Zero Heavy Drop Shadows: Seluruh kedalaman visual dibangun dari garis pembatas 1px hairline rule `#E5E7EB` dan kontras permukaan putih `#FFFFFF` vs abu `#F5F5F7` (anti-slop R-12).
+- Floating Bottom Dock (Mobile): Bar navigasi mengambang untuk navigasi jempol di ponsel.
 
 ## Shapes
 
-- Radius Kontemporer: Sudut kartu list `{rounded.md}` (10px), kartu sorotan `{rounded.lg}` (16px), tombol dan pill `{rounded.pill}` (9999px).
+- Radius Tajam & Minimalis: Sudut kartu matriks `{rounded.sm}` (4px), kartu baris `{rounded.md}` (8px), wadah gambar `{rounded.lg}` (14px). Menolak sudut serba bulat pada seluruh elemen (anti-slop R-11).
 
 ## Components
 
-- card-highlight: Kartu sorotan utama dalam format carousel horizontal.
-- card-news-row: Kartu warta baris 2-kolom (thumbnail kiri, naskah kanan).
-- sheet-reader: Lembar baca naskah artikel utuh.
-- dock-bottom: Bar navigasi mengambang untuk navigasi jempol di ponsel.
+- card-hero-split: Paket tajuk berita utama asimetris.
+- card-3up-matrix: Kartu warta 3-kolom bergaya Bloomberg Asia dengan label kicker tematik.
+- card-dispatch: Kartu warta teks berdensitas tinggi tanpa gambar.
+- card-news-row: Kartu warta baris horizontal dengan thumbnail presisi di sisi kiri.
+- sheet-reader: Lembar baca naskah artikel utuh di dalam aplikasi.
 
 ## Do's and Don'ts
 
 ### Do's
-- Gunakan spasi putih lapang (whitespace) untuk memisahkan kelompok informasi.
-- Gunakan font serif untuk tajuk warta utama dan sans-serif untuk label fungsi.
-- Pertahankan sudut membulat kontinu 12px-16px pada wadah gambar.
+- Gunakan label kicker kapital tebal (THE BIG TAKE, DISPATCH, ANALISIS) untuk menciptakan panduan mata vertikal sebelum judul berita.
+- Sisipkan variasi komposisi layout secara berkala (Lead Split -> 3-Up Matrix -> Text Dispatches -> Breakout -> Wire List) agar halaman terasa hidup dan dinamis.
+- Pertahankan garis pemisah hairline 1px halus di antara artikel untuk menjaga kerapian grid editorial.
 
 ### Don'ts
-- Dilarang memakai bayangan tebal kotor atau gradien neon (anti-slop R-01, R-12).
-- Dilarang membuat tombol atau tautan yang tidak berfungsi (anti-slop R-26).
-- Dilarang memakai karakter em dash pada seluruh teks (anti-slop R-02).
+- Dilarang mengulang satu bentuk kartu yang sama secara terus-menerus tanpa variasi (anti-slop R-05, R-14).
+- Dilarang memakai warna hitam `#000000` di atas putih yang menyilaukan tanpa hierarki ukuran huruf yang jelas.
+- Dilarang menggunakan karakter em dash pada seluruh teks judul maupun kutipan (anti-slop R-02).
