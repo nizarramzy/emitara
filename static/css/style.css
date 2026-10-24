@@ -791,3 +791,201 @@ a:focus-visible {
   flex-shrink: 0;
   padding: 0 16px;
 }
+
+
+/* Bloomberg-Style Markets Mega Menu Dropdown */
+.category-filter-strip {
+  position: relative;
+}
+
+.btn-markets-dropdown {
+  height: 34px;
+  padding: 0 14px;
+  background-color: var(--color-black);
+  border: 1px solid var(--color-black);
+  border-radius: var(--radius-pill);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.btn-markets-dropdown:hover {
+  background-color: #262626;
+  border-color: #262626;
+}
+
+.btn-markets-dropdown.active {
+  background-color: #1E293B;
+  border-color: #1E293B;
+}
+
+.mega-menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #111111;
+  color: #FFFFFF;
+  border-bottom: 2px solid var(--color-black);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  z-index: 95;
+  animation: megaSlideDown 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mega-menu-dropdown.open {
+  display: block;
+}
+
+@keyframes megaSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mega-menu-inner-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: grid;
+  grid-template-columns: 200px 210px 1fr 260px;
+  gap: 28px;
+}
+
+.mega-col-heading {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #9CA3AF;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mega-links-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mega-item-link {
+  background: none;
+  border: none;
+  color: #E5E7EB;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.mega-item-link:hover {
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+
+/* 3x3 Securities Grid */
+.mega-securities-3x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.mega-stock-tile {
+  background-color: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mega-stock-tile:hover {
+  background-color: #2A2A2A;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.mega-stock-sym {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.mega-stock-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.mega-stock-price {
+  color: #D1D5DB;
+  font-weight: 600;
+}
+
+/* Right CTA Card */
+.mega-cta-panel {
+  background-color: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-open-watchlist-mega {
+  height: 36px;
+  background-color: #FFFFFF;
+  color: #111111;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.btn-open-watchlist-mega:hover {
+  background-color: #E5E7EB;
+}
+
+@media (max-width: 1080px) {
+  .mega-menu-inner-grid {
+    grid-template-columns: 180px 1fr 220px;
+  }
+  .mega-col-sectors-hide {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .mega-menu-inner-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 18px;
+  }
+  .mega-securities-3x3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -64,6 +64,10 @@
   <div class="category-filter-strip">
     <div class="category-filter-container">
       <div class="category-pill-list" role="tablist">
+        <button type="button" class="btn-markets-dropdown" id="btnMegaMenuMarkets" aria-expanded="false" aria-controls="megaMenuMarkets" title="Buka menu pasar Bloomberg">
+          <span>Pasar BEI</span>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
         <button type="button" class="cat-pill active" data-category="ALL" role="tab" aria-selected="true">Semua Warta</button>
         <button type="button" class="cat-pill" data-category="Finansial" role="tab" aria-selected="false">Finansial &amp; Bank</button>
         <button type="button" class="cat-pill" data-category="Energi" role="tab" aria-selected="false">Energi &amp; Komoditas</button>
@@ -82,6 +86,60 @@
         <div class="search-field-clean">
           <svg class="search-field-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           <input type="text" id="searchInput" class="search-field-input" placeholder="Cari emiten atau kata kunci..." aria-label="Pencarian berita">
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloomberg-Style Markets Mega Menu Dropdown -->
+    <div id="megaMenuMarkets" class="mega-menu-dropdown" role="region" aria-label="Menu Pasar Bloomberg Style">
+      <div class="mega-menu-inner-grid">
+        <!-- Col 1: Warta & Aksi -->
+        <div>
+          <div class="mega-col-heading">Warta &amp; Aksi</div>
+          <div class="mega-links-vertical">
+            <button type="button" class="mega-item-link" data-search="dividen">Dividen &amp; RUPS</button>
+            <button type="button" class="mega-item-link" data-search="akuisisi">Aksi Korporasi</button>
+            <button type="button" class="mega-item-link" data-search="ipo">IPO &amp; Right Issue</button>
+            <button type="button" class="mega-item-link" data-search="laba">Laba &amp; Kinerja</button>
+            <button type="button" class="mega-item-link" data-search="obligasi">Obligasi &amp; Sukuk</button>
+            <button type="button" class="mega-item-link" data-search="suspensi">Suspensi Bursa</button>
+          </div>
+        </div>
+
+        <!-- Col 2: Sektor Bursa -->
+        <div class="mega-col-sectors-hide">
+          <div class="mega-col-heading">Sektor Bursa</div>
+          <div class="mega-links-vertical">
+            <button type="button" class="mega-item-link" data-category="Finansial">Perbankan &amp; Finansial</button>
+            <button type="button" class="mega-item-link" data-category="Energi">Energi &amp; Komoditas</button>
+            <button type="button" class="mega-item-link" data-search="emas">Mineral &amp; Tambang</button>
+            <button type="button" class="mega-item-link" data-category="Konsumer">Konsumer &amp; Ritel</button>
+            <button type="button" class="mega-item-link" data-category="Teknologi">Teknologi &amp; Telco</button>
+            <button type="button" class="mega-item-link" data-category="Makro">Makro &amp; Fiskal</button>
+          </div>
+        </div>
+
+        <!-- Col 3: Sekuritas Teraktif (Top Securities Grid) -->
+        <div>
+          <div class="mega-col-heading">Sekuritas Teraktif (Top Securities)</div>
+          <div id="megaSecuritiesGrid" class="mega-securities-3x3">
+            <!-- Populated via live market quotes in app.js -->
+          </div>
+        </div>
+
+        <!-- Col 4: Watchlist CTA Card -->
+        <div class="mega-cta-panel">
+          <div>
+            <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: #FFFFFF; margin-bottom: 8px;">
+              Pantau Portofolio Saham Anda
+            </div>
+            <p style="font-size: 12px; line-height: 1.5; color: #9CA3AF; margin-bottom: 16px;">
+              Dapatkan warta kurasi khusus emiten yang Anda miliki secara realtime di Emitara.
+            </p>
+          </div>
+          <button type="button" class="btn-open-watchlist-mega" id="btnOpenWatchlistFromMega">
+            <span>+ Buka Watchlist</span>
+          </button>
         </div>
       </div>
     </div>

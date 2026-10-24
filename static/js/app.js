@@ -444,6 +444,37 @@
         <div class="ticker-strip-group">${itemsHtml}</div>
         <div class="ticker-strip-group" aria-hidden="true">${itemsHtml}</div>
       `;
+
+      // Populate Bloomberg Mega Menu Top Securities grid
+      const megaGrid = document.getElementById('megaSecuritiesGrid');
+      if (megaGrid) {
+        megaGrid.innerHTML = quotes.slice(0, 9).map(q => {
+          let deltaColor = '#9CA3AF';
+          if (q.is_up) deltaColor = '#4ADE80';
+          else if (q.is_down) deltaColor = '#F87171';
+
+          return `
+            <div class="mega-stock-tile" data-ticker="${escapeHtml(q.symbol)}" tabindex="0" role="button" aria-label="Lihat warta ${escapeHtml(q.symbol)}">
+              <span class="mega-stock-sym">${escapeHtml(q.symbol)}</span>
+              <div class="mega-stock-meta-row">
+                <span class="mega-stock-price">${escapeHtml(q.price)}</span>
+                <span style="color: ${deltaColor}; font-weight: 700;">${escapeHtml(q.change_pct)}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        megaGrid.querySelectorAll('.mega-stock-tile').forEach(tile => {
+          tile.addEventListener('click', () => {
+            const sym = tile.dataset.ticker;
+            closeMegaMenu();
+            state.activeTicker = sym === 'IHSG' ? null : sym;
+            state.viewMode = 'ALL';
+            updateModeButtons();
+            renderPortal(true);
+          });
+        });
+      }
     } catch (e) {
       console.warn('Quotes error:', e);
     }
@@ -815,4 +846,93 @@
   loadTrending();
   setInterval(loadTrending, 60000);
   connectSSE();
+
+  // Bloomberg-Style Markets Mega Menu Logic
+  const btnMegaMenuMarkets = document.getElementById('btnMegaMenuMarkets');
+  const megaMenuMarkets = document.getElementById('megaMenuMarkets');
+  const btnOpenWatchlistFromMega = document.getElementById('btnOpenWatchlistFromMega');
+
+  function openMegaMenu() {
+    if (!megaMenuMarkets) return;
+    megaMenuMarkets.classList.add('open');
+    if (btnMegaMenuMarkets) {
+      btnMegaMenuMarkets.setAttribute('aria-expanded', 'true');
+      btnMegaMenuMarkets.classList.add('active');
+    }
+  }
+
+  function closeMegaMenu() {
+    if (!megaMenuMarkets) return;
+    megaMenuMarkets.classList.remove('open');
+    if (btnMegaMenuMarkets) {
+      btnMegaMenuMarkets.setAttribute('aria-expanded', 'false');
+      btnMegaMenuMarkets.classList.remove('active');
+    }
+  }
+
+  function toggleMegaMenu() {
+    if (!megaMenuMarkets) return;
+    if (megaMenuMarkets.classList.contains('open')) {
+      closeMegaMenu();
+    } else {
+      openMegaMenu();
+    }
+  }
+
+  if (btnMegaMenuMarkets) {
+    btnMegaMenuMarkets.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMegaMenu();
+    });
+  }
+
+  // Close mega menu on outside click
+  document.addEventListener('click', (e) => {
+    if (megaMenuMarkets && megaMenuMarkets.classList.contains('open')) {
+      if (!megaMenuMarkets.contains(e.target) && e.target !== btnMegaMenuMarkets && !btnMegaMenuMarkets.contains(e.target)) {
+        closeMegaMenu();
+      }
+    }
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (megaMenuMarkets && megaMenuMarkets.classList.contains('open')) closeMegaMenu();
+    }
+  });
+
+  // Mega Menu Links
+  if (megaMenuMarkets) {
+    megaMenuMarkets.querySelectorAll('.mega-item-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMegaMenu();
+        if (link.dataset.category) {
+          state.activeCategory = link.dataset.category;
+          state.viewMode = 'ALL';
+          state.activeTicker = null;
+          catPills.forEach(p => p.classList.toggle('active', p.dataset.category === state.activeCategory));
+          updateModeButtons();
+          renderPortal(true);
+        } else if (link.dataset.search) {
+          state.searchQuery = link.dataset.search;
+          if (searchInput) searchInput.value = link.dataset.search;
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          renderPortal(true);
+        }
+      });
+    });
+  }
+
+  if (btnOpenWatchlistFromMega) {
+    btnOpenWatchlistFromMega.addEventListener('click', () => {
+      closeMegaMenu();
+      state.viewMode = 'WATCHLIST';
+      state.activeTicker = null;
+      updateModeButtons();
+      renderPortal(true);
+    });
+  }
+
 })();
