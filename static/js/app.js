@@ -1392,6 +1392,9 @@
     document.body.style.overflow = '';
   }
 
+  window.openMobileDrawer = openMobileDrawer;
+  window.closeMobileDrawer = closeMobileDrawer;
+
   function updateMobileDrawerUI() {
     if (btnMobileWatchlist) btnMobileWatchlist.classList.toggle('active', state.viewMode === 'WATCHLIST');
     if (btnMobileBookmarks) btnMobileBookmarks.classList.toggle('active', state.viewMode === 'BOOKMARKS');
@@ -1405,7 +1408,11 @@
   }
 
   if (btnMobileMenuToggle) {
-    btnMobileMenuToggle.addEventListener('click', openMobileDrawer);
+    btnMobileMenuToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openMobileDrawer();
+    });
   }
 
   if (btnCloseDrawer) {
