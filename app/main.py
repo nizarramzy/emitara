@@ -103,12 +103,12 @@ async def get_trending(limit: int = Query(8, ge=1, le=20)):
 
 @api_router.get("/cron/poll")
 async def cron_poll():
-    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
+    new_count = await poll_all_sources(broadcast_article, enrich_content=False)
     return {"status": "ok", "new_articles": new_count}
 
 @api_router.post("/refresh")
 async def trigger_refresh():
-    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
+    new_count = await poll_all_sources(broadcast_article, enrich_content=False)
     return {"status": "ok", "new_articles": new_count}
 
 @api_router.get("/news/stream")

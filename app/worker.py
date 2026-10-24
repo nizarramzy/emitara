@@ -171,7 +171,7 @@ async def fetch_feed(source: dict) -> list[dict]:
     loop = asyncio.get_event_loop()
     def _fetch():
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with urllib.request.urlopen(req, timeout=5) as resp:
             return resp.read()
             
     try:
