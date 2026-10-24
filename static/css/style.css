@@ -19,7 +19,7 @@
   --color-blue: #0284C7;
   --color-blue-bg: #E0F2FE;
 
-  --font-serif: 'Newsreader', 'Playfair Display', Georgia, serif;
+  --font-serif: Georgia, 'Newsreader', 'Times New Roman', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, monospace;
 
@@ -1310,11 +1310,11 @@ a:focus-visible {
 }
 
 .breakout-title {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
   color: #FFFFFF;
   margin-bottom: 10px;
 }
@@ -1390,9 +1390,9 @@ a:focus-visible {
 }
 
 .breakout-mini-title {
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 13.5px;
+  font-weight: 700;
   line-height: 1.4;
   color: #F1F5F9;
   display: -webkit-box;

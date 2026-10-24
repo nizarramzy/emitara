@@ -25,13 +25,13 @@ colors:
   dark-surface: "#12161F"
 typography:
   display-h1:
-    fontFamily: "Playfair Display, Georgia, serif"
+    fontFamily: "Georgia, serif"
     fontSize: 2.25rem
     fontWeight: 700
     lineHeight: 1.15
     letterSpacing: "-0.02em"
   h2:
-    fontFamily: "Playfair Display, Georgia, serif"
+    fontFamily: "Georgia, serif"
     fontSize: 1.35rem
     fontWeight: 700
     lineHeight: 1.3
