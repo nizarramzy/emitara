@@ -8,8 +8,10 @@ import shutil
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BUNDLED_DB = os.path.join(BASE_DIR, "..", "data", "emitara.db")
 
+import tempfile
+
 if os.environ.get("VERCEL"):
-    DB_PATH = "/tmp/emitara.db"
+    DB_PATH = os.path.join(tempfile.gettempdir(), "emitara.db")
     if not os.path.exists(DB_PATH) and os.path.exists(BUNDLED_DB):
         try:
             shutil.copyfile(BUNDLED_DB, DB_PATH)

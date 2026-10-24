@@ -1,15 +1,22 @@
-from app.quotes import get_live_market_quotes
 import asyncio
 import json
 import os
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request, Query, HTTPException
+from fastapi import FastAPI, Request, Query, HTTPException, APIRouter
 from fastapi.responses import StreamingResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import init_db, get_recent_articles, get_total_articles_count, get_trending_tickers, get_article_by_id, save_article
+from app.database import (
+    init_db,
+    get_recent_articles,
+    get_trending_tickers,
+    get_article_by_id,
+    save_article,
+    get_total_articles_count
+)
 from app.worker import worker_loop, poll_all_sources, fetch_full_content_sync
+from app.quotes import get_live_market_quotes
 
 subscribers: set[asyncio.Queue] = set()
 
@@ -44,13 +51,29 @@ app.add_middleware(
 )
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), "..", "static")
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+if os.path.exists(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 @app.get("/")
 async def root():
-    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+    index_path = os.path.join(STATIC_DIR, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    return {"status": "ok", "message": "Emitara API Live"}
 
-@app.get("/api/news")
+# Router to handle routes both with /api and without /api (to handle Vercel rewrites gracefully)
+api_router = APIRouter()
+
+@api_router.get("/health")
+async def health_check():
+    total = get_total_articles_count()
+    return {
+        "status": "ok",
+        "total_articles": total,
+        "environment": "vercel" if os.environ.get("VERCEL") else "local"
+    }
+
+@api_router.get("/news")
 async def get_news(
     limit: int = Query(50, ge=1, le=500),
     offset: int = Query(0, ge=0),
@@ -68,7 +91,27 @@ async def get_news(
         "data": articles
     }
 
-@app.get("/api/news/stream")
+@api_router.get("/market/ticker")
+async def get_market_ticker():
+    quotes = get_live_market_quotes()
+    return {"status": "ok", "count": len(quotes), "data": quotes}
+
+@api_router.get("/trending")
+async def get_trending(limit: int = Query(8, ge=1, le=20)):
+    trending = get_trending_tickers(limit=limit)
+    return {"status": "ok", "data": trending}
+
+@api_router.get("/cron/poll")
+async def cron_poll():
+    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
+    return {"status": "ok", "new_articles": new_count}
+
+@api_router.post("/refresh")
+async def trigger_refresh():
+    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
+    return {"status": "ok", "new_articles": new_count}
+
+@api_router.get("/news/stream")
 async def news_stream(request: Request):
     queue = asyncio.Queue()
     subscribers.add(queue)
@@ -97,13 +140,12 @@ async def news_stream(request: Request):
         }
     )
 
-@app.get("/api/news/{article_id}")
+@api_router.get("/news/{article_id}")
 async def get_single_news(article_id: int):
     article = get_article_by_id(article_id)
     if not article:
         raise HTTPException(status_code=404, detail="Article not found")
-        
-    # If content_text is missing or shorter than 100 chars, scrape on-demand
+
     if not article.get("content_text") or len(article.get("content_text", "")) < 80:
         loop = asyncio.get_event_loop()
         full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
@@ -112,31 +154,10 @@ async def get_single_news(article_id: int):
             article["author"] = author or article.get("author", "Redaksi")
             if og_img and not article.get("image_url"):
                 article["image_url"] = og_img
-            # Persist back to database
             save_article(article)
-            
+
     return {"status": "ok", "data": article}
 
-
-@app.get("/api/market/ticker")
-async def get_market_ticker():
-    quotes = get_live_market_quotes()
-    return {"status": "ok", "count": len(quotes), "data": quotes}
-
-@app.get("/api/trending")
-async def get_trending(limit: int = Query(8, ge=1, le=20)):
-    trending = get_trending_tickers(limit=limit)
-    return {"status": "ok", "data": trending}
-
-
-@app.get("/api/cron/poll")
-async def cron_poll():
-    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
-    return {"status": "ok", "new_articles": new_count}
-
-@app.post("/api/refresh")
-async def trigger_refresh():
-    new_count = await poll_all_sources(broadcast_article, enrich_content=True)
-    return {"status": "ok", "new_articles": new_count}
-
-
+# Mount both with prefix /api and without prefix!
+app.include_router(api_router, prefix="/api")
+app.include_router(api_router)
