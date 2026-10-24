@@ -19,7 +19,7 @@
   --color-blue: #0284C7;
   --color-blue-bg: #E0F2FE;
 
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Newsreader', 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, monospace;
 
@@ -1242,9 +1242,10 @@ a:focus-visible {
 }
 
 .dispatch-kicker {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
   color: var(--color-accent-blue, #075985);
   text-transform: uppercase;
   margin-bottom: 4px;
@@ -1298,33 +1299,22 @@ a:focus-visible {
 }
 
 .breakout-kicker {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: #E2BA73;
   margin-bottom: 10px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.breakout-kicker::before {
-  content: '';
   display: inline-block;
-  width: 5px;
-  height: 5px;
-  background-color: #E2BA73;
-  border-radius: 50%;
 }
 
 .breakout-title {
-  font-family: var(--font-serif);
-  font-size: 1.45rem;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: -0.015em;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: #FFFFFF;
   margin-bottom: 10px;
 }
@@ -1390,12 +1380,13 @@ a:focus-visible {
 }
 
 .breakout-mini-meta {
-  font-size: 10px;
-  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-family: var(--font-sans);
+  font-weight: 700;
   color: #94A3B8;
   margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .breakout-mini-title {
