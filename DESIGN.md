@@ -135,11 +135,6 @@ components:
     textColor: "{colors.text-primary}"
     rounded: "{rounded.sm}"
     padding: 2px
-  player-modal:
-    backgroundColor: "{colors.canvas}"
-    textColor: "{colors.text-primary}"
-    rounded: "{rounded.xl}"
-    padding: 28px
   dock-bottom:
     backgroundColor: "{colors.canvas}"
     textColor: "{colors.text-secondary}"
@@ -198,7 +193,7 @@ Dial pengarah desain: ENERGY 2 / RHYTHM 3 / MOTION 2.
 
 - card-highlight: Kartu sorotan utama dalam format carousel horizontal.
 - card-news-row: Kartu warta baris 2-kolom (thumbnail kiri, naskah kanan).
-- sheet-reader: Lembar baca naskah artikel utuh dan kontrol pemutar audio.
+- sheet-reader: Lembar baca naskah artikel utuh.
 - dock-bottom: Bar navigasi mengambang untuk navigasi jempol di ponsel.
 
 ## Do's and Don'ts

@@ -237,7 +237,7 @@
       const sentimentClass = (item.sentiment || 'NEUTRAL').toLowerCase();
       const tickersHtml = (item.tickers || []).slice(0, 3).map(t => `<span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 2px 6px; background-color: var(--color-surface-subtle); border-radius: var(--radius-xs); color: var(--color-text-primary);">${escapeHtml(t)}</span>`).join('');
       const isBookmarked = state.bookmarks.some(b => b.id === item.id);
-      const audioDuration = estimateAudioDuration(item.summary);
+      
 
       row.innerHTML = `
         <div class="flow-thumb-container">
@@ -255,12 +255,10 @@
           </div>
           <h3 class="flow-title">${escapeHtml(item.title)}</h3>
           <div class="flow-bottom-meta">
-            <div style="display: flex; align-items: center; gap: 6px;">
-              <button type="button" class="btn-audio-listen btn-play-speech" data-id="${item.id}" title="Dengarkan warta suara">
-                <span>▶</span>
-                <span>${audioDuration}</span>
-              </button>
+            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
               ${tickersHtml}
+              <span style="font-size: 11px; color: var(--color-text-muted);">&bull;</span>
+              <span style="font-size: 11px; color: var(--color-text-muted);">${estimateReadTime(item.summary)}</span>
             </div>
             <time style="font-family: var(--font-mono); font-size: 11px;">${formatRelativeTime(item.published_at)}</time>
           </div>
@@ -268,7 +266,7 @@
       `;
 
       row.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-flow-bookmark') || e.target.closest('.btn-play-speech')) return;
+        if (e.target.closest('.btn-flow-bookmark')) return;
         openReader(item.id);
       });
 
@@ -282,11 +280,7 @@
         icon.setAttribute('fill', currentlyBookmarked ? 'currentColor' : 'none');
       });
 
-      const btnSpeech = row.querySelector('.btn-play-speech');
-      btnSpeech.addEventListener('click', (e) => {
-        e.stopPropagation();
-        startAudioPlayback(item);
-      });
+
 
       newsList.appendChild(row);
     });
@@ -294,71 +288,6 @@
     if (scrollToTop) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }
-
-  // Audio Playback & Voice Synthesis (Media Flow Screen 5)
-  function startAudioPlayback(article) {
-    state.speakingArticle = article;
-    if (audioPlayerTitle) audioPlayerTitle.textContent = article.title;
-    if (audioPlayerSource) audioPlayerSource.textContent = `${article.source} • Suara Berita Emitara`;
-    if (audioTotalDuration) audioTotalDuration.textContent = estimateAudioDuration(article.summary || article.content_text);
-
-    if (audioPlayerModal) audioPlayerModal.classList.add('open');
-
-    // Web Speech API
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const textToRead = `${article.title}. Sumber: ${article.source}. ${article.summary || ''}`;
-      const utterance = new SpeechSynthesisUtterance(textToRead);
-      utterance.lang = 'id-ID';
-      utterance.rate = 1.0;
-
-      utterance.onstart = () => {
-        state.isAudioPlaying = true;
-        updateAudioPlayerControls();
-      };
-
-      utterance.onend = () => {
-        state.isAudioPlaying = false;
-        updateAudioPlayerControls();
-      };
-
-      state.synthUtterance = utterance;
-      window.speechSynthesis.speak(utterance);
-    }
-  }
-
-  function toggleAudioPlayState() {
-    if (!('speechSynthesis' in window)) return;
-    if (state.isAudioPlaying) {
-      window.speechSynthesis.pause();
-      state.isAudioPlaying = false;
-    } else {
-      if (window.speechSynthesis.paused) {
-        window.speechSynthesis.resume();
-        state.isAudioPlaying = true;
-      } else if (state.speakingArticle) {
-        startAudioPlayback(state.speakingArticle);
-      }
-    }
-    updateAudioPlayerControls();
-  }
-
-  function updateAudioPlayerControls() {
-    if (audioPlayIcon) {
-      audioPlayIcon.textContent = state.isAudioPlaying ? '❚❚' : '▶';
-    }
-    if (audioWaveform) {
-      audioWaveform.style.opacity = state.isAudioPlaying ? '1' : '0.4';
-    }
-  }
-
-  function closeAudioPlayer() {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-    state.isAudioPlaying = false;
-    if (audioPlayerModal) audioPlayerModal.classList.remove('open');
   }
 
   // Reader Modal Logic
@@ -815,8 +744,8 @@
   }
 
   // Audio Player Listeners
-  if (btnCloseAudioSheet) btnCloseAudioSheet.addEventListener('click', closeAudioPlayer);
-  if (btnAudioTogglePlay) btnAudioTogglePlay.addEventListener('click', toggleAudioPlayState);
+  
+  
 
   // Reader Modal Listeners
   if (btnCloseReader) btnCloseReader.addEventListener('click', closeReader);
@@ -829,7 +758,7 @@
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (readerOverlay && readerOverlay.classList.contains('open')) closeReader();
-      if (audioPlayerModal && audioPlayerModal.classList.contains('open')) closeAudioPlayer();
+      
     }
   });
 
