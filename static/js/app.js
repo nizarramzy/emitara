@@ -60,14 +60,14 @@
   // Helpers
     // Curated rotating financial photography for articles lacking an official image
   const curatedStockImages = [
-    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=600&q=80',
-    'https://images.unsplash.com/photo-1444653614773-995cb1ef9028?auto=format&fit=crop&w=600&q=80'
+    'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80', // trading monitors
+    'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=800&q=80', // financial charts desk
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80', // financial skyscraper
+    'https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=800&q=80', // money / bank currency
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80', // corporate executive
+    'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80', // logistics port trade
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80', // corporate meeting
+    'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?auto=format&fit=crop&w=800&q=80'  // stock exchange board
   ];
 
   const seenImagesInSession = new Set();
@@ -115,17 +115,17 @@
 
     function cleanHeadline(title) {
     if (!title) return '';
-    // Unescape common HTML entities
     let t = title
+      .replace(/&nbsp;/g, ' ')
+      .replace(/\u00a0/g, ' ')
       .replace(/&amp;/g, '&')
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, "'")
       .replace(/&lt;/g, '<')
       .replace(/&gt;/g, '>');
 
-    // Strip sensational Indonesian tabloid clickbait exclamation prefixes
     t = t.replace(/^(?:Wow|Cek|Yuk|Simak|Waduh|Hore|Duh|Ternyata|Gokil|Heboh|Astaga)!\s*/i, '');
-    return t.trim();
+    return t.replace(/^[\s\u200B\u00A0]+/, '').trim();
   }
 
   function escapeHtml(str) {
@@ -199,25 +199,69 @@
     return true;
   }
 
-  // Render Bloomberg Asia Editorial Packages (Lead Story + 3-Up Matrix + Text Dispatches)
+    // Compute real market impact and hotness score for an article
+  function computeHotScore(art) {
+    if (!art) return 0;
+    let score = 0;
+    const text = `${art.title} ${art.summary || ''}`.toLowerCase();
+
+    // 1. High-impact equity keywords
+    const hotKeywords = [
+      'laba', 'dividen', 'akuisisi', 'buyback', 'rekor', 'merger', 'suspensi',
+      'borong saham', 'investor asing', 'net buy', 'terbang', 'melonjak',
+      'gagal bayar', 'anomali', 'msci', 'ipo', 'bursa', 'kinerja'
+    ];
+    hotKeywords.forEach(kw => {
+      if (text.includes(kw)) score += 15;
+    });
+
+    // 2. High-volume market driver tickers
+    const tickers = Array.isArray(art.tickers) ? art.tickers : [];
+    score += tickers.length * 10;
+    tickers.forEach(t => {
+      if (['BBCA', 'BBRI', 'BMRI', 'BREN', 'TLKM', 'BYAN', 'AMMN', 'ASII', 'CUAN'].includes(t)) {
+        score += 25;
+      }
+    });
+
+    // 3. Image availability bonus
+    if (art.image_url && art.image_url.startsWith('http')) {
+      score += 10;
+    }
+
+    return score;
+  }
+
+  // Render Bloomberg Asia Editorial Packages (Hot Lead Story + 3-Up Matrix + Text Dispatches)
   function renderBloombergAsiaPackages(items) {
     const container = document.getElementById('bloombergPackagesContainer');
-    if (!container) return;
+    if (!container) return new Set();
 
     if (state.viewMode !== 'ALL' || state.activeCategory !== 'ALL' || state.searchQuery || state.activeTicker || state.activeSentiment !== 'ALL') {
       container.style.display = 'none';
-      return;
+      return new Set();
     }
 
     if (items.length < 4) {
       container.style.display = 'none';
-      return;
+      return new Set();
     }
 
     container.style.display = 'block';
 
-    // 1. Lead Story Package (Item 0)
-    const lead = items[0];
+    // Rank top 25 newest items by real market hotness score
+    const hotPool = items.slice(0, 25).map(art => ({
+      art,
+      score: computeHotScore(art)
+    }));
+    hotPool.sort((a, b) => b.score - a.score);
+
+    const usedIds = new Set();
+
+    // 1. Hot Lead Story (Highest scoring market mover)
+    const lead = hotPool[0].art;
+    usedIds.add(lead.id);
+
     const leadImg = getArticleImage(lead, 0);
     const leadTickers = (lead.tickers || []).map(t => `<span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 2px 6px; background-color: var(--color-surface-subtle); border-radius: var(--radius-xs);">${escapeHtml(t)}</span>`).join('');
 
@@ -225,7 +269,7 @@
       <article class="bloomberg-lead-package" data-id="${lead.id}">
         <div class="lead-text-side">
           <div>
-            <div class="lead-kicker">The Big Take &bull; ${escapeHtml(lead.source)}</div>
+            <div class="lead-kicker"><span style="color: #B91C1C; font-weight: 800;">HOT TOPIC</span> &bull; ${escapeHtml(lead.source)}</div>
             <h1 class="lead-headline">${escapeHtml(lead.title)}</h1>
             ${lead.summary ? `<p class="lead-summary">${escapeHtml(lead.summary)}</p>` : ''}
           </div>
@@ -246,14 +290,16 @@
       </article>
     `;
 
-    // 2. 3-Up Matrix (Items 1, 2, 3)
-    const matrixStories = items.slice(1, 4);
-    const kickers3Up = ['Analisis Pasar', 'Aksi Emiten', 'Sorotan Sektor'];
+    // 2. 3-Up Matrix (Next 3 highest scoring articles)
+    const remainingHot = hotPool.filter(h => !usedIds.has(h.art.id));
+    const matrixStories = remainingHot.slice(0, 3).map(h => h.art);
+    matrixStories.forEach(s => usedIds.add(s.id));
 
+    const kickers3Up = ['The Big Take', 'Analisis Pasar', 'Aksi Emiten'];
     const matrixHtml = `
       <div class="matrix-3up-grid">
         ${matrixStories.map((story, i) => {
-          const thumb = getArticleImage(story, i + 1);
+          const thumb = getArticleImage(story, i + 2);
           return `
             <article class="matrix-card" data-id="${story.id}">
               <div class="matrix-media">
@@ -271,10 +317,12 @@
       </div>
     `;
 
-    // 3. Text Dispatch Row (Items 4, 5, 6)
-    const dispatchStories = items.slice(4, 7);
-    const kickersDispatch = ['Dispatch Khusus', 'Laporan Finansial', 'Opini Analis'];
+    // 3. Text Dispatch Triad (Next 3 high-density text stories)
+    const remainingDispatches = remainingHot.filter(h => !usedIds.has(h.art.id));
+    const dispatchStories = remainingDispatches.slice(0, 3).map(h => h.art);
+    dispatchStories.forEach(s => usedIds.add(s.id));
 
+    const kickersDispatch = ['Dispatch Khusus', 'Laporan Finansial', 'Opini Analis'];
     const dispatchHtml = dispatchStories.length >= 2 ? `
       <div class="dispatch-text-grid">
         ${dispatchStories.map((dStory, i) => `
@@ -297,15 +345,17 @@
         openReader(card.dataset.id);
       });
     });
+
+    return usedIds;
   }
 
-  // Render Primary Article Flow List (2-Column Media Flow Style)
+  // Render Portal Stream with Continuous Rotating Layout Rhythm (Never Monotonous Down to Bottom)
   function renderPortal(scrollToTop = false) {
     seenImagesInSession.clear();
     const filtered = state.articles.filter(passesFilter);
     feedCounter.textContent = `${filtered.length} Warta`;
 
-    // Update Active Filter Badges Container
+    // Active Filter Badges Container
     if (activeFilterPillContainer) {
       let badgesHtml = '';
       if (state.activeTicker) {
@@ -352,14 +402,16 @@
     }
 
     if (feedSectionTitle) {
-      if (state.viewMode === 'AUDIO') feedSectionTitle.textContent = 'Audio Podcasts & Ringkasan Suara';
-      else if (state.viewMode === 'WATCHLIST') feedSectionTitle.textContent = 'Warta Watchlist Saham Anda';
+      if (state.viewMode === 'WATCHLIST') feedSectionTitle.textContent = 'Warta Watchlist Saham Anda';
       else if (state.viewMode === 'BOOKMARKS') feedSectionTitle.textContent = 'Warta Tersimpan';
       else feedSectionTitle.textContent = 'Aliran Warta Pasar';
     }
 
+    // Empty state
     if (filtered.length === 0) {
-      if (highlightsSection) highlightsSection.style.display = 'none';
+      const packageContainer = document.getElementById('bloombergPackagesContainer');
+      if (packageContainer) packageContainer.style.display = 'none';
+
       newsList.innerHTML = `
         <div style="padding: 48px 24px; text-align: center; background-color: var(--color-surface-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-lg); margin: 20px 0;">
           <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">Tidak ada warta yang sesuai</h3>
@@ -371,71 +423,137 @@
       return;
     }
 
-    // Render Bloomberg Asia Packages (Lead + 3-Up Matrix + Text Dispatches)
-    renderBloombergAsiaPackages(filtered);
+    // Render Bloomberg Asia Lead & Top Packages
+    const usedInPackages = renderBloombergAsiaPackages(filtered);
+    const packageActive = usedInPackages.size > 0;
+
+    // Filter out articles already used in the top packages to guarantee zero duplication!
+    const availablePool = packageActive ? filtered.filter(a => !usedInPackages.has(a.id)) : filtered;
 
     newsList.innerHTML = '';
-    const packageContainer = document.getElementById('bloombergPackagesContainer');
-    const isPackageActive = packageContainer && packageContainer.style.display !== 'none';
 
-    // Dissect items cleanly with ZERO duplication:
-    // Items 0..6 belong to Bloomberg Top Spread (Lead + 3-Up Matrix + Dispatches)
-    // Items 7..9 belong to Dark Breakout Section
-    // Items 10..N belong to Chronological Wire List
-    let wireItems = [];
-    let breakoutCandidate = null;
-    let breakoutSides = [];
+    // Register stories consumed by special interspersed layout modules
+    const consumedInModules = new Set();
 
-    if (isPackageActive && filtered.length >= 10) {
-      breakoutCandidate = filtered[7];
-      breakoutSides = [filtered[8], filtered[9]];
-      wireItems = filtered.slice(10);
-    } else if (isPackageActive) {
-      wireItems = filtered.slice(7);
-    } else {
-      wireItems = filtered;
-    }
+    availablePool.forEach((item, index) => {
+      if (consumedInModules.has(item.id)) return;
 
-    // Render wire items, inserting Dark Breakout after 4 wire items without any duplication!
-    wireItems.forEach((item, index) => {
-      if (isPackageActive && index === 4 && breakoutCandidate && breakoutSides.length >= 2) {
-        const darkBreakout = document.createElement('section');
-        darkBreakout.className = 'dark-breakout-module';
-        darkBreakout.innerHTML = `
-          <div class="breakout-featured" data-id="${breakoutCandidate.id}">
-            <div>
-              <div class="breakout-kicker">Market Intelligence &bull; ${escapeHtml(breakoutCandidate.source)}</div>
-              <h2 class="breakout-title">${escapeHtml(breakoutCandidate.title)}</h2>
-              ${breakoutCandidate.summary ? `<p class="breakout-desc">${escapeHtml(breakoutCandidate.summary)}</p>` : ''}
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #9CA3AF;">
-              <span>${estimateReadTime(breakoutCandidate.summary)} baca</span>
-              <span style="color: #6EE7B7; font-weight: 700;">Pelajari Riset &rarr;</span>
-            </div>
-          </div>
-          <div class="breakout-side-stack">
-            ${breakoutSides.map(sc => `
-              <div class="breakout-mini-item" data-id="${sc.id}">
-                <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 4px; text-transform: uppercase;">${escapeHtml(sc.source)} &bull; ${formatRelativeTime(sc.published_at)}</div>
-                <h4 class="breakout-mini-title">${escapeHtml(sc.title)}</h4>
+      // CONTINUOUS ROTATING EDITORIAL RHYTHM (Breaks monotony all the way down)
+      if (packageActive) {
+        const cycle = index % 18;
+
+        // 1. Themed 3-Up Matrix at index 5, 23, 41, 59...
+        if (cycle === 5) {
+          const fresh3 = availablePool.slice(index, index + 8).filter(a => !consumedInModules.has(a.id)).slice(0, 3);
+          if (fresh3.length === 3) {
+            fresh3.forEach(f => consumedInModules.add(f.id));
+            const matrixBlock = document.createElement('section');
+            matrixBlock.className = 'matrix-3up-grid';
+            matrixBlock.style.margin = '24px 0';
+            matrixBlock.innerHTML = fresh3.map((s, i) => `
+              <article class="matrix-card" data-id="${s.id}">
+                <div class="matrix-media">
+                  <img src="${escapeHtml(getArticleImage(s, index + i))}" alt="${escapeHtml(s.title)}" class="matrix-media-img" loading="lazy" onerror="this.onerror=null; this.src='${getFallbackImage(index + i)}';">
+                </div>
+                <div class="matrix-kicker">Sorotan Sektor &bull; ${escapeHtml(s.source)}</div>
+                <h3 class="matrix-headline">${escapeHtml(s.title)}</h3>
+                <div class="matrix-meta">
+                  <span>${estimateReadTime(s.summary)}</span>
+                  <span style="font-family: var(--font-mono);">${formatRelativeTime(s.published_at)}</span>
+                </div>
+              </article>
+            `).join('');
+
+            matrixBlock.querySelectorAll('.matrix-card').forEach(c => {
+              c.addEventListener('click', () => openReader(c.dataset.id));
+            });
+            newsList.appendChild(matrixBlock);
+          }
+        }
+
+        // 2. Wide Split Package at index 11, 29, 47, 65...
+        else if (cycle === 11) {
+          const splitCandidate = availablePool.slice(index, index + 6).find(a => !consumedInModules.has(a.id) && a.summary);
+          if (splitCandidate) {
+            consumedInModules.add(splitCandidate.id);
+            const splitCard = document.createElement('article');
+            splitCard.className = 'wide-split-package';
+            splitCard.dataset.id = splitCandidate.id;
+            const splitImg = getArticleImage(splitCandidate, index + 5);
+
+            splitCard.innerHTML = `
+              <div class="wide-split-media">
+                <img src="${escapeHtml(splitImg)}" alt="${escapeHtml(splitCandidate.title)}" class="wide-split-img" loading="lazy" onerror="this.onerror=null; this.src='${getFallbackImage(index + 5)}';">
               </div>
-            `).join('')}
-          </div>
-        `;
-        darkBreakout.querySelectorAll('[data-id]').forEach(el => {
-          el.addEventListener('click', () => openReader(el.dataset.id));
-        });
-        newsList.appendChild(darkBreakout);
+              <div class="wide-split-content">
+                <div>
+                  <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-text-secondary); margin-bottom: 6px;">
+                    Laporan Mendalam &bull; ${escapeHtml(splitCandidate.source)}
+                  </div>
+                  <h3 class="wide-split-title">${escapeHtml(splitCandidate.title)}</h3>
+                  <p class="wide-split-desc">${escapeHtml(splitCandidate.summary)}</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--color-text-muted);">
+                  <span>${estimateReadTime(splitCandidate.summary)}</span>
+                  <span style="font-weight: 700; color: var(--color-black);">Baca Naskah &rarr;</span>
+                </div>
+              </div>
+            `;
+            splitCard.addEventListener('click', () => openReader(splitCandidate.id));
+            newsList.appendChild(splitCard);
+          }
+        }
+
+        // 3. Dark Intelligence Breakout at index 17, 35, 53, 71...
+        else if (cycle === 17) {
+          const darkMain = availablePool.slice(index, index + 6).find(a => !consumedInModules.has(a.id) && a.summary);
+          const darkSides = availablePool.slice(index, index + 8).filter(a => a.id !== (darkMain ? darkMain.id : null) && !consumedInModules.has(a.id)).slice(0, 2);
+
+          if (darkMain && darkSides.length === 2) {
+            consumedInModules.add(darkMain.id);
+            darkSides.forEach(s => consumedInModules.add(s.id));
+
+            const darkModule = document.createElement('section');
+            darkModule.className = 'dark-breakout-module';
+            darkModule.innerHTML = `
+              <div class="breakout-featured" data-id="${darkMain.id}">
+                <div>
+                  <div class="breakout-kicker">Market Intelligence &bull; ${escapeHtml(darkMain.source)}</div>
+                  <h2 class="breakout-title">${escapeHtml(darkMain.title)}</h2>
+                  <p class="breakout-desc">${escapeHtml(darkMain.summary)}</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #9CA3AF;">
+                  <span>${estimateReadTime(darkMain.summary)}</span>
+                  <span style="color: #6EE7B7; font-weight: 700;">Pelajari Riset &rarr;</span>
+                </div>
+              </div>
+              <div class="breakout-side-stack">
+                ${darkSides.map(ds => `
+                  <div class="breakout-mini-item" data-id="${ds.id}">
+                    <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 4px; text-transform: uppercase;">${escapeHtml(ds.source)} &bull; ${formatRelativeTime(ds.published_at)}</div>
+                    <h4 class="breakout-mini-title">${escapeHtml(ds.title)}</h4>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+            darkModule.querySelectorAll('[data-id]').forEach(el => {
+              el.addEventListener('click', () => openReader(el.dataset.id));
+            });
+            newsList.appendChild(darkModule);
+          }
+        }
       }
+
+      if (consumedInModules.has(item.id)) return;
+
+      // Standard 2-Column Wire Row Card
       const row = document.createElement('article');
       row.className = 'article-flow-item';
       row.dataset.id = item.id;
 
-      const thumb = getArticleImage(item, index + 10);
-      const sentimentClass = (item.sentiment || 'NEUTRAL').toLowerCase();
+      const thumb = getArticleImage(item, index + 4);
       const tickersHtml = (item.tickers || []).slice(0, 3).map(t => `<span style="font-family: var(--font-mono); font-size: 10px; font-weight: 700; padding: 2px 6px; background-color: var(--color-surface-subtle); border-radius: var(--radius-xs); color: var(--color-text-primary);">${escapeHtml(t)}</span>`).join('');
       const isBookmarked = state.bookmarks.some(b => b.id === item.id);
-      
 
       row.innerHTML = `
         <div class="flow-thumb-container">
@@ -478,8 +596,6 @@
         icon.setAttribute('fill', currentlyBookmarked ? 'currentColor' : 'none');
       });
 
-
-
       newsList.appendChild(row);
     });
 
@@ -487,6 +603,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
+
 
   // Reader Modal Logic
   async function openReader(articleId) {
@@ -601,7 +718,7 @@
         loadMoreContainer.style.display = (state.articles.length >= totalAvailable || newBatch.length < state.pageSize) ? 'none' : 'block';
       }
     } catch (e) {
-      console.error('Fetch news error:', e);
+      console.error('Fetch news error stack:', e ? (e.stack || e.message) : 'unknown');
       if (btnLoadMore) {
         btnLoadMore.textContent = 'Coba Muat Lagi';
         btnLoadMore.disabled = false;
