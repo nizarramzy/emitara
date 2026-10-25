@@ -358,6 +358,14 @@
     // Active Filter Badges Container
     if (activeFilterPillContainer) {
       let badgesHtml = '';
+      if (state.searchQuery) {
+        badgesHtml += `
+          <span class="active-filter-badge">
+            <span>Cari: "${escapeHtml(state.searchQuery)}"</span>
+            <button type="button" class="btn-clear-active-badge" id="btnClearSearchPill" aria-label="Hapus kata kunci">&times;</button>
+          </span>
+        `;
+      }
       if (state.activeTicker) {
         badgesHtml += `
           <span class="active-filter-badge">
@@ -383,11 +391,20 @@
       }
       activeFilterPillContainer.innerHTML = badgesHtml;
 
+      const btnClearSearch = document.getElementById('btnClearSearchPill');
+      if (btnClearSearch) {
+        btnClearSearch.addEventListener('click', () => {
+          state.searchQuery = '';
+          if (searchInput) searchInput.value = '';
+          loadNews(false);
+        });
+      }
+
       const btnClearTicker = document.getElementById('btnClearTickerPill');
       if (btnClearTicker) {
         btnClearTicker.addEventListener('click', () => {
           state.activeTicker = null;
-          renderPortal(true);
+          loadNews(false);
         });
       }
 
@@ -689,7 +706,13 @@
         btnLoadMore.disabled = true;
       }
 
-      const res = await fetch(`/api/news?limit=${state.pageSize}&offset=${state.currentOffset}`);
+      let url = `/api/news?limit=${state.pageSize}&offset=${state.currentOffset}`;
+      if (state.searchQuery) url += `&q=${encodeURIComponent(state.searchQuery)}`;
+      if (state.activeTicker) url += `&ticker=${encodeURIComponent(state.activeTicker)}`;
+      if (state.activeSentiment !== 'ALL') url += `&sentiment=${encodeURIComponent(state.activeSentiment)}`;
+      if (state.activeCategory !== 'ALL') url += `&category=${encodeURIComponent(state.activeCategory)}`;
+
+      const res = await fetch(url);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const json = await res.json();
       const newBatch = json.data || [];
@@ -1069,10 +1092,14 @@
     });
   });
 
+  let searchDebounceTimer = null;
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       state.searchQuery = e.target.value.trim();
-      renderPortal();
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        loadNews(false);
+      }, 350);
     });
   }
 

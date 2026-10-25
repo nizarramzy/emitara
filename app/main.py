@@ -91,13 +91,14 @@ async def get_news(
     offset: int = Query(0, ge=0),
     ticker: str = Query(None),
     sentiment: str = Query(None),
-    category: str = Query(None)
+    category: str = Query(None),
+    q: str = Query(None)
 ):
-    if offset == 0 and not ticker and not sentiment and not category:
+    if offset == 0 and not ticker and not sentiment and not category and not q:
         asyncio.create_task(maybe_auto_poll())
 
-    articles = get_recent_articles(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
-    total = get_total_articles_count()
+    articles = get_recent_articles(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category, q=q)
+    total = get_total_articles_count(ticker=ticker, sentiment=sentiment, category=category, q=q)
     return {
         "status": "ok",
         "count": len(articles),
@@ -206,7 +207,8 @@ async def universal_dispatcher(request: Request, full_path: str):
         ticker = request.query_params.get("ticker")
         sentiment = request.query_params.get("sentiment")
         category = request.query_params.get("category")
-        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
+        q = request.query_params.get("q")
+        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category, q=q)
 
     if "refresh" in p or "cron" in p or "poll" in p:
         return await cron_poll()
@@ -244,7 +246,8 @@ async def universal_dispatcher(request: Request, full_path: str):
         ticker = request.query_params.get("ticker")
         sentiment = request.query_params.get("sentiment")
         category = request.query_params.get("category")
-        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
+        q = request.query_params.get("q")
+        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category, q=q)
 
     # 6. Cron / Refresh
     if "refresh" in check_str or "cron" in check_str or "poll" in check_str:

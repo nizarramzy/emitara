@@ -109,13 +109,36 @@ def save_article(article_data: dict) -> bool:
                     pass
             return False
 
-def get_total_articles_count() -> int:
+def get_total_articles_count(ticker: str = None, sentiment: str = None, category: str = None, q: str = None) -> int:
     with get_db() as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT COUNT(*) FROM articles")
+        query = "SELECT COUNT(*) FROM articles WHERE 1=1"
+        params = []
+        
+        if ticker:
+            query += " AND tickers LIKE ?"
+            params.append(f'%"{ticker.upper()}"%')
+            
+        if sentiment:
+            query += " AND sentiment = ?"
+            params.append(sentiment.upper())
+            
+        if category and category != 'ALL':
+            query += " AND (title LIKE ? OR summary LIKE ?)"
+            params.append(f"%{category}%")
+            params.append(f"%{category}%")
+            
+        if q and q.strip():
+            query += " AND (title LIKE ? OR summary LIKE ? OR tickers LIKE ?)"
+            clean_q = q.strip()
+            params.append(f"%{clean_q}%")
+            params.append(f"%{clean_q}%")
+            params.append(f"%{clean_q.upper()}%")
+            
+        cursor.execute(query, params)
         return cursor.fetchone()[0]
 
-def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, sentiment: str = None, category: str = None) -> list[dict]:
+def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, sentiment: str = None, category: str = None, q: str = None) -> list[dict]:
     with get_db() as conn:
         cursor = conn.cursor()
         query = "SELECT id, guid_hash, source, author, title, summary, url, image_url, published_at, sentiment, sentiment_score, tickers, created_at FROM articles WHERE 1=1"
@@ -133,6 +156,13 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
             query += " AND (title LIKE ? OR summary LIKE ?)"
             params.append(f"%{category}%")
             params.append(f"%{category}%")
+            
+        if q and q.strip():
+            query += " AND (title LIKE ? OR summary LIKE ? OR tickers LIKE ?)"
+            clean_q = q.strip()
+            params.append(f"%{clean_q}%")
+            params.append(f"%{clean_q}%")
+            params.append(f"%{clean_q.upper()}%")
             
         query += " ORDER BY id DESC LIMIT ? OFFSET ?"
         params.append(limit)
