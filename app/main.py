@@ -54,6 +54,7 @@ async def lifespan(app: FastAPI):
     if worker_task:
         worker_task.cancel()
 
+# Production Build: Single Project Deployment
 app = FastAPI(title="Emitara API", lifespan=lifespan)
 
 app.add_middleware(
