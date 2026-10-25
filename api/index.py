@@ -25,3 +25,13 @@ async def debug_paths(request: Request):
         "raw_path": request.scope.get("raw_path", b"").decode(),
         "routes": [r.path for r in app.routes]
     }
+
+
+from app.main import render_article_ssr
+
+@app.get("/berita/{article_id}")
+@app.get("/warta/{article_id}")
+@app.get("/api/berita/{article_id}")
+@app.get("/api/warta/{article_id}")
+async def index_render_ssr(article_id: int):
+    return await render_article_ssr(article_id)

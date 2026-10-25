@@ -416,6 +416,14 @@ import re
 @app.api_route("/{full_path:path}", methods=["GET", "POST", "HEAD"])
 async def universal_dispatcher(request: Request, full_path: str):
     p = full_path.strip("/").lower()
+    
+    # Priority check for SSR article sharing
+    raw_path_param = (request.query_params.get("__path__") or "").strip("/").lower()
+    unquoted_full = urllib.parse.unquote(f"{raw_path_param} {p} {request.url}").lower()
+    
+    m_ssr_top = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', unquoted_full)
+    if m_ssr_top:
+        return await render_article_ssr(int(m_ssr_top.group(1)))
 
     if "ticker" in p:
         return await get_market_ticker()
