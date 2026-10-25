@@ -20,6 +20,18 @@ from app.quotes import get_live_market_quotes
 
 subscribers: set[asyncio.Queue] = set()
 
+_last_poll_timestamp = 0
+
+async def maybe_auto_poll():
+    global _last_poll_timestamp
+    now = time.time()
+    if now - _last_poll_timestamp > 120:  # 2 minutes cooldown
+        _last_poll_timestamp = now
+        try:
+            await poll_all_sources(broadcast_article, enrich_content=False)
+        except Exception as e:
+            print("[Auto-Poll Error]", e)
+
 async def broadcast_article(article_dict: dict):
     if not subscribers:
         return
@@ -81,6 +93,9 @@ async def get_news(
     sentiment: str = Query(None),
     category: str = Query(None)
 ):
+    if offset == 0 and not ticker and not sentiment and not category:
+        asyncio.create_task(maybe_auto_poll())
+
     articles = get_recent_articles(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category)
     total = get_total_articles_count()
     return {
