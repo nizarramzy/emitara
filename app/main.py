@@ -424,11 +424,11 @@ async def universal_dispatcher(request: Request, full_path: str):
         limit = int(request.query_params.get("limit", 8))
         return await get_trending(limit=limit)
 
-    m_p_ssr = re.search(r'(?:berita|warta)/(\d+)', p)
+    m_p_ssr = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', p, re.I)
     if m_p_ssr:
         return await render_article_ssr(int(m_p_ssr.group(1)))
 
-    m = re.search(r'news/(\d+)', p)
+    m = re.search(r'news(?:/|%2f)(\d+)', p, re.I)
     if m:
         article_id = int(m.group(1))
         return await get_single_news(article_id)
@@ -453,7 +453,7 @@ async def universal_dispatcher(request: Request, full_path: str):
     matched_path = (request.headers.get("x-matched-path", "") or request.headers.get("x-now-route-matches", "")).lower()
     full_url = str(request.url).lower()
     
-    check_str = f"{path_param} {p} {matched_path} {full_url}"
+    check_str = urllib.parse.unquote(f"{path_param} {p} {matched_path} {full_url}")
 
     # 1. Market ticker
     if "ticker" in check_str:
@@ -465,11 +465,11 @@ async def universal_dispatcher(request: Request, full_path: str):
         return await get_trending(limit=limit)
 
     # 3. Single news detail: e.g. /news/123 or __path__=news/123
-    m_ssr = re.search(r'(?:berita|warta)/(\d+)', check_str)
+    m_ssr = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', check_str, re.I)
     if m_ssr:
         return await render_article_ssr(int(m_ssr.group(1)))
 
-    m = re.search(r'news/(\d+)', check_str)
+    m = re.search(r'news(?:/|%2f)(\d+)', check_str, re.I)
     if m:
         article_id = int(m.group(1))
         return await get_single_news(article_id)
