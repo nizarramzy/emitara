@@ -499,8 +499,8 @@ async def universal_dispatcher(request: Request, full_path: str):
     return {
         "status": "ok",
         "message": "Emitara Dispatcher Live",
+        "check_str": check_str,
+        "m_ssr_found": bool(re.search(r'(?:berita|warta)', check_str, re.I)),
         "path": full_path,
-        "matched_path": matched_path,
-        "url": str(request.url),
-        "headers": dict(request.headers)
+        "url": str(request.url)
     }
