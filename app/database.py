@@ -402,7 +402,7 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
         params.append(f"%{clean_q}%")
         params.append(f"%{clean_q.upper()}%")
         
-    query += " ORDER BY id DESC LIMIT ? OFFSET ?"
+    query += " ORDER BY published_at DESC, id DESC LIMIT ? OFFSET ?"
     params.append(limit)
     params.append(offset)
     

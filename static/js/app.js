@@ -731,6 +731,9 @@
         state.articles.forEach(a => state.seenGuids.add(a.guid_hash));
       }
 
+      // Always sort articles strictly by published_at DESC (newest on top)
+      state.articles.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
       renderPortal();
       updateSentimentBarometer();
       if (!append) checkUrlHash();
@@ -1009,6 +1012,7 @@
 
         state.seenGuids.add(article.guid_hash);
         state.articles.unshift(article);
+        state.articles.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 
         renderPortal();
         window.audioAlert.playPing(940, 0.12);
