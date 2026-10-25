@@ -25,3 +25,13 @@ async def debug_paths(request: Request):
         "raw_path": request.scope.get("raw_path", b"").decode(),
         "routes": [r.path for r in app.routes]
     }
+
+
+@app.get("/api/debug-query")
+@app.get("/debug-query")
+async def debug_query(request: Request):
+    return {
+        "query_params": dict(request.query_params),
+        "url": str(request.url),
+        "raw_query": request.scope.get("query_string", b"").decode()
+    }
