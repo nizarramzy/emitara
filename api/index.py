@@ -25,12 +25,3 @@ async def debug_paths(request: Request):
         "raw_path": request.scope.get("raw_path", b"").decode(),
         "routes": [r.path for r in app.routes]
     }
-
-
-@app.get("/api/debug-version")
-@app.get("/debug-version")
-async def debug_version():
-    return {
-        "version": "v_sort_fix_1",
-        "turso_active": is_turso_active()
-    }
