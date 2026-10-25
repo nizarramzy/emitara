@@ -3,7 +3,9 @@ import json
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Query, HTTPException, APIRouter
-from fastapi.responses import StreamingResponse, FileResponse
+from fastapi.responses import StreamingResponse, FileResponse, HTMLResponse
+import html
+import urllib.parse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -174,6 +176,235 @@ async def get_single_news(article_id: int):
 
     return {"status": "ok", "data": article}
 
+@app.get("/berita/{article_id}", response_class=HTMLResponse)
+@app.get("/warta/{article_id}", response_class=HTMLResponse)
+@api_router.get("/berita/{article_id}", response_class=HTMLResponse)
+@api_router.get("/warta/{article_id}", response_class=HTMLResponse)
+async def render_article_ssr(article_id: int):
+    article = get_article_by_id(article_id)
+    if not article:
+        return HTMLResponse(
+            status_code=404,
+            content="""<!DOCTYPE html><html><head><title>Warta Tidak Ditemukan - Emitara</title></head><body style="font-family: sans-serif; text-align: center; padding: 50px;"><h2>Warta tidak ditemukan atau sudah diarsipkan.</h2><p><a href="/">Kembali ke Portal Emitara</a></p></body></html>"""
+        )
+
+    if not article.get("content_text") or len(article.get("content_text", "")) < 80:
+        loop = asyncio.get_event_loop()
+        full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
+        if full_text:
+            article["content_text"] = full_text
+            article["author"] = author or article.get("author", "Redaksi")
+            if og_img and not article.get("image_url"):
+                article["image_url"] = og_img
+            save_article(article)
+
+    esc_title = html.escape(article.get("title") or "Warta Pasar Modal")
+    esc_summary = html.escape(article.get("summary") or "")
+    esc_author = html.escape(article.get("author") or "Tim Redaksi")
+    esc_source = html.escape(article.get("source") or "Emitara")
+    canonical_url = f"https://emitara.web.id/berita/{article_id}"
+    img_url = article.get("image_url") or "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80"
+
+    paragraphs = []
+    if article.get("content_text"):
+        paragraphs = [p.strip() for p in article["content_text"].split("\n\n") if p.strip()]
+    elif article.get("summary"):
+        paragraphs = [article["summary"]]
+
+    paragraphs_html = "".join([f"<p style='font-size: 16.5px; line-height: 1.75; margin-bottom: 20px; color: #2D3748;'>{html.escape(p)}</p>" for p in paragraphs])
+
+    tickers = article.get("tickers") or []
+    tickers_html = ""
+    chart_html = ""
+    if tickers:
+        t_badges = "".join([f"<span style='font-family: monospace; font-size: 11px; font-weight: 700; padding: 3px 8px; background: #F1F5F9; border-radius: 4px; margin-right: 6px; color: #0F172A;'>{html.escape(t)}</span>" for t in tickers])
+        tickers_html = f"<div style='margin-bottom: 20px; font-size: 12.5px;'><strong>Emiten Terkait:</strong> {t_badges}</div>"
+        primary_ticker = tickers[0]
+        chart_html = f"""
+        <div style="margin: 22px 0 26px 0; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; background: #FAFBFD;">
+          <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748B; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <span style="display: inline-block; width: 6px; height: 6px; background: #16A34A; border-radius: 50%;"></span>
+            Radar Saham BEI: IDX:{html.escape(primary_ticker)}
+          </div>
+          <div style="height: 220px; width: 100%;">
+            <div class="tradingview-widget-container" style="height: 100%; width: 100%;">
+              <div class="tradingview-widget-container__widget" style="height: calc(100% - 32px); width: 100%;"></div>
+              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+              {{
+                "symbol": "IDX:{html.escape(primary_ticker)}",
+                "width": "100%",
+                "height": "220",
+                "locale": "id",
+                "dateRange": "1M",
+                "colorTheme": "light",
+                "isTransparent": true,
+                "autosize": false,
+                "largeChartUrl": ""
+              }}
+              </script>
+            </div>
+          </div>
+        </div>
+        """
+
+    share_text = urllib.parse.quote(f"{article['title']} - {canonical_url}")
+    wa_url = f"https://api.whatsapp.com/send?text={share_text}"
+    x_url = f"https://twitter.com/intent/tweet?text={urllib.parse.quote(article['title'])}&url={urllib.parse.quote(canonical_url)}"
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{esc_title} - Emitara Warta Pasar Modal</title>
+  
+  <meta name="title" content="{esc_title}">
+  <meta name="description" content="{esc_summary[:200]}">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emitara Pasar Modal">
+  <meta property="og:url" content="{canonical_url}">
+  <meta property="og:title" content="{esc_title}">
+  <meta property="og:description" content="{esc_summary[:200]}">
+  <meta property="og:image" content="{img_url}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="{canonical_url}">
+  <meta name="twitter:title" content="{esc_title}">
+  <meta name="twitter:description" content="{esc_summary[:200]}">
+  <meta name="twitter:image" content="{img_url}">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {{
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #FFFFFF;
+      color: #111111;
+      -webkit-font-smoothing: antialiased;
+    }}
+    .article-wrap {{
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 20px 80px 20px;
+    }}
+    .top-bar {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #E5E7EB;
+    }}
+    .btn-back {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111111;
+      text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 9999px;
+      background: #FFFFFF;
+      transition: all 0.2s;
+    }}
+    .btn-back:hover {{
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+    }}
+    .article-headline {{
+      font-family: Georgia, 'Newsreader', serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin: 14px 0 16px 0;
+      color: #0F172A;
+    }}
+    .meta-line {{
+      font-size: 12px;
+      color: #64748B;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #F1F5F9;
+    }}
+    .share-row {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+      flex-wrap: wrap;
+    }}
+    .btn-share {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }}
+  </style>
+</head>
+<body>
+  <div class="article-wrap">
+    <div class="top-bar">
+      <a href="/" class="btn-back">&larr; Buka Portal Emitara</a>
+      <a href="/" style="font-family: Georgia, serif; font-size: 1.25rem; font-weight: 900; color: #111111; text-decoration: none; letter-spacing: -0.02em;">EMITARA</a>
+    </div>
+    
+    <div style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #0284C7;">
+      {esc_source} &bull; Warta Pasar Modal
+    </div>
+    
+    <h1 class="article-headline">{esc_title}</h1>
+    
+    <div class="meta-line">
+      Oleh: <strong style="color: #111111;">{esc_author}</strong> &bull; Terbit: {article.get('published_at', '')[:10]} &bull; <a href="{html.escape(article.get('url', ''))}" target="_blank" rel="noopener noreferrer" style="color: #64748B; text-decoration: underline;">Sumber Asli &nearr;</a>
+    </div>
+
+    {chart_html}
+
+    <div style="margin-bottom: 24px; border-radius: 8px; overflow: hidden; border: 1px solid #E2E8F0;">
+      <img src="{img_url}" alt="{esc_title}" style="width: 100%; max-height: 440px; object-fit: cover; display: block;" onerror="this.src='https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80'">
+    </div>
+
+    {tickers_html}
+
+    <div style="margin-top: 24px;">
+      {paragraphs_html}
+    </div>
+
+    <div class="share-row">
+      <span style="font-size: 12px; font-weight: 700; color: #475569;">Bagikan Warta:</span>
+      <a href="{wa_url}" target="_blank" rel="noopener" class="btn-share" style="background: #25D366; color: #FFFFFF;">
+        WhatsApp
+      </a>
+      <a href="{x_url}" target="_blank" rel="noopener" class="btn-share" style="background: #000000; color: #FFFFFF;">
+        X / Twitter
+      </a>
+      <button type="button" onclick="navigator.clipboard.writeText(window.location.href); alert('Tautan warta disalin!');" class="btn-share" style="background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; cursor: pointer;">
+        Salin Tautan
+      </button>
+    </div>
+  </div>
+</body>
+</html>"""
+    return HTMLResponse(content=html_content)
+
+
 # Mount both with prefix /api and without prefix!
 app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
@@ -192,6 +423,10 @@ async def universal_dispatcher(request: Request, full_path: str):
     if "trending" in p:
         limit = int(request.query_params.get("limit", 8))
         return await get_trending(limit=limit)
+
+    m_p_ssr = re.search(r'(?:berita|warta)/(\d+)', p)
+    if m_p_ssr:
+        return await render_article_ssr(int(m_p_ssr.group(1)))
 
     m = re.search(r'news/(\d+)', p)
     if m:
@@ -230,6 +465,10 @@ async def universal_dispatcher(request: Request, full_path: str):
         return await get_trending(limit=limit)
 
     # 3. Single news detail: e.g. /news/123 or __path__=news/123
+    m_ssr = re.search(r'(?:berita|warta)/(\d+)', check_str)
+    if m_ssr:
+        return await render_article_ssr(int(m_ssr.group(1)))
+
     m = re.search(r'news/(\d+)', check_str)
     if m:
         article_id = int(m.group(1))

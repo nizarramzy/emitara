@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/berita/(.*)",
+      "destination": "/api/index.py?__path__=berita/$1"
+    },
+    {
+      "source": "/warta/(.*)",
+      "destination": "/api/index.py?__path__=berita/$1"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/index.py?__path__=$1"
     },

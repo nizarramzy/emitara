@@ -634,6 +634,8 @@
     readerMedia.innerHTML = '';
     readerTickers.innerHTML = '';
     readerRelated.innerHTML = '';
+    const readerMarketRadarInit = document.getElementById('readerMarketRadar');
+    if (readerMarketRadarInit) readerMarketRadarInit.innerHTML = '';
 
     try {
       const res = await fetch(`/api/news/${articleId}`);
@@ -654,6 +656,104 @@
           <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-primary); text-decoration: underline;">Tautan Asli &nearr;</a>
         </div>
       `;
+
+      // Share Button Handler
+      const btnShareReader = document.getElementById('btnShareReader');
+      if (btnShareReader) {
+        btnShareReader.onclick = async () => {
+          const shareUrl = `https://emitara.web.id/berita/${article.id}`;
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: `${article.title} - Emitara`,
+                text: article.summary || article.title,
+                url: shareUrl
+              });
+            } catch (err) {}
+          } else {
+            try {
+              await navigator.clipboard.writeText(shareUrl);
+              const origHtml = btnShareReader.innerHTML;
+              btnShareReader.innerHTML = `<span>&check; Tautan Disalin!</span>`;
+              setTimeout(() => { btnShareReader.innerHTML = origHtml; }, 2500);
+            } catch (e) {
+              prompt('Salin tautan warta ini:', shareUrl);
+            }
+          }
+        };
+      }
+
+      // TradingView Stock Chart & Market Radar
+      const readerMarketRadar = document.getElementById('readerMarketRadar');
+      if (readerMarketRadar) {
+        const tickers = Array.isArray(article.tickers) ? article.tickers : [];
+        if (tickers.length > 0) {
+          let activeTicker = tickers[0];
+
+          const injectTV = (t) => {
+            const chartWrap = document.getElementById('radarChartWrap');
+            if (!chartWrap) return;
+            chartWrap.innerHTML = '';
+            
+            const widgetBox = document.createElement('div');
+            widgetBox.className = 'tradingview-widget-container';
+            widgetBox.style.height = '100%';
+            widgetBox.style.width = '100%';
+
+            const innerWidget = document.createElement('div');
+            innerWidget.className = 'tradingview-widget-container__widget';
+            innerWidget.style.height = 'calc(100% - 32px)';
+            innerWidget.style.width = '100%';
+            widgetBox.appendChild(innerWidget);
+
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+            script.async = true;
+            script.innerHTML = JSON.stringify({
+              "symbol": `IDX:${t}`,
+              "width": "100%",
+              "height": "220",
+              "locale": "id",
+              "dateRange": "1M",
+              "colorTheme": "light",
+              "isTransparent": true,
+              "autosize": false,
+              "largeChartUrl": ""
+            });
+            widgetBox.appendChild(script);
+            chartWrap.appendChild(widgetBox);
+          };
+
+          readerMarketRadar.innerHTML = `
+            <div class="reader-radar-card">
+              <div class="reader-radar-top">
+                <div class="reader-radar-title">Radar Saham BEI: IDX:${escapeHtml(activeTicker)}</div>
+                ${tickers.length > 1 ? `
+                  <div class="radar-tabs">
+                    ${tickers.map(tk => `<button type="button" class="radar-tab-btn ${tk === activeTicker ? 'active' : ''}" data-ticker="${escapeHtml(tk)}">${escapeHtml(tk)}</button>`).join('')}
+                  </div>
+                ` : ''}
+              </div>
+              <div class="radar-chart-wrap" id="radarChartWrap"></div>
+            </div>
+          `;
+
+          injectTV(activeTicker);
+
+          readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const newT = btn.dataset.ticker;
+              readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.ticker === newT));
+              const titleEl = readerMarketRadar.querySelector('.reader-radar-title');
+              if (titleEl) titleEl.textContent = `Radar Saham BEI: IDX:${newT}`;
+              injectTV(newT);
+            });
+          });
+        } else {
+          readerMarketRadar.innerHTML = '';
+        }
+      }
 
       if (article.image_url) {
         readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;">`;
