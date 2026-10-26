@@ -628,177 +628,225 @@
 
 
   // Reader Modal Logic
+    function renderArticleInModal(article, isFallback = false) {
+    if (!article) return;
+    readerTitle.textContent = article.title || 'Warta Pasar Modal';
+    readerMeta.innerHTML = `
+      <span style="font-weight: 700; text-transform: uppercase; font-size: 11px;">${escapeHtml(article.source || 'Emitara')}</span>
+      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">&bull; ${formatRelativeTime(article.published_at)} &bull; ${estimateReadTime(article.content_text || article.summary)}</span>
+    `;
+
+    const authorName = article.author || 'Tim Redaksi';
+    readerAuthor.innerHTML = `
+      <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--color-text-muted);">
+        <span>Oleh: <strong style="color: var(--color-text-primary);">${escapeHtml(authorName)}</strong></span>
+        ${article.url ? `<a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-primary); text-decoration: underline;">Tautan Asli &nearr;</a>` : ''}
+      </div>
+    `;
+
+    // Share Button Handler
+    const btnShareReader = document.getElementById('btnShareReader');
+    if (btnShareReader) {
+      btnShareReader.onclick = async () => {
+        const shareUrl = `https://emitara.web.id/berita/${article.id}`;
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: `${article.title} - Emitara`,
+              text: article.summary || article.title,
+              url: shareUrl
+            });
+          } catch (err) {}
+        } else {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            const origHtml = btnShareReader.innerHTML;
+            btnShareReader.innerHTML = `<span>&check; Tautan Disalin!</span>`;
+            setTimeout(() => { btnShareReader.innerHTML = origHtml; }, 2500);
+          } catch (e) {
+            prompt('Salin tautan warta ini:', shareUrl);
+          }
+        }
+      };
+    }
+
+    // TradingView Stock Chart & Market Radar
+    const readerMarketRadar = document.getElementById('readerMarketRadar');
+    if (readerMarketRadar) {
+      const tickers = Array.isArray(article.tickers) ? article.tickers : [];
+      if (tickers.length > 0) {
+        let activeTicker = tickers[0];
+
+        const injectTV = (t) => {
+          const chartWrap = document.getElementById('radarChartWrap');
+          if (!chartWrap) return;
+          chartWrap.innerHTML = '';
+          
+          const widgetBox = document.createElement('div');
+          widgetBox.className = 'tradingview-widget-container';
+          widgetBox.style.height = '100%';
+          widgetBox.style.width = '100%';
+
+          const innerWidget = document.createElement('div');
+          innerWidget.className = 'tradingview-widget-container__widget';
+          innerWidget.style.height = 'calc(100% - 32px)';
+          innerWidget.style.width = '100%';
+          widgetBox.appendChild(innerWidget);
+
+          const script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+          script.async = true;
+          script.innerHTML = JSON.stringify({
+            "symbol": `IDX:${t}`,
+            "width": "100%",
+            "height": "220",
+            "locale": "id",
+            "dateRange": "1M",
+            "colorTheme": "light",
+            "isTransparent": true,
+            "autosize": false,
+            "largeChartUrl": ""
+          });
+          widgetBox.appendChild(script);
+          chartWrap.appendChild(widgetBox);
+        };
+
+        readerMarketRadar.innerHTML = `
+          <div class="reader-radar-card">
+            <div class="reader-radar-top">
+              <div class="reader-radar-title">Radar Saham BEI: IDX:${escapeHtml(activeTicker)}</div>
+              ${tickers.length > 1 ? `
+                <div class="radar-tabs">
+                  ${tickers.map(tk => `<button type="button" class="radar-tab-btn ${tk === activeTicker ? 'active' : ''}" data-ticker="${escapeHtml(tk)}">${escapeHtml(tk)}</button>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+            <div class="radar-chart-wrap" id="radarChartWrap"></div>
+          </div>
+        `;
+
+        injectTV(activeTicker);
+
+        readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const newT = btn.dataset.ticker;
+            readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.ticker === newT));
+            const titleEl = readerMarketRadar.querySelector('.reader-radar-title');
+            if (titleEl) titleEl.textContent = `Radar Saham BEI: IDX:${newT}`;
+            injectTV(newT);
+          });
+        });
+      } else {
+        readerMarketRadar.innerHTML = '';
+      }
+    }
+
+    if (article.image_url) {
+      readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='${getFallbackImage(article.id || 1)}';">`;
+    } else {
+      readerMedia.innerHTML = '';
+    }
+
+    let rawText = (article.content_text && article.content_text.length > 50) ? article.content_text : (article.summary || article.title);
+    let paragraphs = rawText.split('\n\n').filter(p => p.trim().length > 0);
+
+    let htmlBody = paragraphs.map(p => {
+      const cleanP = (p || '').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+      return cleanP ? `<p>${escapeHtml(cleanP)}</p>` : '';
+    }).filter(Boolean).join('');
+
+    if (isFallback && article.url) {
+      htmlBody += `
+        <div style="margin-top: 24px; padding: 14px 18px; background: var(--color-surface-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); font-size: 13px; color: var(--color-text-muted); line-height: 1.5;">
+          <strong style="color: var(--color-text-primary); display: block; margin-bottom: 4px;">Informasi Redaksi:</strong>
+          Menampilkan ringkasan warta resmi dari feed bursa. Untuk ulasan mendalam, silakan baca artikel lengkap di 
+          <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-primary); font-weight: 600; text-decoration: underline;">situs resmi penerbit (${escapeHtml(article.source || 'Media Asal')}) &nearr;</a>
+        </div>
+      `;
+    }
+
+    readerBody.innerHTML = htmlBody;
+
+    if (article.tickers && article.tickers.length > 0) {
+      readerTickers.innerHTML = `
+        <div style="font-size: 12px; font-weight: 700; margin-bottom: 8px;">Emiten Terkait:</div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          ${article.tickers.map(t => `<button type="button" class="btn-header-clean btn-filter-ticker" data-ticker="${escapeHtml(t)}">${escapeHtml(t)}</button>`).join('')}
+        </div>
+      `;
+      readerTickers.querySelectorAll('.btn-filter-ticker').forEach(btn => {
+        btn.addEventListener('click', () => {
+          closeReader();
+          state.activeTicker = (btn.dataset.ticker || '').toUpperCase();
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    } else {
+      readerTickers.innerHTML = '';
+    }
+  }
+
   async function openReader(articleId) {
     if (!readerOverlay) return;
     readerOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     window.location.hash = `#/berita/${articleId}`;
 
-    readerTitle.textContent = 'Memuat naskah berita...';
-    readerBody.innerHTML = '<p style="color: var(--color-text-muted);">Menyiapkan teks artikel lengkap dari redaksi...</p>';
-    readerMedia.innerHTML = '';
-    readerTickers.innerHTML = '';
-    readerRelated.innerHTML = '';
-    const readerMarketRadarInit = document.getElementById('readerMarketRadar');
-    if (readerMarketRadarInit) readerMarketRadarInit.innerHTML = '';
+    // 1. Instant Cache Render: Check if article is already in loaded state
+    const cached = state.articles.find(a => String(a.id) === String(articleId));
+    if (cached) {
+      renderArticleInModal(cached, false);
+    } else {
+      readerTitle.textContent = 'Memuat naskah berita...';
+      readerMeta.innerHTML = '';
+      readerAuthor.innerHTML = '';
+      readerMedia.innerHTML = '';
+      readerTickers.innerHTML = '';
+      readerRelated.innerHTML = '';
+      readerBody.innerHTML = '<p style="color: var(--color-text-muted);">Menyiapkan teks artikel lengkap dari redaksi...</p>';
+      const radarInit = document.getElementById('readerMarketRadar');
+      if (radarInit) radarInit.innerHTML = '';
+    }
 
+    // 2. Fetch full article data from server
     try {
       const res = await fetch(`/api/news/${articleId}`);
-      if (!res.ok) throw new Error('Gagal memuat artikel');
+      if (!res.ok) {
+        if (cached) {
+          renderArticleInModal(cached, true);
+          return;
+        }
+        throw new Error('Warta tidak dapat diakses saat ini');
+      }
       const json = await res.json();
       const article = json.data;
-
-      readerTitle.textContent = article.title;
-      readerMeta.innerHTML = `
-        <span style="font-weight: 700; text-transform: uppercase; font-size: 11px;">${escapeHtml(article.source)}</span>
-        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted);">&bull; ${formatRelativeTime(article.published_at)} &bull; ${estimateReadTime(article.content_text)}</span>
-      `;
-
-      const authorName = article.author || 'Tim Redaksi';
-      readerAuthor.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: var(--color-text-muted);">
-          <span>Oleh: <strong style="color: var(--color-text-primary);">${escapeHtml(authorName)}</strong></span>
-          <a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" style="color: var(--color-text-primary); text-decoration: underline;">Tautan Asli &nearr;</a>
-        </div>
-      `;
-
-      // Share Button Handler
-      const btnShareReader = document.getElementById('btnShareReader');
-      if (btnShareReader) {
-        btnShareReader.onclick = async () => {
-          const shareUrl = `https://emitara.web.id/berita/${article.id}`;
-          if (navigator.share) {
-            try {
-              await navigator.share({
-                title: `${article.title} - Emitara`,
-                text: article.summary || article.title,
-                url: shareUrl
-              });
-            } catch (err) {}
-          } else {
-            try {
-              await navigator.clipboard.writeText(shareUrl);
-              const origHtml = btnShareReader.innerHTML;
-              btnShareReader.innerHTML = `<span>&check; Tautan Disalin!</span>`;
-              setTimeout(() => { btnShareReader.innerHTML = origHtml; }, 2500);
-            } catch (e) {
-              prompt('Salin tautan warta ini:', shareUrl);
-            }
-          }
-        };
-      }
-
-      // TradingView Stock Chart & Market Radar
-      const readerMarketRadar = document.getElementById('readerMarketRadar');
-      if (readerMarketRadar) {
-        const tickers = Array.isArray(article.tickers) ? article.tickers : [];
-        if (tickers.length > 0) {
-          let activeTicker = tickers[0];
-
-          const injectTV = (t) => {
-            const chartWrap = document.getElementById('radarChartWrap');
-            if (!chartWrap) return;
-            chartWrap.innerHTML = '';
-            
-            const widgetBox = document.createElement('div');
-            widgetBox.className = 'tradingview-widget-container';
-            widgetBox.style.height = '100%';
-            widgetBox.style.width = '100%';
-
-            const innerWidget = document.createElement('div');
-            innerWidget.className = 'tradingview-widget-container__widget';
-            innerWidget.style.height = 'calc(100% - 32px)';
-            innerWidget.style.width = '100%';
-            widgetBox.appendChild(innerWidget);
-
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
-            script.async = true;
-            script.innerHTML = JSON.stringify({
-              "symbol": `IDX:${t}`,
-              "width": "100%",
-              "height": "220",
-              "locale": "id",
-              "dateRange": "1M",
-              "colorTheme": "light",
-              "isTransparent": true,
-              "autosize": false,
-              "largeChartUrl": ""
-            });
-            widgetBox.appendChild(script);
-            chartWrap.appendChild(widgetBox);
-          };
-
-          readerMarketRadar.innerHTML = `
-            <div class="reader-radar-card">
-              <div class="reader-radar-top">
-                <div class="reader-radar-title">Radar Saham BEI: IDX:${escapeHtml(activeTicker)}</div>
-                ${tickers.length > 1 ? `
-                  <div class="radar-tabs">
-                    ${tickers.map(tk => `<button type="button" class="radar-tab-btn ${tk === activeTicker ? 'active' : ''}" data-ticker="${escapeHtml(tk)}">${escapeHtml(tk)}</button>`).join('')}
-                  </div>
-                ` : ''}
-              </div>
-              <div class="radar-chart-wrap" id="radarChartWrap"></div>
-            </div>
-          `;
-
-          injectTV(activeTicker);
-
-          readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const newT = btn.dataset.ticker;
-              readerMarketRadar.querySelectorAll('.radar-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.ticker === newT));
-              const titleEl = readerMarketRadar.querySelector('.reader-radar-title');
-              if (titleEl) titleEl.textContent = `Radar Saham BEI: IDX:${newT}`;
-              injectTV(newT);
-            });
-          });
-        } else {
-          readerMarketRadar.innerHTML = '';
-        }
-      }
-
-      if (article.image_url) {
-        readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='${getFallbackImage(article.id || 1)}';">`;
-      }
-
-      let paragraphs = [];
-      if (article.content_text && article.content_text.length > 50) {
-        paragraphs = article.content_text.split('\n\n').filter(p => p.trim().length > 0);
-      } else if (article.summary) {
-        paragraphs = [article.summary];
-      }
-
-      readerBody.innerHTML = paragraphs.map(p => {
-        const cleanP = (p || '').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
-        return cleanP ? `<p>${escapeHtml(cleanP)}</p>` : '';
-      }).filter(Boolean).join('');
-
-      if (article.tickers && article.tickers.length > 0) {
-        readerTickers.innerHTML = `
-          <div style="font-size: 12px; font-weight: 700; margin-bottom: 8px;">Emiten Terkait:</div>
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            ${article.tickers.map(t => `<button type="button" class="btn-header-clean btn-filter-ticker" data-ticker="${escapeHtml(t)}">${escapeHtml(t)}</button>`).join('')}
+      if (!article) throw new Error('Data warta kosong');
+      renderArticleInModal(article, false);
+    } catch (err) {
+      if (cached) {
+        renderArticleInModal(cached, true);
+      } else {
+        readerTitle.textContent = 'Warta Sedang Disiapkan';
+        readerBody.innerHTML = `
+          <div style="padding: 24px 0; text-align: center;">
+            <p style="color: var(--color-text-muted); font-size: 14px; margin-bottom: 16px;">
+              Teks warta ini sedang disinkronkan oleh sistem atau jaringan sedang sibuk.
+            </p>
+            <button type="button" class="btn-clean-primary" onclick="window.openReader(${articleId})" style="padding: 8px 18px; font-size: 12px; font-weight: 600; cursor: pointer;">
+              &orarr; Coba Muat Ulang
+            </button>
           </div>
         `;
-        readerTickers.querySelectorAll('.btn-filter-ticker').forEach(btn => {
-          btn.addEventListener('click', () => {
-            closeReader();
-            state.activeTicker = (btn.dataset.ticker || '').toUpperCase();
-            state.viewMode = 'ALL';
-            updateModeButtons();
-            loadNews(false);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          });
-        });
       }
-    } catch (err) {
-      readerTitle.textContent = 'Gagal memuat artikel';
-      readerBody.innerHTML = `<p style="color: var(--color-bearish-text);">${escapeHtml(err.message)}</p>`;
     }
   }
+
+  // Expose to window for inline onclick handlers
+  window.openReader = openReader;
 
   function closeReader() {
     if (!readerOverlay) return;

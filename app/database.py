@@ -512,40 +512,43 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
         return articles
 
 def get_article_by_id(article_id: int) -> dict:
+    clean_id = int(article_id)
+    # 1. Try Turso Cloud
     if is_turso_active():
         try:
-            res = turso_execute("SELECT * FROM articles WHERE id = ?", [article_id])
-            if res.get("rows"):
-                d = dict(res["rows"][0])
-            try:
-                d["tickers"] = json.loads(d["tickers"]) if isinstance(d["tickers"], str) else (d["tickers"] or [])
-            except Exception:
-                d["tickers"] = []
-                
-            related = []
-            if d["tickers"]:
-                first_ticker = d["tickers"][0]
-                rel_res = turso_execute("""
-                SELECT id, title, source, published_at, image_url, sentiment, tickers
-                FROM articles WHERE tickers LIKE ? AND id != ?
-                ORDER BY id DESC LIMIT 3
-                """, [f'%"{first_ticker}"%', article_id])
-                for rel_row in rel_res.get("rows", []):
-                    rd = dict(rel_row)
-                    try:
-                        rd["tickers"] = json.loads(rd["tickers"]) if isinstance(rd["tickers"], str) else (rd["tickers"] or [])
-                    except Exception:
-                        rd["tickers"] = []
-                    related.append(rd)
+            res = turso_execute("SELECT * FROM articles WHERE id = ?", [clean_id])
+            rows = res.get("rows", [])
+            if rows:
+                d = dict(rows[0])
+                try:
+                    d["tickers"] = json.loads(d["tickers"]) if isinstance(d["tickers"], str) else (d["tickers"] or [])
+                except Exception:
+                    d["tickers"] = []
+                    
+                related = []
+                if d.get("tickers"):
+                    first_ticker = d["tickers"][0]
+                    rel_res = turso_execute("""
+                    SELECT id, title, source, published_at, image_url, sentiment, tickers
+                    FROM articles WHERE tickers LIKE ? AND id != ?
+                    ORDER BY id DESC LIMIT 3
+                    """, [f'%"{first_ticker}"%', clean_id])
+                    for rel_row in rel_res.get("rows", []):
+                        rd = dict(rel_row)
+                        try:
+                            rd["tickers"] = json.loads(rd["tickers"]) if isinstance(rd["tickers"], str) else (rd["tickers"] or [])
+                        except Exception:
+                            rd["tickers"] = []
+                        related.append(rd)
                 d["related_articles"] = related
                 return sanitize_dict_article(d)
         except Exception as e:
             print("[Turso Get By Id Error]", e)
 
-    # Fallback to local database if not found in Turso
+    # 2. Fallback to local SQLite database
     with get_db() as conn:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM articles WHERE id = ?", (article_id,))
+        cursor.execute("SELECT * FROM articles WHERE id = ?", (clean_id,))
         row = cursor.fetchone()
         if not row:
             return None
@@ -556,13 +559,13 @@ def get_article_by_id(article_id: int) -> dict:
             d["tickers"] = []
             
         related = []
-        if d["tickers"]:
+        if d.get("tickers"):
             first_ticker = d["tickers"][0]
             cursor.execute("""
             SELECT id, title, source, published_at, image_url, sentiment, tickers
             FROM articles WHERE tickers LIKE ? AND id != ?
             ORDER BY id DESC LIMIT 3
-            """, (f'%"{first_ticker}"%', article_id))
+            """, (f'%"{first_ticker}"%', clean_id))
             for rel_row in cursor.fetchall():
                 rd = dict(rel_row)
                 try:

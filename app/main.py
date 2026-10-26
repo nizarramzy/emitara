@@ -170,7 +170,10 @@ async def get_single_news(article_id: int):
         if article.get("url"):
             try:
                 loop = asyncio.get_event_loop()
-                full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
+                full_text, author, og_img = await asyncio.wait_for(
+                    loop.run_in_executor(None, fetch_full_content_sync, article["url"]),
+                    timeout=3.5
+                )
                 if full_text:
                     article["content_text"] = full_text
                     article["author"] = author or article.get("author", "Redaksi")
@@ -178,7 +181,10 @@ async def get_single_news(article_id: int):
                         article["image_url"] = og_img
                     save_article(article)
             except Exception as e:
-                print("[Enrich Error]", e)
+                print("[Enrich Timeout/Error]", e)
+
+    if not article.get("content_text"):
+        article["content_text"] = article.get("summary") or article.get("title", "")
 
     return {"status": "ok", "data": article}
 
