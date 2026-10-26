@@ -695,8 +695,16 @@ a:focus-visible {
 /* Responsive Rules */
 @media (max-width: 960px) {
   .main-editorial-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .editorial-feed {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
   }
   .highlights-carousel {
     grid-template-columns: 1fr 1fr;
@@ -1607,4 +1615,28 @@ a:focus-visible {
     gap: 20px;
     padding: 18px 16px;
   }
+}
+
+
+/* Global Overflow Containment */
+html, body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+}
+
+.main-editorial-layout,
+.editorial-feed,
+.bloomberg-lead-package,
+.matrix-3up-grid,
+.dispatch-text-grid,
+.dark-breakout-module,
+.wide-split-package,
+.article-flow-item {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }

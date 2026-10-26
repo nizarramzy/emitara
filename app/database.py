@@ -1,3 +1,16 @@
+def sanitize_article_text(text: str, current_img: str = "") -> tuple[str, str]:
+    if not text:
+        return "", current_img
+    new_img = current_img
+    if not new_img:
+        m_img = re.search(r'<img[^>]+src="([^"]+)"', text)
+        if m_img:
+            new_img = m_img.group(1)
+    clean = re.sub(r'<[^>]+>', ' ', text)
+    clean = html.unescape(clean)
+    clean = re.sub(r'\s+', ' ', clean).strip()
+    return clean, new_img
+
 import sqlite3
 import os
 import json
@@ -13,6 +26,24 @@ BUNDLED_DB = os.path.join(BASE_DIR, "..", "data", "emitara.db")
 # Turso Cloud Environment Variables
 TURSO_DATABASE_URL = os.environ.get("TURSO_DATABASE_URL")
 TURSO_AUTH_TOKEN = os.environ.get("TURSO_AUTH_TOKEN")
+
+def sanitize_dict_article(d: dict) -> dict:
+    if not d:
+        return d
+    if d.get("summary") and "<" in d["summary"]:
+        clean_s, ext_img = sanitize_article_text(d["summary"], d.get("image_url", ""))
+        d["summary"] = clean_s
+        if ext_img and not d.get("image_url"):
+            d["image_url"] = ext_img
+    if d.get("content_text") and "<" in d["content_text"]:
+        clean_c, ext_img = sanitize_article_text(d["content_text"], d.get("image_url", ""))
+        d["content_text"] = clean_c
+        if ext_img and not d.get("image_url"):
+            d["image_url"] = ext_img
+    if d.get("title") and "<" in d["title"]:
+        clean_t, _ = sanitize_article_text(d["title"], "")
+        d["title"] = clean_t
+    return d
 
 def is_turso_active() -> bool:
     return bool(TURSO_DATABASE_URL and TURSO_AUTH_TOKEN)
@@ -253,6 +284,18 @@ def init_db():
 
 def save_article(article_data: dict) -> bool:
     """Returns True if inserted, False if already exists (deduplicated)"""
+    # Sanitize title, summary, content_text
+    raw_img = article_data.get("image_url", "")
+    clean_summary, raw_img = sanitize_article_text(article_data.get("summary", ""), raw_img)
+    clean_content, raw_img = sanitize_article_text(article_data.get("content_text", ""), raw_img)
+    clean_title, _ = sanitize_article_text(article_data.get("title", ""), "")
+    
+    article_data["summary"] = clean_summary
+    article_data["content_text"] = clean_content
+    article_data["title"] = clean_title
+    if raw_img:
+        article_data["image_url"] = raw_img
+
     tickers_str = json.dumps(article_data.get("tickers", []))
     created_at = datetime.utcnow().isoformat()
     
@@ -440,7 +483,7 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
                     d["tickers"] = json.loads(d["tickers"]) if isinstance(d["tickers"], str) else (d["tickers"] or [])
                 except Exception:
                     d["tickers"] = []
-                articles.append(d)
+                articles.append(sanitize_dict_article(d))
             return articles
         except Exception as e:
             print("[Turso Query Error]", e)
@@ -457,7 +500,7 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
                 d["tickers"] = json.loads(d["tickers"])
             except Exception:
                 d["tickers"] = []
-            articles.append(d)
+            articles.append(sanitize_dict_article(d))
         return articles
 
 def get_article_by_id(article_id: int) -> dict:
@@ -488,7 +531,7 @@ def get_article_by_id(article_id: int) -> dict:
                         rd["tickers"] = []
                     related.append(rd)
             d["related_articles"] = related
-            return d
+            return sanitize_dict_article(d)
         except Exception as e:
             print("[Turso Get By Id Error]", e)
 
@@ -521,7 +564,7 @@ def get_article_by_id(article_id: int) -> dict:
                 related.append(rd)
                 
         d["related_articles"] = related
-        return d
+        return sanitize_dict_article(d)
 
 def get_trending_tickers(limit: int = 8) -> list[dict]:
     if is_turso_active():

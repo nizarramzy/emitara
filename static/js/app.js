@@ -115,7 +115,8 @@
 
     function cleanHeadline(title) {
     if (!title) return '';
-    let t = title
+    let t = title.replace(/<[^>]*>?/gm, ' ');
+    t = t
       .replace(/&nbsp;/g, ' ')
       .replace(/\u00a0/g, ' ')
       .replace(/&amp;/g, '&')
@@ -125,6 +126,7 @@
       .replace(/&gt;/g, '>');
 
     t = t.replace(/^(?:Wow|Cek|Yuk|Simak|Waduh|Hore|Duh|Ternyata|Gokil|Heboh|Astaga)!\s*/i, '');
+    t = t.replace(/\s+/g, ' ');
     return t.replace(/^[\s\u200B\u00A0]+/, '').trim();
   }
 
@@ -769,7 +771,10 @@
         paragraphs = [article.summary];
       }
 
-      readerBody.innerHTML = paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('');
+      readerBody.innerHTML = paragraphs.map(p => {
+        const cleanP = (p || '').replace(/<[^>]*>?/gm, ' ').replace(/\s+/g, ' ').trim();
+        return cleanP ? `<p>${escapeHtml(cleanP)}</p>` : '';
+      }).filter(Boolean).join('');
 
       if (article.tickers && article.tickers.length > 0) {
         readerTickers.innerHTML = `

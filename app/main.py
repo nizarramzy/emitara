@@ -201,11 +201,17 @@ async def render_article_ssr(article_id: int):
             save_article(article)
 
     esc_title = html.escape(article.get("title") or "Warta Pasar Modal")
-    esc_summary = html.escape(article.get("summary") or "")
+    esc_summary = html.escape(re.sub(r"<[^>]+>", " ", article.get("summary") or "").strip())
     esc_author = html.escape(article.get("author") or "Tim Redaksi")
     esc_source = html.escape(article.get("source") or "Emitara")
     canonical_url = f"https://emitara.web.id/berita/{article_id}"
-    img_url = article.get("image_url") or "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80"
+    img_url = article.get("image_url")
+    if not img_url:
+        m_img = re.search(r'<img[^>]+src=["']([^"']+)["']', (article.get("content_text") or "") + (article.get("summary") or ""))
+        if m_img:
+            img_url = m_img.group(1)
+    if not img_url:
+        img_url = "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80"
 
     paragraphs = []
     if article.get("content_text"):
@@ -213,7 +219,7 @@ async def render_article_ssr(article_id: int):
     elif article.get("summary"):
         paragraphs = [article["summary"]]
 
-    paragraphs_html = "".join([f"<p style='font-size: 16.5px; line-height: 1.75; margin-bottom: 20px; color: #2D3748;'>{html.escape(p)}</p>" for p in paragraphs])
+    paragraphs_html = "".join([f"<p style='font-size: 16.5px; line-height: 1.75; margin-bottom: 20px; color: #2D3748;'>{html.escape(re.sub(r'<[^>]+>', ' ', p).strip())}</p>" for p in paragraphs if re.sub(r'<[^>]+>', ' ', p).strip()])
 
     tickers = article.get("tickers") or []
     tickers_html = ""
