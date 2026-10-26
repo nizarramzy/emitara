@@ -1443,6 +1443,13 @@
   setInterval(loadTrending, 60000);
   connectSSE();
 
+  // Auto-refresh news feed every 60s when viewing main stream (terminal style)
+  setInterval(() => {
+    if (!document.hidden && state.viewMode === 'ALL' && !state.searchQuery && !state.activeTicker && state.activeCategory === 'ALL' && state.activeSentiment === 'ALL') {
+      loadNews(false);
+    }
+  }, 60000);
+
   // Bloomberg-Style Markets Mega Menu Logic
   const btnMegaMenuMarkets = document.getElementById('btnMegaMenuMarkets');
   const megaMenuMarkets = document.getElementById('megaMenuMarkets');
