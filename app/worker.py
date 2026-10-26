@@ -206,7 +206,7 @@ async def fetch_feed(source: dict) -> list[dict]:
     loop = asyncio.get_event_loop()
     def _fetch():
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=5) as resp:
+        with urllib.request.urlopen(req, timeout=3.5) as resp:
             return resp.read()
             
     try:
@@ -226,7 +226,13 @@ async def enrich_full_article(item: dict) -> dict:
     return item
 
 async def poll_all_sources(broadcast_cb = None, enrich_content: bool = True) -> int:
-    tasks = [fetch_feed(src) for src in FEED_SOURCES]
+    async def _safe_fetch(src):
+        try:
+            return await asyncio.wait_for(fetch_feed(src), timeout=4.0)
+        except Exception:
+            return []
+
+    tasks = [_safe_fetch(src) for src in FEED_SOURCES]
     results = await asyncio.gather(*tasks, return_exceptions=True)
     
     all_raw_items = []
