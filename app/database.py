@@ -184,31 +184,32 @@ def init_db():
         except Exception:
             pass
             
-        # Check if Turso database is empty, seed from bundled database
+        # Check if Turso database needs synchronization from bundled database
         try:
             check_res = turso_execute("SELECT COUNT(*) as count FROM articles")
             turso_count = check_res["rows"][0]["count"] if check_res.get("rows") else 0
-            if turso_count == 0 and os.path.exists(BUNDLED_DB):
-                print(f"[DB] Turso database is empty. Auto-seeding from bundled archive...")
+            if os.path.exists(BUNDLED_DB):
                 with sqlite3.connect(BUNDLED_DB) as b_conn:
                     b_conn.row_factory = sqlite3.Row
                     b_cursor = b_conn.cursor()
                     b_cursor.execute("SELECT guid_hash, source, author, title, summary, content_text, url, image_url, published_at, sentiment, sentiment_score, tickers, created_at FROM articles ORDER BY id ASC")
                     all_bundled = b_cursor.fetchall()
                     
-                    for i in range(0, len(all_bundled), 40):
-                        chunk = all_bundled[i:i+40]
-                        stmts = []
-                        for row in chunk:
-                            stmts.append((
-                                """INSERT OR IGNORE INTO articles (
-                                    guid_hash, source, author, title, summary, content_text, url, image_url,
-                                    published_at, sentiment, sentiment_score, tickers, created_at
-                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                                list(row)
-                            ))
-                        turso_batch(stmts)
-                print(f"[DB] Successfully seeded {len(all_bundled)} historical articles to Turso Cloud!")
+                    if len(all_bundled) > turso_count:
+                        print(f"[DB] Syncing {len(all_bundled) - turso_count} newer articles from bundled archive to Turso Cloud...")
+                        for i in range(0, len(all_bundled), 40):
+                            chunk = all_bundled[i:i+40]
+                            stmts = []
+                            for row in chunk:
+                                stmts.append((
+                                    """INSERT OR IGNORE INTO articles (
+                                        guid_hash, source, author, title, summary, content_text, url, image_url,
+                                        published_at, sentiment, sentiment_score, tickers, created_at
+                                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                                    list(row)
+                                ))
+                            turso_batch(stmts)
+                        print(f"[DB] Successfully synced to Turso Cloud! (Total bundled: {len(all_bundled)})")
         except Exception as e:
             print("[DB] Error checking/seeding Turso:", e)
         return
@@ -340,6 +341,29 @@ def save_article(article_data: dict) -> bool:
                     pass
             return False
 
+def build_category_condition(category: str) -> tuple[str, list]:
+    if not category or category == 'ALL':
+        return "", []
+    cat = category.lower()
+    if cat == 'finansial':
+        keywords = ['bank', 'saham', 'ihsg', 'bbca', 'bbri', 'bmri', 'bbni', 'laba', 'dividen', 'ojk', 'kredit', 'bursa', 'modal', 'dana', 'reksadana', 'sekuritas']
+    elif cat == 'energi':
+        keywords = ['energi', 'minyak', 'batu bara', 'gas', 'emas', 'nikel', 'ptba', 'adaro', 'antam', 'bren', 'esdm', 'tambang', 'pln', 'cuan', 'migas']
+    elif cat == 'konsumer':
+        keywords = ['konsumer', 'ritel', 'pangan', 'beras', 'makanan', 'minuman', 'indofood', 'unilever', 'belanja', 'harga', 'ekspor', 'petani', 'pasar']
+    elif cat == 'teknologi':
+        keywords = ['teknologi', 'digital', 'telkom', 'goto', 'ai', 'startup', 'aplikasi', 'data', 'software', 'internet', 'telko', 'gadget']
+    elif cat == 'makro':
+        keywords = ['ekonomi', 'pajak', 'inflasi', 'suku bunga', 'bi', 'apbn', 'fiskal', 'rupiah', 'gdp', 'pertumbuhan', 'pemerintah', 'prabowo', 'menteri']
+    else:
+        return " AND (title LIKE ? OR summary LIKE ?)", [f"%{category}%", f"%{category}%"]
+        
+    clauses = " OR ".join(["title LIKE ? OR summary LIKE ?" for _ in keywords])
+    params = []
+    for kw in keywords:
+        params.extend([f"%{kw}%", f"%{kw}%"])
+    return f" AND ({clauses})", params
+
 def get_total_articles_count(ticker: str = None, sentiment: str = None, category: str = None, q: str = None) -> int:
     query = "SELECT COUNT(*) as count FROM articles WHERE 1=1"
     params = []
@@ -352,10 +376,10 @@ def get_total_articles_count(ticker: str = None, sentiment: str = None, category
         query += " AND sentiment = ?"
         params.append(sentiment.upper())
         
-    if category and category != 'ALL':
-        query += " AND (title LIKE ? OR summary LIKE ?)"
-        params.append(f"%{category}%")
-        params.append(f"%{category}%")
+    cat_sql, cat_params = build_category_condition(category)
+    if cat_sql:
+        query += cat_sql
+        params.extend(cat_params)
         
     if q and q.strip():
         query += " AND (title LIKE ? OR summary LIKE ? OR tickers LIKE ?)"
@@ -390,10 +414,10 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
         query += " AND sentiment = ?"
         params.append(sentiment.upper())
         
-    if category and category != 'ALL':
-        query += " AND (title LIKE ? OR summary LIKE ?)"
-        params.append(f"%{category}%")
-        params.append(f"%{category}%")
+    cat_sql, cat_params = build_category_condition(category)
+    if cat_sql:
+        query += cat_sql
+        params.extend(cat_params)
         
     if q and q.strip():
         query += " AND (title LIKE ? OR summary LIKE ? OR tickers LIKE ?)"

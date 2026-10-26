@@ -1,0 +1,16 @@
+name: Emitara 24/7 Realtime News Poller
+
+on:
+  schedule:
+    # Run every 10 minutes 24/7 (round-the-clock automatic ingestion)
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  poll-and-ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Scraper and Ingest to Turso Database
+        run: |
+          echo "Sending automated poll request to Emitara..."
+          curl -s -f -m 25 "https://www.emitara.web.id/api/cron/poll" || echo "Ping dispatched"

@@ -17,9 +17,14 @@ sentiment_analyzer = FinancialSentimentAnalyzer()
 
 FEED_SOURCES = [
     {
-        "name": "CNBC Indonesia",
+        "name": "CNBC Indonesia Market",
         "url": "https://www.cnbcindonesia.com/market/rss",
         "category": "Market & Saham"
+    },
+    {
+        "name": "CNBC Indonesia Bisnis",
+        "url": "https://www.cnbcindonesia.com/news/rss",
+        "category": "Makro & Fiskal"
     },
     {
         "name": "Detik Finance",
@@ -27,14 +32,44 @@ FEED_SOURCES = [
         "category": "Bursa & Korporasi"
     },
     {
+        "name": "Detik Moneter",
+        "url": "https://finance.detik.com/moneter/rss",
+        "category": "Finansial & Bank"
+    },
+    {
+        "name": "Detik Energi",
+        "url": "https://finance.detik.com/energi/rss",
+        "category": "Energi & Komoditas"
+    },
+    {
         "name": "Katadata Finansial",
         "url": "https://katadata.co.id/rss/finansial",
         "category": "Analisis Pasar"
     },
     {
-        "name": "Investor Daily",
+        "name": "Katadata Bisnis",
+        "url": "https://katadata.co.id/rss",
+        "category": "Ekonomi Bisnis"
+    },
+    {
+        "name": "Katadata Hijau",
+        "url": "https://katadata.co.id/rss/ekonomi-hijau",
+        "category": "Energi & ESG"
+    },
+    {
+        "name": "Investor Daily Market",
         "url": "https://investor.id/rss/market",
         "category": "Pasar Modal"
+    },
+    {
+        "name": "Investor Daily Business",
+        "url": "https://investor.id/rss/business",
+        "category": "Korporasi & Bisnis"
+    },
+    {
+        "name": "Investor Daily Finance",
+        "url": "https://investor.id/rss/finance",
+        "category": "Finansial & Perbankan"
     }
 ]
 

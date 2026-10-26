@@ -192,8 +192,11 @@
 
     if (state.searchQuery) {
       const q = state.searchQuery.toLowerCase();
-      const text = `${item.title} ${item.summary || ''} ${item.source} ${(item.tickers || []).join(' ')}`.toLowerCase();
-      if (!text.includes(q)) return false;
+      const text = `${item.title} ${item.summary || ''} ${item.content_text || ''} ${item.source} ${(item.tickers || []).join(' ')}`.toLowerCase();
+      if (!text.includes(q)) {
+        const tickers = Array.isArray(item.tickers) ? item.tickers : [];
+        if (!tickers.some(t => t.toLowerCase().includes(q))) return false;
+      }
     }
 
     return true;
@@ -1420,17 +1423,43 @@
         closeMegaMenu();
         if (link.dataset.category) {
           state.activeCategory = link.dataset.category;
+          state.searchQuery = '';
+          if (searchInput) searchInput.value = '';
           state.viewMode = 'ALL';
           state.activeTicker = null;
           catPills.forEach(p => p.classList.toggle('active', p.dataset.category === state.activeCategory));
           updateModeButtons();
-          renderPortal(true);
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         } else if (link.dataset.search) {
           state.searchQuery = link.dataset.search;
           if (searchInput) searchInput.value = link.dataset.search;
+          state.activeCategory = 'ALL';
           state.viewMode = 'ALL';
+          state.activeTicker = null;
+          catPills.forEach(p => p.classList.toggle('active', p.dataset.category === 'ALL'));
           updateModeButtons();
-          renderPortal(true);
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Top Securities cards in Mega Menu
+    megaMenuMarkets.querySelectorAll('.mega-stock-card').forEach(card => {
+      card.addEventListener('click', () => {
+        closeMegaMenu();
+        const symEl = card.querySelector('.mega-stock-sym');
+        if (symEl && symEl.textContent) {
+          state.activeTicker = symEl.textContent.trim().toUpperCase();
+          state.searchQuery = '';
+          if (searchInput) searchInput.value = '';
+          state.activeCategory = 'ALL';
+          state.viewMode = 'ALL';
+          catPills.forEach(p => p.classList.toggle('active', p.dataset.category === 'ALL'));
+          updateModeButtons();
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
     });
