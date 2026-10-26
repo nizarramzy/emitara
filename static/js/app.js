@@ -381,17 +381,15 @@
       }
       if (state.viewMode === 'WATCHLIST') {
         badgesHtml += `
-          <span class="active-filter-badge">
-            <span>Watchlist</span>
-            <button type="button" class="btn-clear-active-badge" id="btnClearModePill" aria-label="Kembali ke semua warta">&times;</button>
-          </span>
+          <button type="button" class="btn-header-clean" id="btnClearModePill" aria-label="Kembali ke semua warta" style="font-size: 11px; padding: 2px 10px; border-radius: var(--radius-pill); background: var(--color-surface-subtle); color: var(--color-text-secondary); border: 1px solid var(--color-border); cursor: pointer;">
+            &larr; Kembali ke Semua Warta
+          </button>
         `;
       } else if (state.viewMode === 'BOOKMARKS') {
         badgesHtml += `
-          <span class="active-filter-badge">
-            <span>Tersimpan</span>
-            <button type="button" class="btn-clear-active-badge" id="btnClearModePill" aria-label="Kembali ke semua warta">&times;</button>
-          </span>
+          <button type="button" class="btn-header-clean" id="btnClearModePill" aria-label="Kembali ke semua warta" style="font-size: 11px; padding: 2px 10px; border-radius: var(--radius-pill); background: var(--color-surface-subtle); color: var(--color-text-secondary); border: 1px solid var(--color-border); cursor: pointer;">
+            &larr; Kembali ke Semua Warta
+          </button>
         `;
       }
       activeFilterPillContainer.innerHTML = badgesHtml;

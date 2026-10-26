@@ -1805,12 +1805,10 @@ html, body {
     font-size: 11px !important;
   }
   #activeFilterPillContainer {
-    grid-row: 3 !important;
-    display: flex !important;
+    display: inline-flex !important;
     flex-wrap: wrap !important;
     gap: 6px !important;
-    width: 100% !important;
-    margin-top: 2px !important;
+    vertical-align: middle !important;
   }
   .active-filter-badge {
     font-size: 11px !important;
