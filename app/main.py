@@ -207,7 +207,7 @@ async def render_article_ssr(article_id: int):
     canonical_url = f"https://emitara.web.id/berita/{article_id}"
     img_url = article.get("image_url")
     if not img_url:
-        m_img = re.search(r'<img[^>]+src=["']([^"']+)["']', (article.get("content_text") or "") + (article.get("summary") or ""))
+        m_img = re.search(r'<img[^>]+src="([^"]+)"', (article.get("content_text") or "") + (article.get("summary") or ""))
         if m_img:
             img_url = m_img.group(1)
     if not img_url:
