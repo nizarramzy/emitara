@@ -412,8 +412,11 @@ def get_total_articles_count(ticker: str = None, sentiment: str = None, category
     params = []
     
     if ticker:
-        query += " AND tickers LIKE ?"
-        params.append(f'%"{ticker.upper()}"%')
+        ticker_list = [t.strip().upper() for t in ticker.split(",") if t.strip()]
+        if ticker_list:
+            clause = " OR ".join(["tickers LIKE ?" for _ in ticker_list])
+            query += f" AND ({clause})"
+            params.extend([f'%"{t}"%' for t in ticker_list])
         
     if sentiment:
         query += " AND sentiment = ?"
@@ -450,8 +453,11 @@ def get_recent_articles(limit: int = 50, offset: int = 0, ticker: str = None, se
     params = []
     
     if ticker:
-        query += " AND tickers LIKE ?"
-        params.append(f'%"{ticker.upper()}"%')
+        ticker_list = [t.strip().upper() for t in ticker.split(",") if t.strip()]
+        if ticker_list:
+            clause = " OR ".join(["tickers LIKE ?" for _ in ticker_list])
+            query += f" AND ({clause})"
+            params.extend([f'%"{t}"%' for t in ticker_list])
         
     if sentiment:
         query += " AND sentiment = ?"

@@ -160,15 +160,16 @@
   // Filter checker
   function passesFilter(item) {
     if (state.viewMode === 'WATCHLIST') {
-      const tickers = Array.isArray(item.tickers) ? item.tickers : [];
-      if (!tickers.some(t => state.watchlist.includes(t))) return false;
+      const tickers = (Array.isArray(item.tickers) ? item.tickers : []).map(t => (t || '').toUpperCase());
+      const watchSet = state.watchlist.map(t => (t || '').toUpperCase());
+      if (!tickers.some(t => watchSet.includes(t))) return false;
     } else if (state.viewMode === 'BOOKMARKS') {
       if (!state.bookmarks.some(b => b.id === item.id)) return false;
     }
 
     if (state.activeTicker) {
-      const tickers = Array.isArray(item.tickers) ? item.tickers : [];
-      if (!tickers.includes(state.activeTicker)) return false;
+      const tickers = (Array.isArray(item.tickers) ? item.tickers : []).map(t => (t || '').toUpperCase());
+      if (!tickers.includes(state.activeTicker.toUpperCase())) return false;
     }
 
     if (state.activeSentiment !== 'ALL') {
@@ -416,7 +417,8 @@
         btnClearMode.addEventListener('click', () => {
           state.viewMode = 'ALL';
           updateModeButtons();
-          renderPortal(true);
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
     }
@@ -784,8 +786,11 @@
         readerTickers.querySelectorAll('.btn-filter-ticker').forEach(btn => {
           btn.addEventListener('click', () => {
             closeReader();
-            state.activeTicker = btn.dataset.ticker;
-            renderPortal(true);
+            state.activeTicker = (btn.dataset.ticker || '').toUpperCase();
+            state.viewMode = 'ALL';
+            updateModeButtons();
+            loadNews(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           });
         });
       }
@@ -814,7 +819,11 @@
 
       let url = `/api/news?limit=${state.pageSize}&offset=${state.currentOffset}`;
       if (state.searchQuery) url += `&q=${encodeURIComponent(state.searchQuery)}`;
-      if (state.activeTicker) url += `&ticker=${encodeURIComponent(state.activeTicker)}`;
+      if (state.activeTicker) {
+        url += `&ticker=${encodeURIComponent(state.activeTicker)}`;
+      } else if (state.viewMode === 'WATCHLIST' && state.watchlist.length > 0) {
+        url += `&ticker=${encodeURIComponent(state.watchlist.join(','))}`;
+      }
       if (state.activeSentiment !== 'ALL') url += `&sentiment=${encodeURIComponent(state.activeSentiment)}`;
       if (state.activeCategory !== 'ALL') url += `&category=${encodeURIComponent(state.activeCategory)}`;
 
@@ -889,10 +898,11 @@
       tickerMove.querySelectorAll('.ticker-tape-click').forEach(tapeItem => {
         tapeItem.addEventListener('click', () => {
           const t = tapeItem.dataset.ticker;
-          state.activeTicker = (t === 'IHSG' ? null : t);
+          state.activeTicker = (t === 'IHSG' ? null : t.toUpperCase());
           state.viewMode = 'ALL';
           updateModeButtons();
-          renderPortal(true);
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
 
@@ -955,8 +965,11 @@
 
       trendingList.querySelectorAll('.trending-click-row').forEach(row => {
         row.addEventListener('click', () => {
-          state.activeTicker = row.dataset.ticker;
-          renderPortal(true);
+          state.activeTicker = (row.dataset.ticker || '').toUpperCase();
+          state.viewMode = 'ALL';
+          updateModeButtons();
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
     } catch (e) {
@@ -1039,10 +1052,11 @@
       c.querySelectorAll('.watchlist-chip').forEach(chip => {
         chip.addEventListener('click', (e) => {
           if (e.target.classList.contains('watchlist-chip-remove')) return;
-          state.activeTicker = chip.dataset.ticker;
+          state.activeTicker = (chip.dataset.ticker || '').toUpperCase();
           state.viewMode = 'ALL';
           updateModeButtons();
-          renderPortal(true);
+          loadNews(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       });
 
@@ -1053,7 +1067,7 @@
           localStorage.setItem('emitara_watchlist', JSON.stringify(state.watchlist));
           updateBadgeCounts();
           renderWatchlistChips();
-          if (state.viewMode === 'WATCHLIST') renderPortal();
+          if (state.viewMode === 'WATCHLIST') loadNews(false);
         });
       });
     }
@@ -1082,7 +1096,7 @@
       localStorage.setItem('emitara_watchlist', JSON.stringify(state.watchlist));
       updateBadgeCounts();
       renderWatchlistChips();
-      if (state.viewMode === 'WATCHLIST') renderPortal();
+      if (state.viewMode === 'WATCHLIST') loadNews(false);
     }
   }
 
@@ -1154,7 +1168,8 @@
       state.viewMode = state.viewMode === 'WATCHLIST' ? 'ALL' : 'WATCHLIST';
       state.activeTicker = null;
       updateModeButtons();
-      renderPortal(true);
+      loadNews(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
@@ -1168,9 +1183,23 @@
   }
 
   // Mobile Dock Controls
-  if (dockBtnHome) dockBtnHome.addEventListener('click', () => { state.viewMode = 'ALL'; updateModeButtons(); renderPortal(true); });
+  if (dockBtnHome) dockBtnHome.addEventListener('click', () => {
+    state.viewMode = 'ALL';
+    state.activeTicker = null;
+    state.searchQuery = '';
+    if (searchInput) searchInput.value = '';
+    updateModeButtons();
+    loadNews(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   
-  if (dockBtnWatchlist) dockBtnWatchlist.addEventListener('click', () => { state.viewMode = 'WATCHLIST'; updateModeButtons(); renderPortal(true); });
+  if (dockBtnWatchlist) dockBtnWatchlist.addEventListener('click', () => {
+    state.viewMode = 'WATCHLIST';
+    state.activeTicker = null;
+    updateModeButtons();
+    loadNews(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
   if (dockBtnSaved) dockBtnSaved.addEventListener('click', () => { state.viewMode = 'BOOKMARKS'; updateModeButtons(); renderPortal(true); });
 
   // Categories & Search
@@ -1290,7 +1319,8 @@
       state.viewMode = state.viewMode === 'WATCHLIST' ? 'ALL' : 'WATCHLIST';
       state.activeTicker = null;
       updateModeButtons();
-      renderPortal(true);
+      loadNews(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
@@ -1339,10 +1369,11 @@
     calItem.addEventListener('click', () => {
       const t = calItem.dataset.ticker;
       if (t) {
-        state.activeTicker = t;
+        state.activeTicker = t.toUpperCase();
         state.viewMode = 'ALL';
         updateModeButtons();
-        renderPortal(true);
+        loadNews(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
   });
