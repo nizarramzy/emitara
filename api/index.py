@@ -35,3 +35,19 @@ from app.main import render_article_ssr
 @app.get("/api/warta/{article_id}")
 async def index_render_ssr(article_id: int):
     return await render_article_ssr(article_id)
+
+
+@app.get("/api/debug-turso-recent")
+async def debug_turso_recent():
+    import traceback
+    from app.database import is_turso_active, turso_execute
+    try:
+        query = "SELECT id, title, published_at FROM articles ORDER BY published_at DESC, id DESC LIMIT 5 OFFSET 0"
+        res = turso_execute(query, [])
+        return {
+            "turso_active": is_turso_active(),
+            "count": len(res.get("rows", [])),
+            "rows": res.get("rows", [])
+        }
+    except Exception as e:
+        return {"error": str(e), "traceback": traceback.format_exc()}

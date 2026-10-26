@@ -507,9 +507,8 @@ def get_article_by_id(article_id: int) -> dict:
     if is_turso_active():
         try:
             res = turso_execute("SELECT * FROM articles WHERE id = ?", [article_id])
-            if not res.get("rows"):
-                return None
-            d = dict(res["rows"][0])
+            if res.get("rows"):
+                d = dict(res["rows"][0])
             try:
                 d["tickers"] = json.loads(d["tickers"]) if isinstance(d["tickers"], str) else (d["tickers"] or [])
             except Exception:
@@ -530,11 +529,12 @@ def get_article_by_id(article_id: int) -> dict:
                     except Exception:
                         rd["tickers"] = []
                     related.append(rd)
-            d["related_articles"] = related
-            return sanitize_dict_article(d)
+                d["related_articles"] = related
+                return sanitize_dict_article(d)
         except Exception as e:
             print("[Turso Get By Id Error]", e)
 
+    # Fallback to local database if not found in Turso
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM articles WHERE id = ?", (article_id,))
