@@ -1747,3 +1747,73 @@ html, body {
     padding-bottom: 120px !important;
   }
 }
+
+
+/* Mobile Search & Filter UX Perfection (Full Width Search, Zero Squishing) */
+@media (max-width: 768px) {
+  .category-filter-strip {
+    padding: 8px 16px !important;
+  }
+  .category-filter-container {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .category-pill-list {
+    grid-row: 1 !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .search-filter-wrap {
+    grid-row: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 8px !important;
+    margin: 0 !important;
+  }
+  .search-field-clean {
+    order: 1 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  .search-field-input {
+    width: 100% !important;
+    height: 38px !important;
+    font-size: 13px !important;
+    padding: 0 14px 0 36px !important;
+    border-radius: var(--radius-pill) !important;
+    background-color: var(--color-surface-subtle) !important;
+    box-sizing: border-box !important;
+  }
+  .search-field-icon {
+    left: 12px !important;
+  }
+  .sentiment-segmented {
+    order: 2 !important;
+    align-self: flex-start !important;
+    flex-shrink: 0 !important;
+    height: 28px !important;
+  }
+  .sentiment-btn-clean {
+    height: 24px !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+  }
+  #activeFilterPillContainer {
+    grid-row: 3 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin-top: 2px !important;
+  }
+  .active-filter-badge {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+  }
+}
