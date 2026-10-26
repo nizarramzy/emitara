@@ -35,33 +35,3 @@ from app.main import render_article_ssr
 @app.get("/api/warta/{article_id}")
 async def index_render_ssr(article_id: int):
     return await render_article_ssr(article_id)
-
-
-@app.get("/api/debug-article/{article_id}")
-@app.get("/debug-article/{article_id}")
-async def debug_article(article_id: int):
-    import traceback
-    from app.database import is_turso_active, turso_execute
-    try:
-        if is_turso_active():
-            res = turso_execute("SELECT * FROM articles WHERE id = ?", [article_id])
-            return {
-                "turso_active": True,
-                "rows_count": len(res.get("rows", [])),
-                "first_row": res.get("rows", [])[0] if res.get("rows") else None
-            }
-        else:
-            return {"turso_active": False}
-    except Exception as e:
-        return {"error": str(e), "traceback": traceback.format_exc()}
-
-
-@app.get("/api/debug-turso-rows")
-async def debug_turso_rows():
-    from app.database import turso_execute
-    res = turso_execute("SELECT id, title FROM articles ORDER BY id DESC LIMIT 5")
-    res_min = turso_execute("SELECT MIN(id), MAX(id), COUNT(*) FROM articles")
-    return {
-        "latest": res.get("rows", []),
-        "stats": res_min.get("rows", [])
-    }

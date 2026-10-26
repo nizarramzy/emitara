@@ -167,14 +167,18 @@ async def get_single_news(article_id: int):
         raise HTTPException(status_code=404, detail="Article not found")
 
     if not article.get("content_text") or len(article.get("content_text", "")) < 80:
-        loop = asyncio.get_event_loop()
-        full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
-        if full_text:
-            article["content_text"] = full_text
-            article["author"] = author or article.get("author", "Redaksi")
-            if og_img and not article.get("image_url"):
-                article["image_url"] = og_img
-            save_article(article)
+        if article.get("url"):
+            try:
+                loop = asyncio.get_event_loop()
+                full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
+                if full_text:
+                    article["content_text"] = full_text
+                    article["author"] = author or article.get("author", "Redaksi")
+                    if og_img and not article.get("image_url"):
+                        article["image_url"] = og_img
+                    save_article(article)
+            except Exception as e:
+                print("[Enrich Error]", e)
 
     return {"status": "ok", "data": article}
 
@@ -191,14 +195,18 @@ async def render_article_ssr(article_id: int):
         )
 
     if not article.get("content_text") or len(article.get("content_text", "")) < 80:
-        loop = asyncio.get_event_loop()
-        full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
-        if full_text:
-            article["content_text"] = full_text
-            article["author"] = author or article.get("author", "Redaksi")
-            if og_img and not article.get("image_url"):
-                article["image_url"] = og_img
-            save_article(article)
+        if article.get("url"):
+            try:
+                loop = asyncio.get_event_loop()
+                full_text, author, og_img = await loop.run_in_executor(None, fetch_full_content_sync, article["url"])
+                if full_text:
+                    article["content_text"] = full_text
+                    article["author"] = author or article.get("author", "Redaksi")
+                    if og_img and not article.get("image_url"):
+                        article["image_url"] = og_img
+                    save_article(article)
+            except Exception as e:
+                print("[Enrich Error]", e)
 
     esc_title = html.escape(article.get("title") or "Warta Pasar Modal")
     esc_summary = html.escape(re.sub(r"<[^>]+>", " ", article.get("summary") or "").strip())
@@ -471,18 +479,7 @@ async def universal_dispatcher(request: Request, full_path: str):
     
     check_str = urllib.parse.unquote(f"{path_param} {p} {matched_path} {full_url}")
 
-    if "debug-turso-rows" in check_str:
-        from app.database import turso_execute
-        return {"latest": turso_execute("SELECT id, title FROM articles ORDER BY id DESC LIMIT 5").get("rows", []), "stats": turso_execute("SELECT MIN(id), MAX(id), COUNT(*) FROM articles").get("rows", [])}
 
-    m_dbg = re.search(r'debug-article/(\d+)', check_str)
-    if m_dbg:
-        from app.database import is_turso_active, turso_execute
-        try:
-            res = turso_execute("SELECT * FROM articles WHERE id = ?", [int(m_dbg.group(1))])
-            return {"turso_active": is_turso_active(), "rows": res.get("rows", [])}
-        except Exception as e:
-            return {"turso_error": str(e)}
 
     # 1. Market ticker
     if "ticker" in check_str:
