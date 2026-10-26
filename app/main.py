@@ -471,6 +471,15 @@ async def universal_dispatcher(request: Request, full_path: str):
     
     check_str = urllib.parse.unquote(f"{path_param} {p} {matched_path} {full_url}")
 
+    m_dbg = re.search(r'debug-article/(\d+)', check_str)
+    if m_dbg:
+        from app.database import is_turso_active, turso_execute
+        try:
+            res = turso_execute("SELECT * FROM articles WHERE id = ?", [int(m_dbg.group(1))])
+            return {"turso_active": is_turso_active(), "rows": res.get("rows", [])}
+        except Exception as e:
+            return {"turso_error": str(e)}
+
     # 1. Market ticker
     if "ticker" in check_str:
         return await get_market_ticker()
