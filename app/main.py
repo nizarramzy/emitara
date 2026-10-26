@@ -432,80 +432,36 @@ import re
 @app.api_route("/{full_path:path}", methods=["GET", "POST", "HEAD"])
 async def universal_dispatcher(request: Request, full_path: str):
     p = full_path.strip("/").lower()
-    
-    # Priority check for SSR article sharing
-    raw_path_param = (request.query_params.get("__path__") or "").strip("/").lower()
-    unquoted_full = urllib.parse.unquote(f"{raw_path_param} {p} {request.url}").lower()
-    
-    m_ssr_top = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', unquoted_full)
-    if m_ssr_top:
-        return await render_article_ssr(int(m_ssr_top.group(1)))
+    raw_path_param = urllib.parse.unquote(request.query_params.get("__path__") or "").strip("/").lower()
 
-    if "ticker" in p:
-        return await get_market_ticker()
+    # Determine targeted subpath
+    target_path = raw_path_param if raw_path_param and raw_path_param != "index.py" else p
 
-    if "trending" in p:
-        limit = int(request.query_params.get("limit", 8))
-        return await get_trending(limit=limit)
-
-    m_p_ssr = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', p, re.I)
-    if m_p_ssr:
-        return await render_article_ssr(int(m_p_ssr.group(1)))
-
-    m = re.search(r'news(?:/|%2f)(\d+)', p, re.I)
-    if m:
-        article_id = int(m.group(1))
-        return await get_single_news(article_id)
-
-    if "stream" in p:
-        return await news_stream(request)
-
-    if "news" in p:
-        limit = int(request.query_params.get("limit", 50))
-        offset = int(request.query_params.get("offset", 0))
-        ticker = request.query_params.get("ticker")
-        sentiment = request.query_params.get("sentiment")
-        category = request.query_params.get("category")
-        q = request.query_params.get("q")
-        return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category, q=q)
-
-    if "refresh" in p or "cron" in p or "poll" in p:
-        return await cron_poll()
-
-    # Resolve the real sub-path from query parameter __path__ or path or headers
-    path_param = (request.query_params.get("__path__") or "").strip("/").lower()
-    matched_path = (request.headers.get("x-matched-path", "") or request.headers.get("x-now-route-matches", "")).lower()
-    full_url = str(request.url).lower()
-    
-    check_str = urllib.parse.unquote(f"{path_param} {p} {matched_path} {full_url}")
-
-
-
-    # 1. Market ticker
-    if "ticker" in check_str:
-        return await get_market_ticker()
-
-    # 2. Trending
-    if "trending" in check_str:
-        limit = int(request.query_params.get("limit", 8))
-        return await get_trending(limit=limit)
-
-    # 3. Single news detail: e.g. /news/123 or __path__=news/123
-    m_ssr = re.search(r'(?:berita|warta)(?:/|%2f)(\d+)', check_str, re.I)
+    # 1. Social OpenGraph SSR: e.g. /berita/123 or /warta/123
+    m_ssr = re.search(r'^(?:api/)?(?:berita|warta)/(\d+)', target_path)
     if m_ssr:
         return await render_article_ssr(int(m_ssr.group(1)))
 
-    m = re.search(r'news(?:/|%2f)(\d+)', check_str, re.I)
-    if m:
-        article_id = int(m.group(1))
-        return await get_single_news(article_id)
+    # 2. Trending
+    if target_path.endswith("trending"):
+        limit = int(request.query_params.get("limit", 8))
+        return await get_trending(limit=limit)
 
-    # 4. News stream (SSE)
-    if "stream" in check_str:
+    # 3. Market ticker quotes: e.g. /api/market/ticker (Must check before news so /market/ticker matches)
+    if target_path.endswith("ticker") or target_path == "market/ticker":
+        return await get_market_ticker()
+
+    # 4. Single news ID: e.g. /api/news/123
+    m_single = re.search(r'^(?:api/)?news/(\d+)', target_path)
+    if m_single:
+        return await get_single_news(int(m_single.group(1)))
+
+    # 5. News stream (SSE)
+    if target_path.endswith("stream"):
         return await news_stream(request)
 
-    # 5. News list: e.g. /news or __path__=news
-    if "news" in check_str:
+    # 6. News list: e.g. /api/news, /news?ticker=BBCA,BMRI
+    if target_path == "news" or target_path.startswith("news/"):
         limit = int(request.query_params.get("limit", 50))
         offset = int(request.query_params.get("offset", 0))
         ticker = request.query_params.get("ticker")
@@ -514,19 +470,18 @@ async def universal_dispatcher(request: Request, full_path: str):
         q = request.query_params.get("q")
         return await get_news(limit=limit, offset=offset, ticker=ticker, sentiment=sentiment, category=category, q=q)
 
-    # 6. Cron / Refresh
-    if "refresh" in check_str or "cron" in check_str or "poll" in check_str:
+    # 7. Cron / poll / refresh
+    if any(k in target_path for k in ["poll", "cron", "refresh"]):
         return await cron_poll()
 
-    # 7. Health
-    if "health" in check_str:
+    # 8. Health check
+    if "health" in target_path:
         return await health_check()
 
     return {
         "status": "ok",
         "message": "Emitara Dispatcher Live",
-        "check_str": check_str,
-        "m_ssr_found": bool(re.search(r'(?:berita|warta)', check_str, re.I)),
+        "target_path": target_path,
         "path": full_path,
         "url": str(request.url)
     }
