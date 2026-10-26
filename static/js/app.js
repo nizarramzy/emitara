@@ -761,7 +761,7 @@
       }
 
       if (article.image_url) {
-        readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;">`;
+        readerMedia.innerHTML = `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" style="width: 100%; max-height: 420px; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='${getFallbackImage(article.id || 1)}';">`;
       }
 
       let paragraphs = [];
