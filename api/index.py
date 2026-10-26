@@ -54,3 +54,14 @@ async def debug_article(article_id: int):
             return {"turso_active": False}
     except Exception as e:
         return {"error": str(e), "traceback": traceback.format_exc()}
+
+
+@app.get("/api/debug-turso-rows")
+async def debug_turso_rows():
+    from app.database import turso_execute
+    res = turso_execute("SELECT id, title FROM articles ORDER BY id DESC LIMIT 5")
+    res_min = turso_execute("SELECT MIN(id), MAX(id), COUNT(*) FROM articles")
+    return {
+        "latest": res.get("rows", []),
+        "stats": res_min.get("rows", [])
+    }

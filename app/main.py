@@ -471,6 +471,10 @@ async def universal_dispatcher(request: Request, full_path: str):
     
     check_str = urllib.parse.unquote(f"{path_param} {p} {matched_path} {full_url}")
 
+    if "debug-turso-rows" in check_str:
+        from app.database import turso_execute
+        return {"latest": turso_execute("SELECT id, title FROM articles ORDER BY id DESC LIMIT 5").get("rows", []), "stats": turso_execute("SELECT MIN(id), MAX(id), COUNT(*) FROM articles").get("rows", [])}
+
     m_dbg = re.search(r'debug-article/(\d+)', check_str)
     if m_dbg:
         from app.database import is_turso_active, turso_execute
