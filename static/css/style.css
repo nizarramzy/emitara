@@ -77,13 +77,14 @@ a:focus-visible {
 }
 
 .master-header-container {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 12px 20px;
+  max-width: 100%;
+  margin: 0;
+  padding: 12px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  box-sizing: border-box;
 }
 
 .header-brand-side {
@@ -229,17 +230,20 @@ a:focus-visible {
 .category-filter-strip {
   background-color: var(--color-canvas);
   border-bottom: 1px solid var(--color-border);
-  padding: 12px 20px;
+  padding: 10px 32px;
+  box-sizing: border-box;
 }
 
 .category-filter-container {
-  max-width: 1180px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .category-pill-list {
@@ -358,12 +362,13 @@ a:focus-visible {
 
 /* Main Content Area (Compact Bloomberg / WSJ Desktop Grid) */
 .main-editorial-layout {
-  max-width: 1180px;
-  margin: 20px auto;
-  padding: 0 20px;
+  max-width: 100%;
+  margin: 20px 0;
+  padding: 0 32px;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 28px;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 961px) {
@@ -865,12 +870,13 @@ a:focus-visible {
 }
 
 .mega-menu-inner-grid {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 24px 20px;
+  max-width: 100%;
+  margin: 0;
+  padding: 24px 32px;
   display: grid;
   grid-template-columns: 200px 210px 1fr 260px;
   gap: 28px;
+  box-sizing: border-box;
 }
 
 .mega-col-heading {
