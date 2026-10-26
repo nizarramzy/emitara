@@ -1,3 +1,5 @@
+import re
+import html
 def sanitize_article_text(text: str, current_img: str = "") -> tuple[str, str]:
     if not text:
         return "", current_img
